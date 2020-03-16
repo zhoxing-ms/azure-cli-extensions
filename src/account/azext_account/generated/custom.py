@@ -35,8 +35,9 @@ def account_subscription_create_subscription_in_enrollment_account(cmd, client,
                                                                    body_owners=None,
                                                                    body_offer_type=None):
     if body_owners is not None:
-        body_owners=[{'object_id': x} for x in body_owners]
+        body_owners = [{'object_id': x} for x in body_owners]
 
+    body = {}
     body['display_name'] = body_display_name
     body['management_group_id'] = body_management_group_id
     body['owners'] = body_owners

@@ -9,9 +9,6 @@
 from azure.cli.core.commands.parameters import (
     get_enum_type
 )
-from azext_account.action import (
-    AddOwners
-)
 
 
 def load_arguments(self, _):
