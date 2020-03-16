@@ -18,7 +18,14 @@ def account_subscription_create_subscription(cmd, client,
                                              body_cost_center=None,
                                              body_owner=None,
                                              body_management_group_id=None):
-    return client.begin_create_subscription(billing_account_name=billing_account_name, billing_profile_name=billing_profile_name, invoice_section_name=invoice_section_name, display_name=body_display_name, sku_id=body_sku_id, cost_center=body_cost_center, owner={'object_id': body_owner}, management_group_id=body_management_group_id)
+
+    body = {}
+    body['display_name'] = body_display_name
+    body['sku_id'] = body_sku_id
+    body['cost_center'] = body_cost_center
+    body['owner'] = {'object_id': body_owner}
+    body['management_group_id'] = body_management_group_id
+    return client.create_subscription(billing_account_name=billing_account_name, billing_profile_name=billing_profile_name, invoice_section_name=invoice_section_name, body=body)
 
 
 def account_subscription_create_subscription_in_enrollment_account(cmd, client,
@@ -29,7 +36,12 @@ def account_subscription_create_subscription_in_enrollment_account(cmd, client,
                                                                    body_offer_type=None):
     if body_owners is not None:
         body_owners=[{'object_id': x} for x in body_owners]
-    return client.begin_create_subscription_in_enrollment_account(enrollment_account_name=enrollment_account_name, display_name=body_display_name, management_group_id=body_management_group_id, owners=body_owners, offer_type=body_offer_type)
+
+    body['display_name'] = body_display_name
+    body['management_group_id'] = body_management_group_id
+    body['owners'] = body_owners
+    body['offer_type'] = body_offer_type
+    return client.create_subscription_in_enrollment_account(enrollment_account_name=enrollment_account_name, body=body)
 
 
 def account_subscription_create_csp_subscription(cmd, client,
@@ -38,7 +50,11 @@ def account_subscription_create_csp_subscription(cmd, client,
                                                  body_display_name,
                                                  body_sku_id,
                                                  body_reseller_id=None):
-    return client.begin_create_csp_subscription(billing_account_name=billing_account_name, customer_name=customer_name, display_name=body_display_name, sku_id=body_sku_id, reseller_id=body_reseller_id)
+    body = {}
+    body['display_name'] = body_display_name
+    body['sku_id'] = body_sku_id
+    body['reseller_id'] = body_reseller_id
+    return client.create_csp_subscription(billing_account_name=billing_account_name, customer_name=customer_name, body=body)
 
 
 def account_subscription_rename(cmd, client, subscription_id,
