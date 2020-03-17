@@ -82,7 +82,11 @@
 
 /src/account/ @zikalino
 
+/src/alertsmanagement/ @qwordy
+
 /src/synapse/ @idear1203 @aim-for-better
+
+/src/stream-analytics/ @arrownj
 
 /src/databricks/ @fengzhou-msft
 
