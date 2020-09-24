@@ -10,8 +10,7 @@ from knack import help_files
 
 
 def _get_api_url():
-    return "http://localhost:7071/api/RecommendationService"
-#    return "https://cli-recommendation.azurewebsites.net/api/RecommendationService"
+    return "https://cli-recommendation.azurewebsites.net/api/RecommendationService"
 
 
 def _get_last_cmd(cmd):
@@ -98,7 +97,10 @@ def _give_recommends(cli_ctx, recommends):
     idx = 0
     for rec in recommends:
         idx += 1
-        print("{}. az {} {}".format(idx, rec['command'], ' '.join(rec['arguments'])))
+        command_item = "{}. az {}".format(idx, rec['command'])
+        if 'arguments' in rec:
+            command_item = "{} {}".format(command_item, ' '.join(rec['arguments']))
+        print(command_item)
 
         if 'reason' in rec:
             reason = rec['reason']
@@ -107,8 +109,8 @@ def _give_recommends(cli_ctx, recommends):
             cmd_help = help_files._load_help_file(rec['command'])
             if cmd_help and 'short-summary' in cmd_help:
                 reason = cmd_help['short-summary']
-            if rec['ratio']:
-                   reason = "{} {:.1f}% people use this command in next step. ".format(reason, rec['ratio'] * 100)
+            if 'ratio' in rec and rec['ratio']:
+                reason = "{} {:.1f}% people use this command in next step. ".format(reason, rec['ratio'] * 100)
         print("Recommended reason: {}".format(reason))
 
 
@@ -150,21 +152,23 @@ Please select the type of recommendation you need:
             option = 0
     if option == 0:
         # we can send feedback here
-        return "recommend abort"
+        print('Thank you for your feedback \n')
+        return
 
     option = option - 1
     nx_cmd = recommends[option]["command"]
-    nx_param = recommends[option]["arguments"]
-    print("Run: az {} {}".format(nx_cmd, ' '.join(nx_param)))
+    if "arguments" in recommends[option]:
+        nx_param = recommends[option]["arguments"]
+    print("Run: az {} {}".format(nx_cmd, ' '.join(nx_param) if nx_param else ""))
     print()
     doit = input("Do you want to run it now? (y/n): ")
     if doit not in ["y", "yes", "Y", "Yes", "YES"]:
-        ret = {"result": "Thank you for your feedback"}
-        return ret
+        print('Recommend Abort \n')
+        return
 
     args = []
     args.extend(nx_cmd.split())
-    nx_param = [param for param in nx_param if param != '']
+    nx_param = [param for param in nx_param if param and param != '']
     for param in nx_param:
         value = input("Please input {}: ".format(param))
         args.append(param)
