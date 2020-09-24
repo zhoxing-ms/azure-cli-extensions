@@ -94,17 +94,21 @@ def _read_int(msg, default_value=0):
     return ret
 
 
-def _give_recommends(recommends):
+def _give_recommends(cli_ctx, recommends):
     idx = 0
     for rec in recommends:
+        idx += 1
+        print("{}. az {} {}".format(idx, rec['command'], ' '.join(rec['arguments'])))
+
         if 'reason' in rec:
             reason = rec['reason']
         else:
-            reason = " people use this command in next step."
-        idx += 1
-        print("{}. az {} {}".format(idx, rec['command'], ' '.join(rec['arguments'])))
-        if rec['ratio']:
-               reason = "{:.1f}% {}".format(rec['ratio'] * 100, reason)
+            reason = ""
+            cmd_help = help_files._load_help_file(rec['command'])
+            if cmd_help and 'short-summary' in cmd_help:
+                reason = cmd_help['short-summary']
+            if rec['ratio']:
+                   reason = "{} {:.1f}% people use this command in next step. ".format(reason, rec['ratio'] * 100)
         print("Recommended reason: {}".format(reason))
 
 
@@ -134,7 +138,7 @@ Please select the type of recommendation you need:
         print("\nSorry, no recommendation for '{}' yet.".format(last_cmd))
         return
     print()
-    _give_recommends(recommends)
+    _give_recommends(cmd.cli_ctx, recommends)
     print()
     if len(recommends) > 1:
         option = _read_int("Which one is helpful to you? (If none, please input 0) :")
