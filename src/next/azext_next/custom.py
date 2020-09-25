@@ -5,7 +5,8 @@
 
 import json
 
-from knack.util import CLIError
+from azure.cli.core.azclierror import AzCLIError
+from azure.cli.core.azclierror import AzCLIErrorType
 from knack import help_files
 
 
@@ -45,12 +46,10 @@ def _process_exception(exception_str):
 
 def _handle_error_no_exception_found():
     '''You choose to solve the previous problems but no exception found'''
-    from azure.cli.core.azclierror import AzCLIError
-    from azure.cli.core.azclierror import AzCLIErrorType
     error_msg = 'The error information is missing, ' \
                 'the solution is recommended only if only an exception occurs in the previous step.'
     recommendation = 'You can set the recommendation type to 1 to get all available recommendations.'
-    az_error = AzCLIError(AzCLIErrorType.ClientError, error_msg)
+    az_error = AzCLIError(AzCLIErrorType.RecommendationError, error_msg)
     az_error.set_recommendation(recommendation)
     az_error.print_error()
 
@@ -74,8 +73,9 @@ def _get_recommend_from_api(last_cmd, type, top_num=5, error_info=None):  # pyli
     }
     response = requests.post(url, json.dumps(payload))
     if response.status_code != 200:
-        raise CLIError("Failed to connect to '{}' with status code '{}' and reason '{}'".format(
-            url, response.status_code, response.reason))
+        raise AzCLIError(AzCLIErrorType.RecommendationError,
+                         "Failed to connect to '{}' with status code '{}' and reason '{}'".format(
+                             url, response.status_code, response.reason))
 
     recommends = []
     if 'data' in response.json():
@@ -125,7 +125,8 @@ Please select the type of recommendation you need:
 '''
     print(msg)
     option = _read_int("What kind of recommendation do you want? (RETURN is to set all): ", 1)
-    last_cmd = _get_last_cmd(cmd)
+    if (option < 1) or (option > 5):
+        raise AzCLIError(AzCLIErrorType.RecommendationError, "Please input the correct option")
 
     processed_exception = None
     if option == 1 or option == 2:
@@ -135,6 +136,7 @@ Please select the type of recommendation you need:
         _handle_error_no_exception_found()
         return None
 
+    last_cmd = _get_last_cmd(cmd)
     recommends = _get_recommend_from_api(last_cmd, option, error_info=processed_exception)
     if not recommends:
         print("\nSorry, no recommendation for '{}' yet.".format(last_cmd))
@@ -154,6 +156,9 @@ Please select the type of recommendation you need:
         # we can send feedback here
         print('Thank you for your feedback \n')
         return
+
+    if (option < 0) or (option > len(recommends)):
+        raise AzCLIError(AzCLIErrorType.RecommendationError, "Please input the correct option")
 
     option = option - 1
     nx_cmd = recommends[option]["command"]
