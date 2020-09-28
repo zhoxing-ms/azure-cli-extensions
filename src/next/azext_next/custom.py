@@ -120,8 +120,8 @@ Please select the type of recommendation you need:
 1. all: It will intelligently analyze the types of recommendation you need, and may recommend multiple types of command to you
 2. solution: Only the solutions to problems when errors occur are recommend
 3. command: Only the commands with high correlation with previously executed commands are recommend
-4. resource: Only the resources related to previously created resources are recommended
-5. scenario: Only the E2E scenarios related to current usage scenarios are recommended
+4. resource: Only the resources related to previously created resources are recommended (Not implemented)
+5. scenario: Only the E2E scenarios related to current usage scenarios are recommended (Not implemented)
 '''
     print(msg)
     option = _read_int("What kind of recommendation do you want? (RETURN is to set all): ", 1)
