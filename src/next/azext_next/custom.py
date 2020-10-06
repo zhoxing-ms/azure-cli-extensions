@@ -93,25 +93,37 @@ def _read_int(msg, default_value=0):
     return ret
 
 
-def _give_recommends(cli_ctx, recommends):
+def _give_recommends(recommends):
     idx = 0
     for rec in recommends:
         idx += 1
-        command_item = "{}. az {}".format(idx, rec['command'])
-        if 'arguments' in rec:
-            command_item = "{} {}".format(command_item, ' '.join(rec['arguments']))
-        print(command_item)
-
-        if 'reason' in rec:
-            reason = rec['reason']
+        if 'scenario' in rec:
+            _give_recommend_scenarios(idx, rec)
         else:
-            reason = ""
-            cmd_help = help_files._load_help_file(rec['command'])
-            if cmd_help and 'short-summary' in cmd_help:
-                reason = cmd_help['short-summary']
-            if 'ratio' in rec and rec['ratio']:
-                reason = "{} {:.1f}% people use this command in next step. ".format(reason, rec['ratio'] * 100)
-        print("Recommended reason: {}".format(reason))
+            _give_recommend_commands(idx, rec)
+
+
+def _give_recommend_commands(idx, rec):
+    command_item = "{}. az {}".format(idx, rec['command'])
+    if 'arguments' in rec:
+        command_item = "{} {}".format(command_item, ' '.join(rec['arguments']))
+    print(command_item)
+
+    if 'reason' in rec:
+        reason = rec['reason']
+    else:
+        reason = ""
+        cmd_help = help_files._load_help_file(rec['command'])
+        if cmd_help and 'short-summary' in cmd_help:
+            reason = cmd_help['short-summary']
+        if 'ratio' in rec and rec['ratio']:
+            reason = "{} {:.1f}% people use this command in next step. ".format(reason, rec['ratio'] * 100)
+    print("Recommended reason: {}".format(reason))
+
+
+def _give_recommend_scenarios(idx, rec):
+    print("{}. {}".format(idx, rec['scenario']))
+    print("Recommended reason: the e2e scenarios you may be using.")
 
 
 def handle_next(cmd):
@@ -142,7 +154,7 @@ Please select the type of recommendation you need:
         print("\nSorry, no recommendation for '{}' yet.".format(last_cmd))
         return
     print()
-    _give_recommends(cmd.cli_ctx, recommends)
+    _give_recommends(recommends)
     print()
     if len(recommends) > 1:
         option = _read_int("Which one is helpful to you? (If none, please input 0) :")
