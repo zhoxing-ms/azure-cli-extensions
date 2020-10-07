@@ -10,6 +10,7 @@ from azure.cli.core.azclierror import AzCLIErrorType
 from knack import help_files
 from .utils import get_yes_or_no_option, get_int_option
 from .constants import RecommendType
+from colorama import Fore, init
 
 
 def _get_last_cmd(cmd):
@@ -100,12 +101,12 @@ def _give_recommend_commands(idx, rec):
             reason = cmd_help['short-summary']
         if 'ratio' in rec and rec['ratio']:
             reason = "{} {:.1f}% people use this command in next step. ".format(reason, rec['ratio'] * 100)
-    print("Recommended reason: {}.\n".format(reason))
+    print(Fore.LIGHTCYAN_EX + "Recommended reason: {}.\n".format(reason))
 
 
 def _give_recommend_scenarios(idx, rec):
     print("{}. \033[1;33m[E2E]\033[0m {}".format(idx, rec['scenario']))
-    print("Recommended reason: the E2E scenarios you may be using.\n")
+    print(Fore.LIGHTCYAN_EX + "Recommended reason: the E2E scenarios you may be using.\n")
 
 
 def _execute_recommends(cmd, rec):
@@ -131,18 +132,18 @@ def _execute_nx_cmd(cmd, nx_cmd, nx_param):
 def _execute_recommend_commands(cmd, rec):
     doit = get_yes_or_no_option("Do you want to run it in prompt mode immediately? (y/n): ")
     if not doit:
-        print('Recommend Abort \n')
+        print('Recommend abort \n')
         return
 
     nx_param = []
     if "arguments" in rec:
         nx_param = rec["arguments"]
-    print("\033[37;44mRunning: az {} {}\033[0m".format(rec["command"], ' '.join(nx_param) if nx_param else ""))
+    print(Fore.LIGHTYELLOW_EX + "Running: az {} {}".format(rec["command"], ' '.join(nx_param) if nx_param else ""))
     _execute_nx_cmd(cmd, rec["command"], nx_param)
 
 
 def _execute_recommend_scenarios(cmd, rec):
-    print("The scenario of '{}' contains the following commands.\n".format(rec['scenario']))
+    print("The scenario of '{}' contains the following commands:\n".format(rec['scenario']))
 
     nx_cmd_set = rec["nextCommandSet"]
     idx = 0
@@ -151,18 +152,19 @@ def _execute_recommend_scenarios(cmd, rec):
         if "arguments" in nx_cmd:
             nx_param = nx_cmd["arguments"]
         print("{}. az {} {}".format(idx, nx_cmd['command'], ' '.join(nx_param) if nx_param else ""))
-        print("{}\n".format(nx_cmd['reason']))
+        print(Fore.LIGHTCYAN_EX + "{}\n".format(nx_cmd['reason']))
 
     doit = get_yes_or_no_option("Do you want to run this scenario in prompt mode immediately? (y/n): ")
     if not doit:
-        print('Recommend Abort \n')
+        print('Recommend abort \n')
         return
 
     for nx_cmd in nx_cmd_set:
         nx_param = []
         if "arguments" in nx_cmd:
             nx_param = nx_cmd["arguments"]
-        print("\033[37;44mRunning: az {} {}\033[0m".format(nx_cmd['command'], ' '.join(nx_param) if nx_param else ""))
+        print(Fore.LIGHTYELLOW_EX + "Running: az {} {}".format(nx_cmd['command'],
+                                                               ' '.join(nx_param) if nx_param else ""))
         step_msg = "How do you want to run this step? 1. Run 2. Skip 3. Stop (RETURN is to Run): "
         run_option = get_int_option(step_msg, 1, 3, 1)
         if run_option == 1:
@@ -186,16 +188,16 @@ Please select the type of recommendation you need:
 1. all: It will intelligently analyze the types of recommendation you need, and may recommend multiple types of command to you
 2. solution: Only the solutions to problems when errors occur are recommend
 3. command: Only the commands with high correlation with previously executed commands are recommend
-4. resource: Only the resources related to previously created resources are recommended (Not implemented)
-5. scenario: Only the E2E scenarios related to current usage scenarios are recommended
+4. scenario: Only the E2E scenarios related to current usage scenarios are recommended
 '''
     print(msg)
-    return get_int_option("What kind of recommendation do you want? (RETURN is to set all): ", 1, 5, 1)
+    return get_int_option("What kind of recommendation do you want? (RETURN is to set all): ", 1, 4, 1)
 
 
 def handle_next(cmd):
-    option = _get_filter_option()
+    init(autoreset=True) # turn on automatic color recovery for colorama
 
+    option = _get_filter_option()
     processed_exception = None
     if option == RecommendType.All or option == RecommendType.Solution:
         last_exception = _get_last_exception(cmd)

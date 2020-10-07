@@ -10,5 +10,4 @@ class RecommendType(int, Enum):
     All = 1
     Solution = 2
     Command = 3
-    Resource = 4
-    Scenario = 5
+    Scenario = 4
