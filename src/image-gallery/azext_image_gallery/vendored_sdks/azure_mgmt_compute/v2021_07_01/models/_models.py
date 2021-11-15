@@ -6,12 +6,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
-import datetime
-from typing import Any, Dict, List, Optional, Union
-
 import msrest.serialization
-
-from ._compute_management_client_enums import *
 
 
 class AdditionalCapabilities(msrest.serialization.Model):
@@ -33,14 +28,11 @@ class AdditionalCapabilities(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        ultra_ssd_enabled: Optional[bool] = None,
-        hibernation_enabled: Optional[bool] = None,
         **kwargs
     ):
         super(AdditionalCapabilities, self).__init__(**kwargs)
-        self.ultra_ssd_enabled = ultra_ssd_enabled
-        self.hibernation_enabled = hibernation_enabled
+        self.ultra_ssd_enabled = kwargs.get('ultra_ssd_enabled', None)
+        self.hibernation_enabled = kwargs.get('hibernation_enabled', None)
 
 
 class AdditionalUnattendContent(msrest.serialization.Model):
@@ -72,18 +64,13 @@ class AdditionalUnattendContent(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        pass_name: Optional[str] = None,
-        component_name: Optional[str] = None,
-        setting_name: Optional[Union[str, "SettingNames"]] = None,
-        content: Optional[str] = None,
         **kwargs
     ):
         super(AdditionalUnattendContent, self).__init__(**kwargs)
-        self.pass_name = pass_name
-        self.component_name = component_name
-        self.setting_name = setting_name
-        self.content = content
+        self.pass_name = kwargs.get('pass_name', None)
+        self.component_name = kwargs.get('component_name', None)
+        self.setting_name = kwargs.get('setting_name', None)
+        self.content = kwargs.get('content', None)
 
 
 class ApiEntityReference(msrest.serialization.Model):
@@ -100,12 +87,10 @@ class ApiEntityReference(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
         **kwargs
     ):
         super(ApiEntityReference, self).__init__(**kwargs)
-        self.id = id
+        self.id = kwargs.get('id', None)
 
 
 class ApiError(msrest.serialization.Model):
@@ -133,20 +118,14 @@ class ApiError(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        details: Optional[List["ApiErrorBase"]] = None,
-        innererror: Optional["InnerError"] = None,
-        code: Optional[str] = None,
-        target: Optional[str] = None,
-        message: Optional[str] = None,
         **kwargs
     ):
         super(ApiError, self).__init__(**kwargs)
-        self.details = details
-        self.innererror = innererror
-        self.code = code
-        self.target = target
-        self.message = message
+        self.details = kwargs.get('details', None)
+        self.innererror = kwargs.get('innererror', None)
+        self.code = kwargs.get('code', None)
+        self.target = kwargs.get('target', None)
+        self.message = kwargs.get('message', None)
 
 
 class ApiErrorBase(msrest.serialization.Model):
@@ -168,16 +147,12 @@ class ApiErrorBase(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        code: Optional[str] = None,
-        target: Optional[str] = None,
-        message: Optional[str] = None,
         **kwargs
     ):
         super(ApiErrorBase, self).__init__(**kwargs)
-        self.code = code
-        self.target = target
-        self.message = message
+        self.code = kwargs.get('code', None)
+        self.target = kwargs.get('target', None)
+        self.message = kwargs.get('message', None)
 
 
 class ApplicationProfile(msrest.serialization.Model):
@@ -194,12 +169,10 @@ class ApplicationProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        gallery_applications: Optional[List["VMGalleryApplication"]] = None,
         **kwargs
     ):
         super(ApplicationProfile, self).__init__(**kwargs)
-        self.gallery_applications = gallery_applications
+        self.gallery_applications = kwargs.get('gallery_applications', None)
 
 
 class AutomaticOSUpgradePolicy(msrest.serialization.Model):
@@ -224,14 +197,11 @@ class AutomaticOSUpgradePolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        enable_automatic_os_upgrade: Optional[bool] = None,
-        disable_automatic_rollback: Optional[bool] = None,
         **kwargs
     ):
         super(AutomaticOSUpgradePolicy, self).__init__(**kwargs)
-        self.enable_automatic_os_upgrade = enable_automatic_os_upgrade
-        self.disable_automatic_rollback = disable_automatic_rollback
+        self.enable_automatic_os_upgrade = kwargs.get('enable_automatic_os_upgrade', None)
+        self.disable_automatic_rollback = kwargs.get('disable_automatic_rollback', None)
 
 
 class AutomaticOSUpgradeProperties(msrest.serialization.Model):
@@ -254,12 +224,10 @@ class AutomaticOSUpgradeProperties(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        automatic_os_upgrade_supported: bool,
         **kwargs
     ):
         super(AutomaticOSUpgradeProperties, self).__init__(**kwargs)
-        self.automatic_os_upgrade_supported = automatic_os_upgrade_supported
+        self.automatic_os_upgrade_supported = kwargs['automatic_os_upgrade_supported']
 
 
 class AutomaticRepairsPolicy(msrest.serialization.Model):
@@ -283,14 +251,11 @@ class AutomaticRepairsPolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        enabled: Optional[bool] = None,
-        grace_period: Optional[str] = None,
         **kwargs
     ):
         super(AutomaticRepairsPolicy, self).__init__(**kwargs)
-        self.enabled = enabled
-        self.grace_period = grace_period
+        self.enabled = kwargs.get('enabled', None)
+        self.grace_period = kwargs.get('grace_period', None)
 
 
 class Resource(msrest.serialization.Model):
@@ -329,17 +294,14 @@ class Resource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
         **kwargs
     ):
         super(Resource, self).__init__(**kwargs)
         self.id = None
         self.name = None
         self.type = None
-        self.location = location
-        self.tags = tags
+        self.location = kwargs['location']
+        self.tags = kwargs.get('tags', None)
 
 
 class AvailabilitySet(Resource):
@@ -402,22 +364,14 @@ class AvailabilitySet(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        sku: Optional["Sku"] = None,
-        platform_update_domain_count: Optional[int] = None,
-        platform_fault_domain_count: Optional[int] = None,
-        virtual_machines: Optional[List["SubResource"]] = None,
-        proximity_placement_group: Optional["SubResource"] = None,
         **kwargs
     ):
-        super(AvailabilitySet, self).__init__(location=location, tags=tags, **kwargs)
-        self.sku = sku
-        self.platform_update_domain_count = platform_update_domain_count
-        self.platform_fault_domain_count = platform_fault_domain_count
-        self.virtual_machines = virtual_machines
-        self.proximity_placement_group = proximity_placement_group
+        super(AvailabilitySet, self).__init__(**kwargs)
+        self.sku = kwargs.get('sku', None)
+        self.platform_update_domain_count = kwargs.get('platform_update_domain_count', None)
+        self.platform_fault_domain_count = kwargs.get('platform_fault_domain_count', None)
+        self.virtual_machines = kwargs.get('virtual_machines', None)
+        self.proximity_placement_group = kwargs.get('proximity_placement_group', None)
         self.statuses = None
 
 
@@ -444,14 +398,11 @@ class AvailabilitySetListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["AvailabilitySet"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(AvailabilitySetListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class UpdateResource(msrest.serialization.Model):
@@ -467,12 +418,10 @@ class UpdateResource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
         **kwargs
     ):
         super(UpdateResource, self).__init__(**kwargs)
-        self.tags = tags
+        self.tags = kwargs.get('tags', None)
 
 
 class AvailabilitySetUpdate(UpdateResource):
@@ -514,21 +463,14 @@ class AvailabilitySetUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        sku: Optional["Sku"] = None,
-        platform_update_domain_count: Optional[int] = None,
-        platform_fault_domain_count: Optional[int] = None,
-        virtual_machines: Optional[List["SubResource"]] = None,
-        proximity_placement_group: Optional["SubResource"] = None,
         **kwargs
     ):
-        super(AvailabilitySetUpdate, self).__init__(tags=tags, **kwargs)
-        self.sku = sku
-        self.platform_update_domain_count = platform_update_domain_count
-        self.platform_fault_domain_count = platform_fault_domain_count
-        self.virtual_machines = virtual_machines
-        self.proximity_placement_group = proximity_placement_group
+        super(AvailabilitySetUpdate, self).__init__(**kwargs)
+        self.sku = kwargs.get('sku', None)
+        self.platform_update_domain_count = kwargs.get('platform_update_domain_count', None)
+        self.platform_fault_domain_count = kwargs.get('platform_fault_domain_count', None)
+        self.virtual_machines = kwargs.get('virtual_machines', None)
+        self.proximity_placement_group = kwargs.get('proximity_placement_group', None)
         self.statuses = None
 
 
@@ -624,12 +566,10 @@ class BillingProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        max_price: Optional[float] = None,
         **kwargs
     ):
         super(BillingProfile, self).__init__(**kwargs)
-        self.max_price = max_price
+        self.max_price = kwargs.get('max_price', None)
 
 
 class BootDiagnostics(msrest.serialization.Model):
@@ -650,14 +590,11 @@ class BootDiagnostics(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        enabled: Optional[bool] = None,
-        storage_uri: Optional[str] = None,
         **kwargs
     ):
         super(BootDiagnostics, self).__init__(**kwargs)
-        self.enabled = enabled
-        self.storage_uri = storage_uri
+        self.enabled = kwargs.get('enabled', None)
+        self.storage_uri = kwargs.get('storage_uri', None)
 
 
 class BootDiagnosticsInstanceView(msrest.serialization.Model):
@@ -774,16 +711,11 @@ class CapacityReservation(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        sku: "Sku",
-        tags: Optional[Dict[str, str]] = None,
-        zones: Optional[List[str]] = None,
         **kwargs
     ):
-        super(CapacityReservation, self).__init__(location=location, tags=tags, **kwargs)
-        self.sku = sku
-        self.zones = zones
+        super(CapacityReservation, self).__init__(**kwargs)
+        self.sku = kwargs['sku']
+        self.zones = kwargs.get('zones', None)
         self.reservation_id = None
         self.virtual_machines_associated = None
         self.provisioning_time = None
@@ -851,14 +783,10 @@ class CapacityReservationGroup(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        zones: Optional[List[str]] = None,
         **kwargs
     ):
-        super(CapacityReservationGroup, self).__init__(location=location, tags=tags, **kwargs)
-        self.zones = zones
+        super(CapacityReservationGroup, self).__init__(**kwargs)
+        self.zones = kwargs.get('zones', None)
         self.capacity_reservations = None
         self.virtual_machines_associated = None
         self.instance_view = None
@@ -914,14 +842,11 @@ class CapacityReservationGroupListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["CapacityReservationGroup"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(CapacityReservationGroupListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class CapacityReservationGroupUpdate(UpdateResource):
@@ -960,11 +885,9 @@ class CapacityReservationGroupUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
         **kwargs
     ):
-        super(CapacityReservationGroupUpdate, self).__init__(tags=tags, **kwargs)
+        super(CapacityReservationGroupUpdate, self).__init__(**kwargs)
         self.capacity_reservations = None
         self.virtual_machines_associated = None
         self.instance_view = None
@@ -986,14 +909,11 @@ class CapacityReservationInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        utilization_info: Optional["CapacityReservationUtilization"] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(CapacityReservationInstanceView, self).__init__(**kwargs)
-        self.utilization_info = utilization_info
-        self.statuses = statuses
+        self.utilization_info = kwargs.get('utilization_info', None)
+        self.statuses = kwargs.get('statuses', None)
 
 
 class CapacityReservationInstanceViewWithName(CapacityReservationInstanceView):
@@ -1021,12 +941,9 @@ class CapacityReservationInstanceViewWithName(CapacityReservationInstanceView):
 
     def __init__(
         self,
-        *,
-        utilization_info: Optional["CapacityReservationUtilization"] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
-        super(CapacityReservationInstanceViewWithName, self).__init__(utilization_info=utilization_info, statuses=statuses, **kwargs)
+        super(CapacityReservationInstanceViewWithName, self).__init__(**kwargs)
         self.name = None
 
 
@@ -1053,14 +970,11 @@ class CapacityReservationListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["CapacityReservation"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(CapacityReservationListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class CapacityReservationProfile(msrest.serialization.Model):
@@ -1079,12 +993,10 @@ class CapacityReservationProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        capacity_reservation_group: Optional["SubResource"] = None,
         **kwargs
     ):
         super(CapacityReservationProfile, self).__init__(**kwargs)
-        self.capacity_reservation_group = capacity_reservation_group
+        self.capacity_reservation_group = kwargs.get('capacity_reservation_group', None)
 
 
 class CapacityReservationUpdate(UpdateResource):
@@ -1135,13 +1047,10 @@ class CapacityReservationUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        sku: Optional["Sku"] = None,
         **kwargs
     ):
-        super(CapacityReservationUpdate, self).__init__(tags=tags, **kwargs)
-        self.sku = sku
+        super(CapacityReservationUpdate, self).__init__(**kwargs)
+        self.sku = kwargs.get('sku', None)
         self.reservation_id = None
         self.virtual_machines_associated = None
         self.provisioning_time = None
@@ -1206,15 +1115,13 @@ class PirCommunityGalleryResource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
         **kwargs
     ):
         super(PirCommunityGalleryResource, self).__init__(**kwargs)
         self.name = None
         self.location = None
         self.type = None
-        self.unique_id = unique_id
+        self.unique_id = kwargs.get('unique_id', None)
 
 
 class CommunityGallery(PirCommunityGalleryResource):
@@ -1247,11 +1154,9 @@ class CommunityGallery(PirCommunityGalleryResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
         **kwargs
     ):
-        super(CommunityGallery, self).__init__(unique_id=unique_id, **kwargs)
+        super(CommunityGallery, self).__init__(**kwargs)
 
 
 class CommunityGalleryDiskImage(msrest.serialization.Model):
@@ -1277,13 +1182,11 @@ class CommunityGalleryDiskImage(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        host_caching: Optional[Union[str, "HostCaching"]] = None,
         **kwargs
     ):
         super(CommunityGalleryDiskImage, self).__init__(**kwargs)
         self.size_in_gb = None
-        self.host_caching = host_caching
+        self.host_caching = kwargs.get('host_caching', None)
 
 
 class CommunityGalleryDataDiskImage(CommunityGalleryDiskImage):
@@ -1317,13 +1220,10 @@ class CommunityGalleryDataDiskImage(CommunityGalleryDiskImage):
 
     def __init__(
         self,
-        *,
-        lun: int,
-        host_caching: Optional[Union[str, "HostCaching"]] = None,
         **kwargs
     ):
-        super(CommunityGalleryDataDiskImage, self).__init__(host_caching=host_caching, **kwargs)
-        self.lun = lun
+        super(CommunityGalleryDataDiskImage, self).__init__(**kwargs)
+        self.lun = kwargs['lun']
 
 
 class CommunityGalleryImage(PirCommunityGalleryResource):
@@ -1392,29 +1292,18 @@ class CommunityGalleryImage(PirCommunityGalleryResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
-        os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
-        os_state: Optional[Union[str, "OperatingSystemStateTypes"]] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        identifier: Optional["GalleryImageIdentifier"] = None,
-        recommended: Optional["RecommendedMachineConfiguration"] = None,
-        disallowed: Optional["Disallowed"] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGeneration"]] = None,
-        features: Optional[List["GalleryImageFeature"]] = None,
-        purchase_plan: Optional["ImagePurchasePlan"] = None,
         **kwargs
     ):
-        super(CommunityGalleryImage, self).__init__(unique_id=unique_id, **kwargs)
-        self.os_type = os_type
-        self.os_state = os_state
-        self.end_of_life_date = end_of_life_date
-        self.identifier = identifier
-        self.recommended = recommended
-        self.disallowed = disallowed
-        self.hyper_v_generation = hyper_v_generation
-        self.features = features
-        self.purchase_plan = purchase_plan
+        super(CommunityGalleryImage, self).__init__(**kwargs)
+        self.os_type = kwargs.get('os_type', None)
+        self.os_state = kwargs.get('os_state', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.identifier = kwargs.get('identifier', None)
+        self.recommended = kwargs.get('recommended', None)
+        self.disallowed = kwargs.get('disallowed', None)
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
+        self.features = kwargs.get('features', None)
+        self.purchase_plan = kwargs.get('purchase_plan', None)
 
 
 class CommunityGalleryImageList(msrest.serialization.Model):
@@ -1440,14 +1329,11 @@ class CommunityGalleryImageList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["CommunityGalleryImage"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(CommunityGalleryImageList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class CommunityGalleryImageVersion(PirCommunityGalleryResource):
@@ -1496,19 +1382,13 @@ class CommunityGalleryImageVersion(PirCommunityGalleryResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
-        published_date: Optional[datetime.datetime] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        exclude_from_latest: Optional[bool] = None,
-        storage_profile: Optional["CommunityGalleryImageVersionStorageProfile"] = None,
         **kwargs
     ):
-        super(CommunityGalleryImageVersion, self).__init__(unique_id=unique_id, **kwargs)
-        self.published_date = published_date
-        self.end_of_life_date = end_of_life_date
-        self.exclude_from_latest = exclude_from_latest
-        self.storage_profile = storage_profile
+        super(CommunityGalleryImageVersion, self).__init__(**kwargs)
+        self.published_date = kwargs.get('published_date', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.exclude_from_latest = kwargs.get('exclude_from_latest', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
 
 
 class CommunityGalleryImageVersionList(msrest.serialization.Model):
@@ -1534,14 +1414,11 @@ class CommunityGalleryImageVersionList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["CommunityGalleryImageVersion"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(CommunityGalleryImageVersionList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class CommunityGalleryImageVersionStorageProfile(msrest.serialization.Model):
@@ -1561,14 +1438,11 @@ class CommunityGalleryImageVersionStorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_disk_image: Optional["CommunityGalleryOSDiskImage"] = None,
-        data_disk_images: Optional[List["CommunityGalleryDataDiskImage"]] = None,
         **kwargs
     ):
         super(CommunityGalleryImageVersionStorageProfile, self).__init__(**kwargs)
-        self.os_disk_image = os_disk_image
-        self.data_disk_images = data_disk_images
+        self.os_disk_image = kwargs.get('os_disk_image', None)
+        self.data_disk_images = kwargs.get('data_disk_images', None)
 
 
 class CommunityGalleryInfo(msrest.serialization.Model):
@@ -1607,18 +1481,13 @@ class CommunityGalleryInfo(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        publisher_uri: Optional[str] = None,
-        publisher_contact: Optional[str] = None,
-        eula: Optional[str] = None,
-        public_name_prefix: Optional[str] = None,
         **kwargs
     ):
         super(CommunityGalleryInfo, self).__init__(**kwargs)
-        self.publisher_uri = publisher_uri
-        self.publisher_contact = publisher_contact
-        self.eula = eula
-        self.public_name_prefix = public_name_prefix
+        self.publisher_uri = kwargs.get('publisher_uri', None)
+        self.publisher_contact = kwargs.get('publisher_contact', None)
+        self.eula = kwargs.get('eula', None)
+        self.public_name_prefix = kwargs.get('public_name_prefix', None)
         self.community_gallery_enabled = None
         self.public_names = None
 
@@ -1646,11 +1515,9 @@ class CommunityGalleryOSDiskImage(CommunityGalleryDiskImage):
 
     def __init__(
         self,
-        *,
-        host_caching: Optional[Union[str, "HostCaching"]] = None,
         **kwargs
     ):
-        super(CommunityGalleryOSDiskImage, self).__init__(host_caching=host_caching, **kwargs)
+        super(CommunityGalleryOSDiskImage, self).__init__(**kwargs)
 
 
 class ComputeOperationListResult(msrest.serialization.Model):
@@ -1826,36 +1693,23 @@ class DataDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        lun: int,
-        create_option: Union[str, "DiskCreateOptionTypes"],
-        name: Optional[str] = None,
-        vhd: Optional["VirtualHardDisk"] = None,
-        image: Optional["VirtualHardDisk"] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        write_accelerator_enabled: Optional[bool] = None,
-        disk_size_gb: Optional[int] = None,
-        managed_disk: Optional["ManagedDiskParameters"] = None,
-        to_be_detached: Optional[bool] = None,
-        detach_option: Optional[Union[str, "DiskDetachOptionTypes"]] = None,
-        delete_option: Optional[Union[str, "DiskDeleteOptionTypes"]] = None,
         **kwargs
     ):
         super(DataDisk, self).__init__(**kwargs)
-        self.lun = lun
-        self.name = name
-        self.vhd = vhd
-        self.image = image
-        self.caching = caching
-        self.write_accelerator_enabled = write_accelerator_enabled
-        self.create_option = create_option
-        self.disk_size_gb = disk_size_gb
-        self.managed_disk = managed_disk
-        self.to_be_detached = to_be_detached
+        self.lun = kwargs['lun']
+        self.name = kwargs.get('name', None)
+        self.vhd = kwargs.get('vhd', None)
+        self.image = kwargs.get('image', None)
+        self.caching = kwargs.get('caching', None)
+        self.write_accelerator_enabled = kwargs.get('write_accelerator_enabled', None)
+        self.create_option = kwargs['create_option']
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
+        self.to_be_detached = kwargs.get('to_be_detached', None)
         self.disk_iops_read_write = None
         self.disk_m_bps_read_write = None
-        self.detach_option = detach_option
-        self.delete_option = delete_option
+        self.detach_option = kwargs.get('detach_option', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class DataDiskImage(msrest.serialization.Model):
@@ -1898,12 +1752,10 @@ class DiskImageEncryption(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        disk_encryption_set_id: Optional[str] = None,
         **kwargs
     ):
         super(DiskImageEncryption, self).__init__(**kwargs)
-        self.disk_encryption_set_id = disk_encryption_set_id
+        self.disk_encryption_set_id = kwargs.get('disk_encryption_set_id', None)
 
 
 class DataDiskImageEncryption(DiskImageEncryption):
@@ -1931,13 +1783,10 @@ class DataDiskImageEncryption(DiskImageEncryption):
 
     def __init__(
         self,
-        *,
-        lun: int,
-        disk_encryption_set_id: Optional[str] = None,
         **kwargs
     ):
-        super(DataDiskImageEncryption, self).__init__(disk_encryption_set_id=disk_encryption_set_id, **kwargs)
-        self.lun = lun
+        super(DataDiskImageEncryption, self).__init__(**kwargs)
+        self.lun = kwargs['lun']
 
 
 class DedicatedHost(Resource):
@@ -2017,22 +1866,15 @@ class DedicatedHost(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        sku: "Sku",
-        tags: Optional[Dict[str, str]] = None,
-        platform_fault_domain: Optional[int] = None,
-        auto_replace_on_failure: Optional[bool] = None,
-        license_type: Optional[Union[str, "DedicatedHostLicenseTypes"]] = None,
         **kwargs
     ):
-        super(DedicatedHost, self).__init__(location=location, tags=tags, **kwargs)
-        self.sku = sku
-        self.platform_fault_domain = platform_fault_domain
-        self.auto_replace_on_failure = auto_replace_on_failure
+        super(DedicatedHost, self).__init__(**kwargs)
+        self.sku = kwargs['sku']
+        self.platform_fault_domain = kwargs.get('platform_fault_domain', None)
+        self.auto_replace_on_failure = kwargs.get('auto_replace_on_failure', None)
         self.host_id = None
         self.virtual_machines = None
-        self.license_type = license_type
+        self.license_type = kwargs.get('license_type', None)
         self.provisioning_time = None
         self.provisioning_state = None
         self.instance_view = None
@@ -2055,14 +1897,11 @@ class DedicatedHostAllocatableVM(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        vm_size: Optional[str] = None,
-        count: Optional[float] = None,
         **kwargs
     ):
         super(DedicatedHostAllocatableVM, self).__init__(**kwargs)
-        self.vm_size = vm_size
-        self.count = count
+        self.vm_size = kwargs.get('vm_size', None)
+        self.count = kwargs.get('count', None)
 
 
 class DedicatedHostAvailableCapacity(msrest.serialization.Model):
@@ -2079,12 +1918,10 @@ class DedicatedHostAvailableCapacity(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        allocatable_v_ms: Optional[List["DedicatedHostAllocatableVM"]] = None,
         **kwargs
     ):
         super(DedicatedHostAvailableCapacity, self).__init__(**kwargs)
-        self.allocatable_v_ms = allocatable_v_ms
+        self.allocatable_v_ms = kwargs.get('allocatable_v_ms', None)
 
 
 class DedicatedHostGroup(Resource):
@@ -2148,20 +1985,14 @@ class DedicatedHostGroup(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        zones: Optional[List[str]] = None,
-        platform_fault_domain_count: Optional[int] = None,
-        support_automatic_placement: Optional[bool] = None,
         **kwargs
     ):
-        super(DedicatedHostGroup, self).__init__(location=location, tags=tags, **kwargs)
-        self.zones = zones
-        self.platform_fault_domain_count = platform_fault_domain_count
+        super(DedicatedHostGroup, self).__init__(**kwargs)
+        self.zones = kwargs.get('zones', None)
+        self.platform_fault_domain_count = kwargs.get('platform_fault_domain_count', None)
         self.hosts = None
         self.instance_view = None
-        self.support_automatic_placement = support_automatic_placement
+        self.support_automatic_placement = kwargs.get('support_automatic_placement', None)
 
 
 class DedicatedHostGroupInstanceView(msrest.serialization.Model):
@@ -2177,12 +2008,10 @@ class DedicatedHostGroupInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        hosts: Optional[List["DedicatedHostInstanceViewWithName"]] = None,
         **kwargs
     ):
         super(DedicatedHostGroupInstanceView, self).__init__(**kwargs)
-        self.hosts = hosts
+        self.hosts = kwargs.get('hosts', None)
 
 
 class DedicatedHostGroupListResult(msrest.serialization.Model):
@@ -2208,14 +2037,11 @@ class DedicatedHostGroupListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["DedicatedHostGroup"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(DedicatedHostGroupListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class DedicatedHostGroupUpdate(UpdateResource):
@@ -2261,19 +2087,14 @@ class DedicatedHostGroupUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        zones: Optional[List[str]] = None,
-        platform_fault_domain_count: Optional[int] = None,
-        support_automatic_placement: Optional[bool] = None,
         **kwargs
     ):
-        super(DedicatedHostGroupUpdate, self).__init__(tags=tags, **kwargs)
-        self.zones = zones
-        self.platform_fault_domain_count = platform_fault_domain_count
+        super(DedicatedHostGroupUpdate, self).__init__(**kwargs)
+        self.zones = kwargs.get('zones', None)
+        self.platform_fault_domain_count = kwargs.get('platform_fault_domain_count', None)
         self.hosts = None
         self.instance_view = None
-        self.support_automatic_placement = support_automatic_placement
+        self.support_automatic_placement = kwargs.get('support_automatic_placement', None)
 
 
 class DedicatedHostInstanceView(msrest.serialization.Model):
@@ -2302,15 +2123,12 @@ class DedicatedHostInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        available_capacity: Optional["DedicatedHostAvailableCapacity"] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(DedicatedHostInstanceView, self).__init__(**kwargs)
         self.asset_id = None
-        self.available_capacity = available_capacity
-        self.statuses = statuses
+        self.available_capacity = kwargs.get('available_capacity', None)
+        self.statuses = kwargs.get('statuses', None)
 
 
 class DedicatedHostInstanceViewWithName(DedicatedHostInstanceView):
@@ -2343,12 +2161,9 @@ class DedicatedHostInstanceViewWithName(DedicatedHostInstanceView):
 
     def __init__(
         self,
-        *,
-        available_capacity: Optional["DedicatedHostAvailableCapacity"] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
-        super(DedicatedHostInstanceViewWithName, self).__init__(available_capacity=available_capacity, statuses=statuses, **kwargs)
+        super(DedicatedHostInstanceViewWithName, self).__init__(**kwargs)
         self.name = None
 
 
@@ -2375,14 +2190,11 @@ class DedicatedHostListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["DedicatedHost"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(DedicatedHostListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class DedicatedHostUpdate(UpdateResource):
@@ -2439,19 +2251,14 @@ class DedicatedHostUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        platform_fault_domain: Optional[int] = None,
-        auto_replace_on_failure: Optional[bool] = None,
-        license_type: Optional[Union[str, "DedicatedHostLicenseTypes"]] = None,
         **kwargs
     ):
-        super(DedicatedHostUpdate, self).__init__(tags=tags, **kwargs)
-        self.platform_fault_domain = platform_fault_domain
-        self.auto_replace_on_failure = auto_replace_on_failure
+        super(DedicatedHostUpdate, self).__init__(**kwargs)
+        self.platform_fault_domain = kwargs.get('platform_fault_domain', None)
+        self.auto_replace_on_failure = kwargs.get('auto_replace_on_failure', None)
         self.host_id = None
         self.virtual_machines = None
-        self.license_type = license_type
+        self.license_type = kwargs.get('license_type', None)
         self.provisioning_time = None
         self.provisioning_state = None
         self.instance_view = None
@@ -2475,12 +2282,10 @@ class DiagnosticsProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        boot_diagnostics: Optional["BootDiagnostics"] = None,
         **kwargs
     ):
         super(DiagnosticsProfile, self).__init__(**kwargs)
-        self.boot_diagnostics = boot_diagnostics
+        self.boot_diagnostics = kwargs.get('boot_diagnostics', None)
 
 
 class DiffDiskSettings(msrest.serialization.Model):
@@ -2507,14 +2312,11 @@ class DiffDiskSettings(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        option: Optional[Union[str, "DiffDiskOptions"]] = None,
-        placement: Optional[Union[str, "DiffDiskPlacement"]] = None,
         **kwargs
     ):
         super(DiffDiskSettings, self).__init__(**kwargs)
-        self.option = option
-        self.placement = placement
+        self.option = kwargs.get('option', None)
+        self.placement = kwargs.get('placement', None)
 
 
 class Disallowed(msrest.serialization.Model):
@@ -2530,12 +2332,10 @@ class Disallowed(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        disk_types: Optional[List[str]] = None,
         **kwargs
     ):
         super(Disallowed, self).__init__(**kwargs)
-        self.disk_types = disk_types
+        self.disk_types = kwargs.get('disk_types', None)
 
 
 class DisallowedConfiguration(msrest.serialization.Model):
@@ -2552,12 +2352,10 @@ class DisallowedConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        vm_disk_type: Optional[Union[str, "VmDiskTypes"]] = None,
         **kwargs
     ):
         super(DisallowedConfiguration, self).__init__(**kwargs)
-        self.vm_disk_type = vm_disk_type
+        self.vm_disk_type = kwargs.get('vm_disk_type', None)
 
 
 class SubResource(msrest.serialization.Model):
@@ -2573,12 +2371,10 @@ class SubResource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
         **kwargs
     ):
         super(SubResource, self).__init__(**kwargs)
-        self.id = id
+        self.id = kwargs.get('id', None)
 
 
 class DiskEncryptionSetParameters(SubResource):
@@ -2594,11 +2390,9 @@ class DiskEncryptionSetParameters(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
         **kwargs
     ):
-        super(DiskEncryptionSetParameters, self).__init__(id=id, **kwargs)
+        super(DiskEncryptionSetParameters, self).__init__(**kwargs)
 
 
 class DiskEncryptionSettings(msrest.serialization.Model):
@@ -2621,16 +2415,12 @@ class DiskEncryptionSettings(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        disk_encryption_key: Optional["KeyVaultSecretReference"] = None,
-        key_encryption_key: Optional["KeyVaultKeyReference"] = None,
-        enabled: Optional[bool] = None,
         **kwargs
     ):
         super(DiskEncryptionSettings, self).__init__(**kwargs)
-        self.disk_encryption_key = disk_encryption_key
-        self.key_encryption_key = key_encryption_key
-        self.enabled = enabled
+        self.disk_encryption_key = kwargs.get('disk_encryption_key', None)
+        self.key_encryption_key = kwargs.get('key_encryption_key', None)
+        self.enabled = kwargs.get('enabled', None)
 
 
 class DiskInstanceView(msrest.serialization.Model):
@@ -2653,16 +2443,12 @@ class DiskInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        encryption_settings: Optional[List["DiskEncryptionSettings"]] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(DiskInstanceView, self).__init__(**kwargs)
-        self.name = name
-        self.encryption_settings = encryption_settings
-        self.statuses = statuses
+        self.name = kwargs.get('name', None)
+        self.encryption_settings = kwargs.get('encryption_settings', None)
+        self.statuses = kwargs.get('statuses', None)
 
 
 class EncryptionImages(msrest.serialization.Model):
@@ -2681,14 +2467,11 @@ class EncryptionImages(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_disk_image: Optional["OSDiskImageEncryption"] = None,
-        data_disk_images: Optional[List["DataDiskImageEncryption"]] = None,
         **kwargs
     ):
         super(EncryptionImages, self).__init__(**kwargs)
-        self.os_disk_image = os_disk_image
-        self.data_disk_images = data_disk_images
+        self.os_disk_image = kwargs.get('os_disk_image', None)
+        self.data_disk_images = kwargs.get('data_disk_images', None)
 
 
 class ExtendedLocation(msrest.serialization.Model):
@@ -2707,14 +2490,11 @@ class ExtendedLocation(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        type: Optional[Union[str, "ExtendedLocationTypes"]] = None,
         **kwargs
     ):
         super(ExtendedLocation, self).__init__(**kwargs)
-        self.name = name
-        self.type = type
+        self.name = kwargs.get('name', None)
+        self.type = kwargs.get('type', None)
 
 
 class Gallery(Resource):
@@ -2776,21 +2556,14 @@ class Gallery(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        description: Optional[str] = None,
-        identifier: Optional["GalleryIdentifier"] = None,
-        sharing_profile: Optional["SharingProfile"] = None,
-        soft_delete_policy: Optional["SoftDeletePolicy"] = None,
         **kwargs
     ):
-        super(Gallery, self).__init__(location=location, tags=tags, **kwargs)
-        self.description = description
-        self.identifier = identifier
+        super(Gallery, self).__init__(**kwargs)
+        self.description = kwargs.get('description', None)
+        self.identifier = kwargs.get('identifier', None)
         self.provisioning_state = None
-        self.sharing_profile = sharing_profile
-        self.soft_delete_policy = soft_delete_policy
+        self.sharing_profile = kwargs.get('sharing_profile', None)
+        self.soft_delete_policy = kwargs.get('soft_delete_policy', None)
         self.sharing_status = None
 
 
@@ -2853,24 +2626,15 @@ class GalleryApplication(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        description: Optional[str] = None,
-        eula: Optional[str] = None,
-        privacy_statement_uri: Optional[str] = None,
-        release_note_uri: Optional[str] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        supported_os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
         **kwargs
     ):
-        super(GalleryApplication, self).__init__(location=location, tags=tags, **kwargs)
-        self.description = description
-        self.eula = eula
-        self.privacy_statement_uri = privacy_statement_uri
-        self.release_note_uri = release_note_uri
-        self.end_of_life_date = end_of_life_date
-        self.supported_os_type = supported_os_type
+        super(GalleryApplication, self).__init__(**kwargs)
+        self.description = kwargs.get('description', None)
+        self.eula = kwargs.get('eula', None)
+        self.privacy_statement_uri = kwargs.get('privacy_statement_uri', None)
+        self.release_note_uri = kwargs.get('release_note_uri', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.supported_os_type = kwargs.get('supported_os_type', None)
 
 
 class GalleryApplicationList(msrest.serialization.Model):
@@ -2896,14 +2660,11 @@ class GalleryApplicationList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["GalleryApplication"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(GalleryApplicationList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class UpdateResourceDefinition(msrest.serialization.Model):
@@ -2936,15 +2697,13 @@ class UpdateResourceDefinition(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
         **kwargs
     ):
         super(UpdateResourceDefinition, self).__init__(**kwargs)
         self.id = None
         self.name = None
         self.type = None
-        self.tags = tags
+        self.tags = kwargs.get('tags', None)
 
 
 class GalleryApplicationUpdate(UpdateResourceDefinition):
@@ -3000,23 +2759,15 @@ class GalleryApplicationUpdate(UpdateResourceDefinition):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        description: Optional[str] = None,
-        eula: Optional[str] = None,
-        privacy_statement_uri: Optional[str] = None,
-        release_note_uri: Optional[str] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        supported_os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
         **kwargs
     ):
-        super(GalleryApplicationUpdate, self).__init__(tags=tags, **kwargs)
-        self.description = description
-        self.eula = eula
-        self.privacy_statement_uri = privacy_statement_uri
-        self.release_note_uri = release_note_uri
-        self.end_of_life_date = end_of_life_date
-        self.supported_os_type = supported_os_type
+        super(GalleryApplicationUpdate, self).__init__(**kwargs)
+        self.description = kwargs.get('description', None)
+        self.eula = kwargs.get('eula', None)
+        self.privacy_statement_uri = kwargs.get('privacy_statement_uri', None)
+        self.release_note_uri = kwargs.get('release_note_uri', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.supported_os_type = kwargs.get('supported_os_type', None)
 
 
 class GalleryApplicationVersion(Resource):
@@ -3069,14 +2820,10 @@ class GalleryApplicationVersion(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        publishing_profile: Optional["GalleryApplicationVersionPublishingProfile"] = None,
         **kwargs
     ):
-        super(GalleryApplicationVersion, self).__init__(location=location, tags=tags, **kwargs)
-        self.publishing_profile = publishing_profile
+        super(GalleryApplicationVersion, self).__init__(**kwargs)
+        self.publishing_profile = kwargs.get('publishing_profile', None)
         self.provisioning_state = None
         self.replication_status = None
 
@@ -3104,14 +2851,11 @@ class GalleryApplicationVersionList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["GalleryApplicationVersion"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(GalleryApplicationVersionList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class GalleryArtifactPublishingProfileBase(msrest.serialization.Model):
@@ -3159,23 +2903,16 @@ class GalleryArtifactPublishingProfileBase(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        target_regions: Optional[List["TargetRegion"]] = None,
-        replica_count: Optional[int] = None,
-        exclude_from_latest: Optional[bool] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountType"]] = None,
-        replication_mode: Optional[Union[str, "ReplicationMode"]] = None,
         **kwargs
     ):
         super(GalleryArtifactPublishingProfileBase, self).__init__(**kwargs)
-        self.target_regions = target_regions
-        self.replica_count = replica_count
-        self.exclude_from_latest = exclude_from_latest
+        self.target_regions = kwargs.get('target_regions', None)
+        self.replica_count = kwargs.get('replica_count', None)
+        self.exclude_from_latest = kwargs.get('exclude_from_latest', None)
         self.published_date = None
-        self.end_of_life_date = end_of_life_date
-        self.storage_account_type = storage_account_type
-        self.replication_mode = replication_mode
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.storage_account_type = kwargs.get('storage_account_type', None)
+        self.replication_mode = kwargs.get('replication_mode', None)
 
 
 class GalleryApplicationVersionPublishingProfile(GalleryArtifactPublishingProfileBase):
@@ -3235,22 +2972,12 @@ class GalleryApplicationVersionPublishingProfile(GalleryArtifactPublishingProfil
 
     def __init__(
         self,
-        *,
-        source: "UserArtifactSource",
-        target_regions: Optional[List["TargetRegion"]] = None,
-        replica_count: Optional[int] = None,
-        exclude_from_latest: Optional[bool] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountType"]] = None,
-        replication_mode: Optional[Union[str, "ReplicationMode"]] = None,
-        manage_actions: Optional["UserArtifactManage"] = None,
-        enable_health_check: Optional[bool] = None,
         **kwargs
     ):
-        super(GalleryApplicationVersionPublishingProfile, self).__init__(target_regions=target_regions, replica_count=replica_count, exclude_from_latest=exclude_from_latest, end_of_life_date=end_of_life_date, storage_account_type=storage_account_type, replication_mode=replication_mode, **kwargs)
-        self.source = source
-        self.manage_actions = manage_actions
-        self.enable_health_check = enable_health_check
+        super(GalleryApplicationVersionPublishingProfile, self).__init__(**kwargs)
+        self.source = kwargs['source']
+        self.manage_actions = kwargs.get('manage_actions', None)
+        self.enable_health_check = kwargs.get('enable_health_check', None)
 
 
 class GalleryApplicationVersionUpdate(UpdateResourceDefinition):
@@ -3297,13 +3024,10 @@ class GalleryApplicationVersionUpdate(UpdateResourceDefinition):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        publishing_profile: Optional["GalleryApplicationVersionPublishingProfile"] = None,
         **kwargs
     ):
-        super(GalleryApplicationVersionUpdate, self).__init__(tags=tags, **kwargs)
-        self.publishing_profile = publishing_profile
+        super(GalleryApplicationVersionUpdate, self).__init__(**kwargs)
+        self.publishing_profile = kwargs.get('publishing_profile', None)
         self.provisioning_state = None
         self.replication_status = None
 
@@ -3327,12 +3051,10 @@ class GalleryArtifactSource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        managed_image: "ManagedArtifact",
         **kwargs
     ):
         super(GalleryArtifactSource, self).__init__(**kwargs)
-        self.managed_image = managed_image
+        self.managed_image = kwargs['managed_image']
 
 
 class GalleryArtifactVersionSource(msrest.serialization.Model):
@@ -3353,14 +3075,11 @@ class GalleryArtifactVersionSource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        uri: Optional[str] = None,
         **kwargs
     ):
         super(GalleryArtifactVersionSource, self).__init__(**kwargs)
-        self.id = id
-        self.uri = uri
+        self.id = kwargs.get('id', None)
+        self.uri = kwargs.get('uri', None)
 
 
 class GalleryDiskImage(msrest.serialization.Model):
@@ -3389,15 +3108,12 @@ class GalleryDiskImage(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        host_caching: Optional[Union[str, "HostCaching"]] = None,
-        source: Optional["GalleryArtifactVersionSource"] = None,
         **kwargs
     ):
         super(GalleryDiskImage, self).__init__(**kwargs)
         self.size_in_gb = None
-        self.host_caching = host_caching
-        self.source = source
+        self.host_caching = kwargs.get('host_caching', None)
+        self.source = kwargs.get('source', None)
 
 
 class GalleryDataDiskImage(GalleryDiskImage):
@@ -3434,14 +3150,10 @@ class GalleryDataDiskImage(GalleryDiskImage):
 
     def __init__(
         self,
-        *,
-        lun: int,
-        host_caching: Optional[Union[str, "HostCaching"]] = None,
-        source: Optional["GalleryArtifactVersionSource"] = None,
         **kwargs
     ):
-        super(GalleryDataDiskImage, self).__init__(host_caching=host_caching, source=source, **kwargs)
-        self.lun = lun
+        super(GalleryDataDiskImage, self).__init__(**kwargs)
+        self.lun = kwargs['lun']
 
 
 class GalleryIdentifier(msrest.serialization.Model):
@@ -3561,39 +3273,23 @@ class GalleryImage(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        description: Optional[str] = None,
-        eula: Optional[str] = None,
-        privacy_statement_uri: Optional[str] = None,
-        release_note_uri: Optional[str] = None,
-        os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
-        os_state: Optional[Union[str, "OperatingSystemStateTypes"]] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGeneration"]] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        identifier: Optional["GalleryImageIdentifier"] = None,
-        recommended: Optional["RecommendedMachineConfiguration"] = None,
-        disallowed: Optional["Disallowed"] = None,
-        purchase_plan: Optional["ImagePurchasePlan"] = None,
-        features: Optional[List["GalleryImageFeature"]] = None,
         **kwargs
     ):
-        super(GalleryImage, self).__init__(location=location, tags=tags, **kwargs)
-        self.description = description
-        self.eula = eula
-        self.privacy_statement_uri = privacy_statement_uri
-        self.release_note_uri = release_note_uri
-        self.os_type = os_type
-        self.os_state = os_state
-        self.hyper_v_generation = hyper_v_generation
-        self.end_of_life_date = end_of_life_date
-        self.identifier = identifier
-        self.recommended = recommended
-        self.disallowed = disallowed
-        self.purchase_plan = purchase_plan
+        super(GalleryImage, self).__init__(**kwargs)
+        self.description = kwargs.get('description', None)
+        self.eula = kwargs.get('eula', None)
+        self.privacy_statement_uri = kwargs.get('privacy_statement_uri', None)
+        self.release_note_uri = kwargs.get('release_note_uri', None)
+        self.os_type = kwargs.get('os_type', None)
+        self.os_state = kwargs.get('os_state', None)
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.identifier = kwargs.get('identifier', None)
+        self.recommended = kwargs.get('recommended', None)
+        self.disallowed = kwargs.get('disallowed', None)
+        self.purchase_plan = kwargs.get('purchase_plan', None)
         self.provisioning_state = None
-        self.features = features
+        self.features = kwargs.get('features', None)
 
 
 class GalleryImageFeature(msrest.serialization.Model):
@@ -3612,14 +3308,11 @@ class GalleryImageFeature(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        value: Optional[str] = None,
         **kwargs
     ):
         super(GalleryImageFeature, self).__init__(**kwargs)
-        self.name = name
-        self.value = value
+        self.name = kwargs.get('name', None)
+        self.value = kwargs.get('value', None)
 
 
 class GalleryImageIdentifier(msrest.serialization.Model):
@@ -3649,16 +3342,12 @@ class GalleryImageIdentifier(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        publisher: str,
-        offer: str,
-        sku: str,
         **kwargs
     ):
         super(GalleryImageIdentifier, self).__init__(**kwargs)
-        self.publisher = publisher
-        self.offer = offer
-        self.sku = sku
+        self.publisher = kwargs['publisher']
+        self.offer = kwargs['offer']
+        self.sku = kwargs['sku']
 
 
 class GalleryImageList(msrest.serialization.Model):
@@ -3684,14 +3373,11 @@ class GalleryImageList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["GalleryImage"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(GalleryImageList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class GalleryImageUpdate(UpdateResourceDefinition):
@@ -3779,38 +3465,23 @@ class GalleryImageUpdate(UpdateResourceDefinition):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        description: Optional[str] = None,
-        eula: Optional[str] = None,
-        privacy_statement_uri: Optional[str] = None,
-        release_note_uri: Optional[str] = None,
-        os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
-        os_state: Optional[Union[str, "OperatingSystemStateTypes"]] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGeneration"]] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        identifier: Optional["GalleryImageIdentifier"] = None,
-        recommended: Optional["RecommendedMachineConfiguration"] = None,
-        disallowed: Optional["Disallowed"] = None,
-        purchase_plan: Optional["ImagePurchasePlan"] = None,
-        features: Optional[List["GalleryImageFeature"]] = None,
         **kwargs
     ):
-        super(GalleryImageUpdate, self).__init__(tags=tags, **kwargs)
-        self.description = description
-        self.eula = eula
-        self.privacy_statement_uri = privacy_statement_uri
-        self.release_note_uri = release_note_uri
-        self.os_type = os_type
-        self.os_state = os_state
-        self.hyper_v_generation = hyper_v_generation
-        self.end_of_life_date = end_of_life_date
-        self.identifier = identifier
-        self.recommended = recommended
-        self.disallowed = disallowed
-        self.purchase_plan = purchase_plan
+        super(GalleryImageUpdate, self).__init__(**kwargs)
+        self.description = kwargs.get('description', None)
+        self.eula = kwargs.get('eula', None)
+        self.privacy_statement_uri = kwargs.get('privacy_statement_uri', None)
+        self.release_note_uri = kwargs.get('release_note_uri', None)
+        self.os_type = kwargs.get('os_type', None)
+        self.os_state = kwargs.get('os_state', None)
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.identifier = kwargs.get('identifier', None)
+        self.recommended = kwargs.get('recommended', None)
+        self.disallowed = kwargs.get('disallowed', None)
+        self.purchase_plan = kwargs.get('purchase_plan', None)
         self.provisioning_state = None
-        self.features = features
+        self.features = kwargs.get('features', None)
 
 
 class GalleryImageVersion(Resource):
@@ -3866,17 +3537,12 @@ class GalleryImageVersion(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        publishing_profile: Optional["GalleryImageVersionPublishingProfile"] = None,
-        storage_profile: Optional["GalleryImageVersionStorageProfile"] = None,
         **kwargs
     ):
-        super(GalleryImageVersion, self).__init__(location=location, tags=tags, **kwargs)
-        self.publishing_profile = publishing_profile
+        super(GalleryImageVersion, self).__init__(**kwargs)
+        self.publishing_profile = kwargs.get('publishing_profile', None)
         self.provisioning_state = None
-        self.storage_profile = storage_profile
+        self.storage_profile = kwargs.get('storage_profile', None)
         self.replication_status = None
 
 
@@ -3903,14 +3569,11 @@ class GalleryImageVersionList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["GalleryImageVersion"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(GalleryImageVersionList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class GalleryImageVersionPublishingProfile(GalleryArtifactPublishingProfileBase):
@@ -3958,16 +3621,9 @@ class GalleryImageVersionPublishingProfile(GalleryArtifactPublishingProfileBase)
 
     def __init__(
         self,
-        *,
-        target_regions: Optional[List["TargetRegion"]] = None,
-        replica_count: Optional[int] = None,
-        exclude_from_latest: Optional[bool] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountType"]] = None,
-        replication_mode: Optional[Union[str, "ReplicationMode"]] = None,
         **kwargs
     ):
-        super(GalleryImageVersionPublishingProfile, self).__init__(target_regions=target_regions, replica_count=replica_count, exclude_from_latest=exclude_from_latest, end_of_life_date=end_of_life_date, storage_account_type=storage_account_type, replication_mode=replication_mode, **kwargs)
+        super(GalleryImageVersionPublishingProfile, self).__init__(**kwargs)
 
 
 class GalleryImageVersionStorageProfile(msrest.serialization.Model):
@@ -3989,16 +3645,12 @@ class GalleryImageVersionStorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        source: Optional["GalleryArtifactVersionSource"] = None,
-        os_disk_image: Optional["GalleryOSDiskImage"] = None,
-        data_disk_images: Optional[List["GalleryDataDiskImage"]] = None,
         **kwargs
     ):
         super(GalleryImageVersionStorageProfile, self).__init__(**kwargs)
-        self.source = source
-        self.os_disk_image = os_disk_image
-        self.data_disk_images = data_disk_images
+        self.source = kwargs.get('source', None)
+        self.os_disk_image = kwargs.get('os_disk_image', None)
+        self.data_disk_images = kwargs.get('data_disk_images', None)
 
 
 class GalleryImageVersionUpdate(UpdateResourceDefinition):
@@ -4048,16 +3700,12 @@ class GalleryImageVersionUpdate(UpdateResourceDefinition):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        publishing_profile: Optional["GalleryImageVersionPublishingProfile"] = None,
-        storage_profile: Optional["GalleryImageVersionStorageProfile"] = None,
         **kwargs
     ):
-        super(GalleryImageVersionUpdate, self).__init__(tags=tags, **kwargs)
-        self.publishing_profile = publishing_profile
+        super(GalleryImageVersionUpdate, self).__init__(**kwargs)
+        self.publishing_profile = kwargs.get('publishing_profile', None)
         self.provisioning_state = None
-        self.storage_profile = storage_profile
+        self.storage_profile = kwargs.get('storage_profile', None)
         self.replication_status = None
 
 
@@ -4084,14 +3732,11 @@ class GalleryList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["Gallery"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(GalleryList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class GalleryOSDiskImage(GalleryDiskImage):
@@ -4120,12 +3765,9 @@ class GalleryOSDiskImage(GalleryDiskImage):
 
     def __init__(
         self,
-        *,
-        host_caching: Optional[Union[str, "HostCaching"]] = None,
-        source: Optional["GalleryArtifactVersionSource"] = None,
         **kwargs
     ):
-        super(GalleryOSDiskImage, self).__init__(host_caching=host_caching, source=source, **kwargs)
+        super(GalleryOSDiskImage, self).__init__(**kwargs)
 
 
 class GalleryUpdate(UpdateResourceDefinition):
@@ -4181,20 +3823,14 @@ class GalleryUpdate(UpdateResourceDefinition):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        description: Optional[str] = None,
-        identifier: Optional["GalleryIdentifier"] = None,
-        sharing_profile: Optional["SharingProfile"] = None,
-        soft_delete_policy: Optional["SoftDeletePolicy"] = None,
         **kwargs
     ):
-        super(GalleryUpdate, self).__init__(tags=tags, **kwargs)
-        self.description = description
-        self.identifier = identifier
+        super(GalleryUpdate, self).__init__(**kwargs)
+        self.description = kwargs.get('description', None)
+        self.identifier = kwargs.get('identifier', None)
         self.provisioning_state = None
-        self.sharing_profile = sharing_profile
-        self.soft_delete_policy = soft_delete_policy
+        self.sharing_profile = kwargs.get('sharing_profile', None)
+        self.soft_delete_policy = kwargs.get('soft_delete_policy', None)
         self.sharing_status = None
 
 
@@ -4263,14 +3899,11 @@ class HardwareProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        vm_size: Optional[Union[str, "VirtualMachineSizeTypes"]] = None,
-        vm_size_properties: Optional["VMSizeProperties"] = None,
         **kwargs
     ):
         super(HardwareProfile, self).__init__(**kwargs)
-        self.vm_size = vm_size
-        self.vm_size_properties = vm_size_properties
+        self.vm_size = kwargs.get('vm_size', None)
+        self.vm_size_properties = kwargs.get('vm_size_properties', None)
 
 
 class Image(Resource):
@@ -4329,21 +3962,14 @@ class Image(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        extended_location: Optional["ExtendedLocation"] = None,
-        source_virtual_machine: Optional["SubResource"] = None,
-        storage_profile: Optional["ImageStorageProfile"] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGenerationTypes"]] = None,
         **kwargs
     ):
-        super(Image, self).__init__(location=location, tags=tags, **kwargs)
-        self.extended_location = extended_location
-        self.source_virtual_machine = source_virtual_machine
-        self.storage_profile = storage_profile
+        super(Image, self).__init__(**kwargs)
+        self.extended_location = kwargs.get('extended_location', None)
+        self.source_virtual_machine = kwargs.get('source_virtual_machine', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
         self.provisioning_state = None
-        self.hyper_v_generation = hyper_v_generation
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
 
 
 class ImageDisk(msrest.serialization.Model):
@@ -4387,24 +4013,16 @@ class ImageDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        snapshot: Optional["SubResource"] = None,
-        managed_disk: Optional["SubResource"] = None,
-        blob_uri: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        disk_size_gb: Optional[int] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountTypes"]] = None,
-        disk_encryption_set: Optional["DiskEncryptionSetParameters"] = None,
         **kwargs
     ):
         super(ImageDisk, self).__init__(**kwargs)
-        self.snapshot = snapshot
-        self.managed_disk = managed_disk
-        self.blob_uri = blob_uri
-        self.caching = caching
-        self.disk_size_gb = disk_size_gb
-        self.storage_account_type = storage_account_type
-        self.disk_encryption_set = disk_encryption_set
+        self.snapshot = kwargs.get('snapshot', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
+        self.blob_uri = kwargs.get('blob_uri', None)
+        self.caching = kwargs.get('caching', None)
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.storage_account_type = kwargs.get('storage_account_type', None)
+        self.disk_encryption_set = kwargs.get('disk_encryption_set', None)
 
 
 class ImageDataDisk(ImageDisk):
@@ -4459,19 +4077,10 @@ class ImageDataDisk(ImageDisk):
 
     def __init__(
         self,
-        *,
-        lun: int,
-        snapshot: Optional["SubResource"] = None,
-        managed_disk: Optional["SubResource"] = None,
-        blob_uri: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        disk_size_gb: Optional[int] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountTypes"]] = None,
-        disk_encryption_set: Optional["DiskEncryptionSetParameters"] = None,
         **kwargs
     ):
-        super(ImageDataDisk, self).__init__(snapshot=snapshot, managed_disk=managed_disk, blob_uri=blob_uri, caching=caching, disk_size_gb=disk_size_gb, storage_account_type=storage_account_type, disk_encryption_set=disk_encryption_set, **kwargs)
-        self.lun = lun
+        super(ImageDataDisk, self).__init__(**kwargs)
+        self.lun = kwargs['lun']
 
 
 class ImageListResult(msrest.serialization.Model):
@@ -4497,14 +4106,11 @@ class ImageListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["Image"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(ImageListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class ImageOSDisk(ImageDisk):
@@ -4564,21 +4170,11 @@ class ImageOSDisk(ImageDisk):
 
     def __init__(
         self,
-        *,
-        os_type: Union[str, "OperatingSystemTypes"],
-        os_state: Union[str, "OperatingSystemStateTypes"],
-        snapshot: Optional["SubResource"] = None,
-        managed_disk: Optional["SubResource"] = None,
-        blob_uri: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        disk_size_gb: Optional[int] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountTypes"]] = None,
-        disk_encryption_set: Optional["DiskEncryptionSetParameters"] = None,
         **kwargs
     ):
-        super(ImageOSDisk, self).__init__(snapshot=snapshot, managed_disk=managed_disk, blob_uri=blob_uri, caching=caching, disk_size_gb=disk_size_gb, storage_account_type=storage_account_type, disk_encryption_set=disk_encryption_set, **kwargs)
-        self.os_type = os_type
-        self.os_state = os_state
+        super(ImageOSDisk, self).__init__(**kwargs)
+        self.os_type = kwargs['os_type']
+        self.os_state = kwargs['os_state']
 
 
 class ImagePurchasePlan(msrest.serialization.Model):
@@ -4600,16 +4196,12 @@ class ImagePurchasePlan(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        publisher: Optional[str] = None,
-        product: Optional[str] = None,
         **kwargs
     ):
         super(ImagePurchasePlan, self).__init__(**kwargs)
-        self.name = name
-        self.publisher = publisher
-        self.product = product
+        self.name = kwargs.get('name', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.product = kwargs.get('product', None)
 
 
 class ImageReference(SubResource):
@@ -4657,22 +4249,15 @@ class ImageReference(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        publisher: Optional[str] = None,
-        offer: Optional[str] = None,
-        sku: Optional[str] = None,
-        version: Optional[str] = None,
-        shared_gallery_image_id: Optional[str] = None,
         **kwargs
     ):
-        super(ImageReference, self).__init__(id=id, **kwargs)
-        self.publisher = publisher
-        self.offer = offer
-        self.sku = sku
-        self.version = version
+        super(ImageReference, self).__init__(**kwargs)
+        self.publisher = kwargs.get('publisher', None)
+        self.offer = kwargs.get('offer', None)
+        self.sku = kwargs.get('sku', None)
+        self.version = kwargs.get('version', None)
         self.exact_version = None
-        self.shared_gallery_image_id = shared_gallery_image_id
+        self.shared_gallery_image_id = kwargs.get('shared_gallery_image_id', None)
 
 
 class ImageStorageProfile(msrest.serialization.Model):
@@ -4701,16 +4286,12 @@ class ImageStorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_disk: Optional["ImageOSDisk"] = None,
-        data_disks: Optional[List["ImageDataDisk"]] = None,
-        zone_resilient: Optional[bool] = None,
         **kwargs
     ):
         super(ImageStorageProfile, self).__init__(**kwargs)
-        self.os_disk = os_disk
-        self.data_disks = data_disks
-        self.zone_resilient = zone_resilient
+        self.os_disk = kwargs.get('os_disk', None)
+        self.data_disks = kwargs.get('data_disks', None)
+        self.zone_resilient = kwargs.get('zone_resilient', None)
 
 
 class ImageUpdate(UpdateResource):
@@ -4748,18 +4329,13 @@ class ImageUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        source_virtual_machine: Optional["SubResource"] = None,
-        storage_profile: Optional["ImageStorageProfile"] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGenerationTypes"]] = None,
         **kwargs
     ):
-        super(ImageUpdate, self).__init__(tags=tags, **kwargs)
-        self.source_virtual_machine = source_virtual_machine
-        self.storage_profile = storage_profile
+        super(ImageUpdate, self).__init__(**kwargs)
+        self.source_virtual_machine = kwargs.get('source_virtual_machine', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
         self.provisioning_state = None
-        self.hyper_v_generation = hyper_v_generation
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
 
 
 class InnerError(msrest.serialization.Model):
@@ -4778,14 +4354,11 @@ class InnerError(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        exceptiontype: Optional[str] = None,
-        errordetail: Optional[str] = None,
         **kwargs
     ):
         super(InnerError, self).__init__(**kwargs)
-        self.exceptiontype = exceptiontype
-        self.errordetail = errordetail
+        self.exceptiontype = kwargs.get('exceptiontype', None)
+        self.errordetail = kwargs.get('errordetail', None)
 
 
 class InstanceViewStatus(msrest.serialization.Model):
@@ -4813,20 +4386,14 @@ class InstanceViewStatus(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        code: Optional[str] = None,
-        level: Optional[Union[str, "StatusLevelTypes"]] = None,
-        display_status: Optional[str] = None,
-        message: Optional[str] = None,
-        time: Optional[datetime.datetime] = None,
         **kwargs
     ):
         super(InstanceViewStatus, self).__init__(**kwargs)
-        self.code = code
-        self.level = level
-        self.display_status = display_status
-        self.message = message
-        self.time = time
+        self.code = kwargs.get('code', None)
+        self.level = kwargs.get('level', None)
+        self.display_status = kwargs.get('display_status', None)
+        self.message = kwargs.get('message', None)
+        self.time = kwargs.get('time', None)
 
 
 class KeyVaultKeyReference(msrest.serialization.Model):
@@ -4852,14 +4419,11 @@ class KeyVaultKeyReference(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        key_url: str,
-        source_vault: "SubResource",
         **kwargs
     ):
         super(KeyVaultKeyReference, self).__init__(**kwargs)
-        self.key_url = key_url
-        self.source_vault = source_vault
+        self.key_url = kwargs['key_url']
+        self.source_vault = kwargs['source_vault']
 
 
 class KeyVaultSecretReference(msrest.serialization.Model):
@@ -4885,14 +4449,11 @@ class KeyVaultSecretReference(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        secret_url: str,
-        source_vault: "SubResource",
         **kwargs
     ):
         super(KeyVaultSecretReference, self).__init__(**kwargs)
-        self.secret_url = secret_url
-        self.source_vault = source_vault
+        self.secret_url = kwargs['secret_url']
+        self.source_vault = kwargs['source_vault']
 
 
 class LastPatchInstallationSummary(msrest.serialization.Model):
@@ -5006,18 +4567,13 @@ class LinuxConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        disable_password_authentication: Optional[bool] = None,
-        ssh: Optional["SshConfiguration"] = None,
-        provision_vm_agent: Optional[bool] = None,
-        patch_settings: Optional["LinuxPatchSettings"] = None,
         **kwargs
     ):
         super(LinuxConfiguration, self).__init__(**kwargs)
-        self.disable_password_authentication = disable_password_authentication
-        self.ssh = ssh
-        self.provision_vm_agent = provision_vm_agent
-        self.patch_settings = patch_settings
+        self.disable_password_authentication = kwargs.get('disable_password_authentication', None)
+        self.ssh = kwargs.get('ssh', None)
+        self.provision_vm_agent = kwargs.get('provision_vm_agent', None)
+        self.patch_settings = kwargs.get('patch_settings', None)
 
 
 class LinuxParameters(msrest.serialization.Model):
@@ -5047,18 +4603,13 @@ class LinuxParameters(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        classifications_to_include: Optional[List[Union[str, "VMGuestPatchClassificationLinux"]]] = None,
-        package_name_masks_to_include: Optional[List[str]] = None,
-        package_name_masks_to_exclude: Optional[List[str]] = None,
-        maintenance_run_id: Optional[str] = None,
         **kwargs
     ):
         super(LinuxParameters, self).__init__(**kwargs)
-        self.classifications_to_include = classifications_to_include
-        self.package_name_masks_to_include = package_name_masks_to_include
-        self.package_name_masks_to_exclude = package_name_masks_to_exclude
-        self.maintenance_run_id = maintenance_run_id
+        self.classifications_to_include = kwargs.get('classifications_to_include', None)
+        self.package_name_masks_to_include = kwargs.get('package_name_masks_to_include', None)
+        self.package_name_masks_to_exclude = kwargs.get('package_name_masks_to_exclude', None)
+        self.maintenance_run_id = kwargs.get('maintenance_run_id', None)
 
 
 class LinuxPatchSettings(msrest.serialization.Model):
@@ -5088,14 +4639,11 @@ class LinuxPatchSettings(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        patch_mode: Optional[Union[str, "LinuxVMGuestPatchMode"]] = None,
-        assessment_mode: Optional[Union[str, "LinuxPatchAssessmentMode"]] = None,
         **kwargs
     ):
         super(LinuxPatchSettings, self).__init__(**kwargs)
-        self.patch_mode = patch_mode
-        self.assessment_mode = assessment_mode
+        self.patch_mode = kwargs.get('patch_mode', None)
+        self.assessment_mode = kwargs.get('assessment_mode', None)
 
 
 class ListUsagesResult(msrest.serialization.Model):
@@ -5121,14 +4669,11 @@ class ListUsagesResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["Usage"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(ListUsagesResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class LogAnalyticsInputBase(msrest.serialization.Model):
@@ -5174,26 +4719,17 @@ class LogAnalyticsInputBase(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        blob_container_sas_uri: str,
-        from_time: datetime.datetime,
-        to_time: datetime.datetime,
-        group_by_throttle_policy: Optional[bool] = None,
-        group_by_operation_name: Optional[bool] = None,
-        group_by_resource_name: Optional[bool] = None,
-        group_by_client_application_id: Optional[bool] = None,
-        group_by_user_agent: Optional[bool] = None,
         **kwargs
     ):
         super(LogAnalyticsInputBase, self).__init__(**kwargs)
-        self.blob_container_sas_uri = blob_container_sas_uri
-        self.from_time = from_time
-        self.to_time = to_time
-        self.group_by_throttle_policy = group_by_throttle_policy
-        self.group_by_operation_name = group_by_operation_name
-        self.group_by_resource_name = group_by_resource_name
-        self.group_by_client_application_id = group_by_client_application_id
-        self.group_by_user_agent = group_by_user_agent
+        self.blob_container_sas_uri = kwargs['blob_container_sas_uri']
+        self.from_time = kwargs['from_time']
+        self.to_time = kwargs['to_time']
+        self.group_by_throttle_policy = kwargs.get('group_by_throttle_policy', None)
+        self.group_by_operation_name = kwargs.get('group_by_operation_name', None)
+        self.group_by_resource_name = kwargs.get('group_by_resource_name', None)
+        self.group_by_client_application_id = kwargs.get('group_by_client_application_id', None)
+        self.group_by_user_agent = kwargs.get('group_by_user_agent', None)
 
 
 class LogAnalyticsOperationResult(msrest.serialization.Model):
@@ -5280,24 +4816,16 @@ class MaintenanceRedeployStatus(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        is_customer_initiated_maintenance_allowed: Optional[bool] = None,
-        pre_maintenance_window_start_time: Optional[datetime.datetime] = None,
-        pre_maintenance_window_end_time: Optional[datetime.datetime] = None,
-        maintenance_window_start_time: Optional[datetime.datetime] = None,
-        maintenance_window_end_time: Optional[datetime.datetime] = None,
-        last_operation_result_code: Optional[Union[str, "MaintenanceOperationResultCodeTypes"]] = None,
-        last_operation_message: Optional[str] = None,
         **kwargs
     ):
         super(MaintenanceRedeployStatus, self).__init__(**kwargs)
-        self.is_customer_initiated_maintenance_allowed = is_customer_initiated_maintenance_allowed
-        self.pre_maintenance_window_start_time = pre_maintenance_window_start_time
-        self.pre_maintenance_window_end_time = pre_maintenance_window_end_time
-        self.maintenance_window_start_time = maintenance_window_start_time
-        self.maintenance_window_end_time = maintenance_window_end_time
-        self.last_operation_result_code = last_operation_result_code
-        self.last_operation_message = last_operation_message
+        self.is_customer_initiated_maintenance_allowed = kwargs.get('is_customer_initiated_maintenance_allowed', None)
+        self.pre_maintenance_window_start_time = kwargs.get('pre_maintenance_window_start_time', None)
+        self.pre_maintenance_window_end_time = kwargs.get('pre_maintenance_window_end_time', None)
+        self.maintenance_window_start_time = kwargs.get('maintenance_window_start_time', None)
+        self.maintenance_window_end_time = kwargs.get('maintenance_window_end_time', None)
+        self.last_operation_result_code = kwargs.get('last_operation_result_code', None)
+        self.last_operation_message = kwargs.get('last_operation_message', None)
 
 
 class ManagedArtifact(msrest.serialization.Model):
@@ -5319,12 +4847,10 @@ class ManagedArtifact(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        id: str,
         **kwargs
     ):
         super(ManagedArtifact, self).__init__(**kwargs)
-        self.id = id
+        self.id = kwargs['id']
 
 
 class ManagedDiskParameters(SubResource):
@@ -5350,15 +4876,11 @@ class ManagedDiskParameters(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountTypes"]] = None,
-        disk_encryption_set: Optional["DiskEncryptionSetParameters"] = None,
         **kwargs
     ):
-        super(ManagedDiskParameters, self).__init__(id=id, **kwargs)
-        self.storage_account_type = storage_account_type
-        self.disk_encryption_set = disk_encryption_set
+        super(ManagedDiskParameters, self).__init__(**kwargs)
+        self.storage_account_type = kwargs.get('storage_account_type', None)
+        self.disk_encryption_set = kwargs.get('disk_encryption_set', None)
 
 
 class NetworkInterfaceReference(SubResource):
@@ -5382,15 +4904,11 @@ class NetworkInterfaceReference(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        primary: Optional[bool] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
         **kwargs
     ):
-        super(NetworkInterfaceReference, self).__init__(id=id, **kwargs)
-        self.primary = primary
-        self.delete_option = delete_option
+        super(NetworkInterfaceReference, self).__init__(**kwargs)
+        self.primary = kwargs.get('primary', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class NetworkProfile(msrest.serialization.Model):
@@ -5418,16 +4936,12 @@ class NetworkProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        network_interfaces: Optional[List["NetworkInterfaceReference"]] = None,
-        network_api_version: Optional[Union[str, "NetworkApiVersion"]] = None,
-        network_interface_configurations: Optional[List["VirtualMachineNetworkInterfaceConfiguration"]] = None,
         **kwargs
     ):
         super(NetworkProfile, self).__init__(**kwargs)
-        self.network_interfaces = network_interfaces
-        self.network_api_version = network_api_version
-        self.network_interface_configurations = network_interface_configurations
+        self.network_interfaces = kwargs.get('network_interfaces', None)
+        self.network_api_version = kwargs.get('network_api_version', None)
+        self.network_interface_configurations = kwargs.get('network_interface_configurations', None)
 
 
 class OrchestrationServiceStateInput(msrest.serialization.Model):
@@ -5455,14 +4969,11 @@ class OrchestrationServiceStateInput(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        service_name: Union[str, "OrchestrationServiceNames"],
-        action: Union[str, "OrchestrationServiceStateAction"],
         **kwargs
     ):
         super(OrchestrationServiceStateInput, self).__init__(**kwargs)
-        self.service_name = service_name
-        self.action = action
+        self.service_name = kwargs['service_name']
+        self.action = kwargs['action']
 
 
 class OrchestrationServiceSummary(msrest.serialization.Model):
@@ -5575,34 +5086,21 @@ class OSDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        create_option: Union[str, "DiskCreateOptionTypes"],
-        os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
-        encryption_settings: Optional["DiskEncryptionSettings"] = None,
-        name: Optional[str] = None,
-        vhd: Optional["VirtualHardDisk"] = None,
-        image: Optional["VirtualHardDisk"] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        write_accelerator_enabled: Optional[bool] = None,
-        diff_disk_settings: Optional["DiffDiskSettings"] = None,
-        disk_size_gb: Optional[int] = None,
-        managed_disk: Optional["ManagedDiskParameters"] = None,
-        delete_option: Optional[Union[str, "DiskDeleteOptionTypes"]] = None,
         **kwargs
     ):
         super(OSDisk, self).__init__(**kwargs)
-        self.os_type = os_type
-        self.encryption_settings = encryption_settings
-        self.name = name
-        self.vhd = vhd
-        self.image = image
-        self.caching = caching
-        self.write_accelerator_enabled = write_accelerator_enabled
-        self.diff_disk_settings = diff_disk_settings
-        self.create_option = create_option
-        self.disk_size_gb = disk_size_gb
-        self.managed_disk = managed_disk
-        self.delete_option = delete_option
+        self.os_type = kwargs.get('os_type', None)
+        self.encryption_settings = kwargs.get('encryption_settings', None)
+        self.name = kwargs.get('name', None)
+        self.vhd = kwargs.get('vhd', None)
+        self.image = kwargs.get('image', None)
+        self.caching = kwargs.get('caching', None)
+        self.write_accelerator_enabled = kwargs.get('write_accelerator_enabled', None)
+        self.diff_disk_settings = kwargs.get('diff_disk_settings', None)
+        self.create_option = kwargs['create_option']
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class OSDiskImage(msrest.serialization.Model):
@@ -5625,12 +5123,10 @@ class OSDiskImage(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        operating_system: Union[str, "OperatingSystemTypes"],
         **kwargs
     ):
         super(OSDiskImage, self).__init__(**kwargs)
-        self.operating_system = operating_system
+        self.operating_system = kwargs['operating_system']
 
 
 class OSDiskImageEncryption(DiskImageEncryption):
@@ -5639,19 +5135,45 @@ class OSDiskImageEncryption(DiskImageEncryption):
     :param disk_encryption_set_id: A relative URI containing the resource ID of the disk encryption
      set.
     :type disk_encryption_set_id: str
+    :param security_profile: This property specifies the security profile of an OS disk image.
+    :type security_profile: ~azure.mgmt.compute.v2021_07_01.models.OSDiskImageSecurityProfile
     """
 
     _attribute_map = {
         'disk_encryption_set_id': {'key': 'diskEncryptionSetId', 'type': 'str'},
+        'security_profile': {'key': 'securityProfile', 'type': 'OSDiskImageSecurityProfile'},
     }
 
     def __init__(
         self,
-        *,
-        disk_encryption_set_id: Optional[str] = None,
         **kwargs
     ):
-        super(OSDiskImageEncryption, self).__init__(disk_encryption_set_id=disk_encryption_set_id, **kwargs)
+        super(OSDiskImageEncryption, self).__init__(**kwargs)
+        self.security_profile = kwargs.get('security_profile', None)
+
+
+class OSDiskImageSecurityProfile(msrest.serialization.Model):
+    """Contains security profile for an OS disk image.
+
+    :param type: all types of security profile. Possible values include:
+     "EncryptedVMGuestStateOnlyWithPmk", "EncryptedWithPmk", "EncryptedWithCmk".
+    :type type: str or ~azure.mgmt.compute.v2021_07_01.models.SecurityProfileType
+    :param secure_v_mdisk_encryption_set_id: secure VM disk encryption set id.
+    :type secure_v_mdisk_encryption_set_id: str
+    """
+
+    _attribute_map = {
+        'type': {'key': 'type', 'type': 'str'},
+        'secure_v_mdisk_encryption_set_id': {'key': 'secureVMdiskEncryptionSetId', 'type': 'str'},
+    }
+
+    def __init__(
+        self,
+        **kwargs
+    ):
+        super(OSDiskImageSecurityProfile, self).__init__(**kwargs)
+        self.type = kwargs.get('type', None)
+        self.secure_v_mdisk_encryption_set_id = kwargs.get('secure_v_mdisk_encryption_set_id', None)
 
 
 class OSProfile(msrest.serialization.Model):
@@ -5740,28 +5262,18 @@ class OSProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        computer_name: Optional[str] = None,
-        admin_username: Optional[str] = None,
-        admin_password: Optional[str] = None,
-        custom_data: Optional[str] = None,
-        windows_configuration: Optional["WindowsConfiguration"] = None,
-        linux_configuration: Optional["LinuxConfiguration"] = None,
-        secrets: Optional[List["VaultSecretGroup"]] = None,
-        allow_extension_operations: Optional[bool] = None,
-        require_guest_provision_signal: Optional[bool] = None,
         **kwargs
     ):
         super(OSProfile, self).__init__(**kwargs)
-        self.computer_name = computer_name
-        self.admin_username = admin_username
-        self.admin_password = admin_password
-        self.custom_data = custom_data
-        self.windows_configuration = windows_configuration
-        self.linux_configuration = linux_configuration
-        self.secrets = secrets
-        self.allow_extension_operations = allow_extension_operations
-        self.require_guest_provision_signal = require_guest_provision_signal
+        self.computer_name = kwargs.get('computer_name', None)
+        self.admin_username = kwargs.get('admin_username', None)
+        self.admin_password = kwargs.get('admin_password', None)
+        self.custom_data = kwargs.get('custom_data', None)
+        self.windows_configuration = kwargs.get('windows_configuration', None)
+        self.linux_configuration = kwargs.get('linux_configuration', None)
+        self.secrets = kwargs.get('secrets', None)
+        self.allow_extension_operations = kwargs.get('allow_extension_operations', None)
+        self.require_guest_provision_signal = kwargs.get('require_guest_provision_signal', None)
 
 
 class PatchInstallationDetail(msrest.serialization.Model):
@@ -5854,16 +5366,12 @@ class PatchSettings(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        patch_mode: Optional[Union[str, "WindowsVMGuestPatchMode"]] = None,
-        enable_hotpatching: Optional[bool] = None,
-        assessment_mode: Optional[Union[str, "WindowsPatchAssessmentMode"]] = None,
         **kwargs
     ):
         super(PatchSettings, self).__init__(**kwargs)
-        self.patch_mode = patch_mode
-        self.enable_hotpatching = enable_hotpatching
-        self.assessment_mode = assessment_mode
+        self.patch_mode = kwargs.get('patch_mode', None)
+        self.enable_hotpatching = kwargs.get('enable_hotpatching', None)
+        self.assessment_mode = kwargs.get('assessment_mode', None)
 
 
 class PirResource(msrest.serialization.Model):
@@ -5922,12 +5430,10 @@ class PirSharedGalleryResource(PirResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
         **kwargs
     ):
         super(PirSharedGalleryResource, self).__init__(**kwargs)
-        self.unique_id = unique_id
+        self.unique_id = kwargs.get('unique_id', None)
 
 
 class Plan(msrest.serialization.Model):
@@ -5953,18 +5459,13 @@ class Plan(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        publisher: Optional[str] = None,
-        product: Optional[str] = None,
-        promotion_code: Optional[str] = None,
         **kwargs
     ):
         super(Plan, self).__init__(**kwargs)
-        self.name = name
-        self.publisher = publisher
-        self.product = product
-        self.promotion_code = promotion_code
+        self.name = kwargs.get('name', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.product = kwargs.get('product', None)
+        self.promotion_code = kwargs.get('promotion_code', None)
 
 
 class ProximityPlacementGroup(Resource):
@@ -6031,19 +5532,14 @@ class ProximityPlacementGroup(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        proximity_placement_group_type: Optional[Union[str, "ProximityPlacementGroupType"]] = None,
-        colocation_status: Optional["InstanceViewStatus"] = None,
         **kwargs
     ):
-        super(ProximityPlacementGroup, self).__init__(location=location, tags=tags, **kwargs)
-        self.proximity_placement_group_type = proximity_placement_group_type
+        super(ProximityPlacementGroup, self).__init__(**kwargs)
+        self.proximity_placement_group_type = kwargs.get('proximity_placement_group_type', None)
         self.virtual_machines = None
         self.virtual_machine_scale_sets = None
         self.availability_sets = None
-        self.colocation_status = colocation_status
+        self.colocation_status = kwargs.get('colocation_status', None)
 
 
 class ProximityPlacementGroupListResult(msrest.serialization.Model):
@@ -6068,14 +5564,11 @@ class ProximityPlacementGroupListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["ProximityPlacementGroup"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(ProximityPlacementGroupListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class ProximityPlacementGroupUpdate(UpdateResource):
@@ -6091,11 +5584,9 @@ class ProximityPlacementGroupUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
         **kwargs
     ):
-        super(ProximityPlacementGroupUpdate, self).__init__(tags=tags, **kwargs)
+        super(ProximityPlacementGroupUpdate, self).__init__(**kwargs)
 
 
 class ProxyResource(msrest.serialization.Model):
@@ -6149,14 +5640,11 @@ class PublicIPAddressSku(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[Union[str, "PublicIPAddressSkuName"]] = None,
-        tier: Optional[Union[str, "PublicIPAddressSkuTier"]] = None,
         **kwargs
     ):
         super(PublicIPAddressSku, self).__init__(**kwargs)
-        self.name = name
-        self.tier = tier
+        self.name = kwargs.get('name', None)
+        self.tier = kwargs.get('tier', None)
 
 
 class PurchasePlan(msrest.serialization.Model):
@@ -6187,16 +5675,12 @@ class PurchasePlan(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        publisher: str,
-        name: str,
-        product: str,
         **kwargs
     ):
         super(PurchasePlan, self).__init__(**kwargs)
-        self.publisher = publisher
-        self.name = name
-        self.product = product
+        self.publisher = kwargs['publisher']
+        self.name = kwargs['name']
+        self.product = kwargs['product']
 
 
 class RecommendedMachineConfiguration(msrest.serialization.Model):
@@ -6215,14 +5699,11 @@ class RecommendedMachineConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        v_cp_us: Optional["ResourceRange"] = None,
-        memory: Optional["ResourceRange"] = None,
         **kwargs
     ):
         super(RecommendedMachineConfiguration, self).__init__(**kwargs)
-        self.v_cp_us = v_cp_us
-        self.memory = memory
+        self.v_cp_us = kwargs.get('v_cp_us', None)
+        self.memory = kwargs.get('memory', None)
 
 
 class RecoveryWalkResponse(msrest.serialization.Model):
@@ -6323,15 +5804,12 @@ class RegionalSharingStatus(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        region: Optional[str] = None,
-        details: Optional[str] = None,
         **kwargs
     ):
         super(RegionalSharingStatus, self).__init__(**kwargs)
-        self.region = region
+        self.region = kwargs.get('region', None)
         self.state = None
-        self.details = details
+        self.details = kwargs.get('details', None)
 
 
 class ReplicationStatus(msrest.serialization.Model):
@@ -6415,20 +5893,10 @@ class RequestRateByIntervalInput(LogAnalyticsInputBase):
 
     def __init__(
         self,
-        *,
-        blob_container_sas_uri: str,
-        from_time: datetime.datetime,
-        to_time: datetime.datetime,
-        interval_length: Union[str, "IntervalInMins"],
-        group_by_throttle_policy: Optional[bool] = None,
-        group_by_operation_name: Optional[bool] = None,
-        group_by_resource_name: Optional[bool] = None,
-        group_by_client_application_id: Optional[bool] = None,
-        group_by_user_agent: Optional[bool] = None,
         **kwargs
     ):
-        super(RequestRateByIntervalInput, self).__init__(blob_container_sas_uri=blob_container_sas_uri, from_time=from_time, to_time=to_time, group_by_throttle_policy=group_by_throttle_policy, group_by_operation_name=group_by_operation_name, group_by_resource_name=group_by_resource_name, group_by_client_application_id=group_by_client_application_id, group_by_user_agent=group_by_user_agent, **kwargs)
-        self.interval_length = interval_length
+        super(RequestRateByIntervalInput, self).__init__(**kwargs)
+        self.interval_length = kwargs['interval_length']
 
 
 class ResourceRange(msrest.serialization.Model):
@@ -6447,14 +5915,11 @@ class ResourceRange(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        min: Optional[int] = None,
-        max: Optional[int] = None,
         **kwargs
     ):
         super(ResourceRange, self).__init__(**kwargs)
-        self.min = min
-        self.max = max
+        self.min = kwargs.get('min', None)
+        self.max = kwargs.get('max', None)
 
 
 class ResourceSku(msrest.serialization.Model):
@@ -6793,14 +6258,11 @@ class ResourceSkusResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["ResourceSku"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(ResourceSkusResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class ResourceSkuZoneDetails(msrest.serialization.Model):
@@ -6883,17 +6345,14 @@ class RestorePoint(ProxyResource):
 
     def __init__(
         self,
-        *,
-        exclude_disks: Optional[List["ApiEntityReference"]] = None,
-        time_created: Optional[datetime.datetime] = None,
         **kwargs
     ):
         super(RestorePoint, self).__init__(**kwargs)
-        self.exclude_disks = exclude_disks
+        self.exclude_disks = kwargs.get('exclude_disks', None)
         self.source_metadata = None
         self.provisioning_state = None
         self.consistency_mode = None
-        self.time_created = time_created
+        self.time_created = kwargs.get('time_created', None)
 
 
 class RestorePointCollection(Resource):
@@ -6949,14 +6408,10 @@ class RestorePointCollection(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        source: Optional["RestorePointCollectionSourceProperties"] = None,
         **kwargs
     ):
-        super(RestorePointCollection, self).__init__(location=location, tags=tags, **kwargs)
-        self.source = source
+        super(RestorePointCollection, self).__init__(**kwargs)
+        self.source = kwargs.get('source', None)
         self.provisioning_state = None
         self.restore_point_collection_id = None
         self.restore_points = None
@@ -6979,14 +6434,11 @@ class RestorePointCollectionListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: Optional[List["RestorePointCollection"]] = None,
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(RestorePointCollectionListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs.get('value', None)
+        self.next_link = kwargs.get('next_link', None)
 
 
 class RestorePointCollectionSourceProperties(msrest.serialization.Model):
@@ -7011,13 +6463,11 @@ class RestorePointCollectionSourceProperties(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
         **kwargs
     ):
         super(RestorePointCollectionSourceProperties, self).__init__(**kwargs)
         self.location = None
-        self.id = id
+        self.id = kwargs.get('id', None)
 
 
 class RestorePointCollectionUpdate(UpdateResource):
@@ -7055,13 +6505,10 @@ class RestorePointCollectionUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        source: Optional["RestorePointCollectionSourceProperties"] = None,
         **kwargs
     ):
-        super(RestorePointCollectionUpdate, self).__init__(tags=tags, **kwargs)
-        self.source = source
+        super(RestorePointCollectionUpdate, self).__init__(**kwargs)
+        self.source = kwargs.get('source', None)
         self.provisioning_state = None
         self.restore_point_collection_id = None
         self.restore_points = None
@@ -7102,26 +6549,17 @@ class RestorePointSourceMetadata(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        hardware_profile: Optional["HardwareProfile"] = None,
-        storage_profile: Optional["RestorePointSourceVMStorageProfile"] = None,
-        os_profile: Optional["OSProfile"] = None,
-        diagnostics_profile: Optional["DiagnosticsProfile"] = None,
-        license_type: Optional[str] = None,
-        vm_id: Optional[str] = None,
-        security_profile: Optional["SecurityProfile"] = None,
-        location: Optional[str] = None,
         **kwargs
     ):
         super(RestorePointSourceMetadata, self).__init__(**kwargs)
-        self.hardware_profile = hardware_profile
-        self.storage_profile = storage_profile
-        self.os_profile = os_profile
-        self.diagnostics_profile = diagnostics_profile
-        self.license_type = license_type
-        self.vm_id = vm_id
-        self.security_profile = security_profile
-        self.location = location
+        self.hardware_profile = kwargs.get('hardware_profile', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
+        self.os_profile = kwargs.get('os_profile', None)
+        self.diagnostics_profile = kwargs.get('diagnostics_profile', None)
+        self.license_type = kwargs.get('license_type', None)
+        self.vm_id = kwargs.get('vm_id', None)
+        self.security_profile = kwargs.get('security_profile', None)
+        self.location = kwargs.get('location', None)
 
 
 class RestorePointSourceVMDataDisk(msrest.serialization.Model):
@@ -7154,22 +6592,15 @@ class RestorePointSourceVMDataDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        lun: Optional[int] = None,
-        name: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        disk_size_gb: Optional[int] = None,
-        managed_disk: Optional["ManagedDiskParameters"] = None,
-        disk_restore_point: Optional["ApiEntityReference"] = None,
         **kwargs
     ):
         super(RestorePointSourceVMDataDisk, self).__init__(**kwargs)
-        self.lun = lun
-        self.name = name
-        self.caching = caching
-        self.disk_size_gb = disk_size_gb
-        self.managed_disk = managed_disk
-        self.disk_restore_point = disk_restore_point
+        self.lun = kwargs.get('lun', None)
+        self.name = kwargs.get('name', None)
+        self.caching = kwargs.get('caching', None)
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
+        self.disk_restore_point = kwargs.get('disk_restore_point', None)
 
 
 class RestorePointSourceVMOSDisk(msrest.serialization.Model):
@@ -7204,24 +6635,16 @@ class RestorePointSourceVMOSDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_type: Optional[Union[str, "OperatingSystemType"]] = None,
-        encryption_settings: Optional["DiskEncryptionSettings"] = None,
-        name: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        disk_size_gb: Optional[int] = None,
-        managed_disk: Optional["ManagedDiskParameters"] = None,
-        disk_restore_point: Optional["ApiEntityReference"] = None,
         **kwargs
     ):
         super(RestorePointSourceVMOSDisk, self).__init__(**kwargs)
-        self.os_type = os_type
-        self.encryption_settings = encryption_settings
-        self.name = name
-        self.caching = caching
-        self.disk_size_gb = disk_size_gb
-        self.managed_disk = managed_disk
-        self.disk_restore_point = disk_restore_point
+        self.os_type = kwargs.get('os_type', None)
+        self.encryption_settings = kwargs.get('encryption_settings', None)
+        self.name = kwargs.get('name', None)
+        self.caching = kwargs.get('caching', None)
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
+        self.disk_restore_point = kwargs.get('disk_restore_point', None)
 
 
 class RestorePointSourceVMStorageProfile(msrest.serialization.Model):
@@ -7241,14 +6664,11 @@ class RestorePointSourceVMStorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_disk: Optional["RestorePointSourceVMOSDisk"] = None,
-        data_disks: Optional[List["RestorePointSourceVMDataDisk"]] = None,
         **kwargs
     ):
         super(RestorePointSourceVMStorageProfile, self).__init__(**kwargs)
-        self.os_disk = os_disk
-        self.data_disks = data_disks
+        self.os_disk = kwargs.get('os_disk', None)
+        self.data_disks = kwargs.get('data_disks', None)
 
 
 class RetrieveBootDiagnosticsDataResult(msrest.serialization.Model):
@@ -7366,22 +6786,15 @@ class RollingUpgradePolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        max_batch_instance_percent: Optional[int] = None,
-        max_unhealthy_instance_percent: Optional[int] = None,
-        max_unhealthy_upgraded_instance_percent: Optional[int] = None,
-        pause_time_between_batches: Optional[str] = None,
-        enable_cross_zone_upgrade: Optional[bool] = None,
-        prioritize_unhealthy_instances: Optional[bool] = None,
         **kwargs
     ):
         super(RollingUpgradePolicy, self).__init__(**kwargs)
-        self.max_batch_instance_percent = max_batch_instance_percent
-        self.max_unhealthy_instance_percent = max_unhealthy_instance_percent
-        self.max_unhealthy_upgraded_instance_percent = max_unhealthy_upgraded_instance_percent
-        self.pause_time_between_batches = pause_time_between_batches
-        self.enable_cross_zone_upgrade = enable_cross_zone_upgrade
-        self.prioritize_unhealthy_instances = prioritize_unhealthy_instances
+        self.max_batch_instance_percent = kwargs.get('max_batch_instance_percent', None)
+        self.max_unhealthy_instance_percent = kwargs.get('max_unhealthy_instance_percent', None)
+        self.max_unhealthy_upgraded_instance_percent = kwargs.get('max_unhealthy_upgraded_instance_percent', None)
+        self.pause_time_between_batches = kwargs.get('pause_time_between_batches', None)
+        self.enable_cross_zone_upgrade = kwargs.get('enable_cross_zone_upgrade', None)
+        self.prioritize_unhealthy_instances = kwargs.get('prioritize_unhealthy_instances', None)
 
 
 class RollingUpgradeProgressInfo(msrest.serialization.Model):
@@ -7520,12 +6933,9 @@ class RollingUpgradeStatusInfo(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
         **kwargs
     ):
-        super(RollingUpgradeStatusInfo, self).__init__(location=location, tags=tags, **kwargs)
+        super(RollingUpgradeStatusInfo, self).__init__(**kwargs)
         self.policy = None
         self.running_status = None
         self.progress = None
@@ -7568,20 +6978,14 @@ class RunCommandDocumentBase(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        schema: str,
-        id: str,
-        os_type: Union[str, "OperatingSystemTypes"],
-        label: str,
-        description: str,
         **kwargs
     ):
         super(RunCommandDocumentBase, self).__init__(**kwargs)
-        self.schema = schema
-        self.id = id
-        self.os_type = os_type
-        self.label = label
-        self.description = description
+        self.schema = kwargs['schema']
+        self.id = kwargs['id']
+        self.os_type = kwargs['os_type']
+        self.label = kwargs['label']
+        self.description = kwargs['description']
 
 
 class RunCommandDocument(RunCommandDocumentBase):
@@ -7627,19 +7031,11 @@ class RunCommandDocument(RunCommandDocumentBase):
 
     def __init__(
         self,
-        *,
-        schema: str,
-        id: str,
-        os_type: Union[str, "OperatingSystemTypes"],
-        label: str,
-        description: str,
-        script: List[str],
-        parameters: Optional[List["RunCommandParameterDefinition"]] = None,
         **kwargs
     ):
-        super(RunCommandDocument, self).__init__(schema=schema, id=id, os_type=os_type, label=label, description=description, **kwargs)
-        self.script = script
-        self.parameters = parameters
+        super(RunCommandDocument, self).__init__(**kwargs)
+        self.script = kwargs['script']
+        self.parameters = kwargs.get('parameters', None)
 
 
 class RunCommandInput(msrest.serialization.Model):
@@ -7668,16 +7064,12 @@ class RunCommandInput(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        command_id: str,
-        script: Optional[List[str]] = None,
-        parameters: Optional[List["RunCommandInputParameter"]] = None,
         **kwargs
     ):
         super(RunCommandInput, self).__init__(**kwargs)
-        self.command_id = command_id
-        self.script = script
-        self.parameters = parameters
+        self.command_id = kwargs['command_id']
+        self.script = kwargs.get('script', None)
+        self.parameters = kwargs.get('parameters', None)
 
 
 class RunCommandInputParameter(msrest.serialization.Model):
@@ -7703,14 +7095,11 @@ class RunCommandInputParameter(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: str,
-        value: str,
         **kwargs
     ):
         super(RunCommandInputParameter, self).__init__(**kwargs)
-        self.name = name
-        self.value = value
+        self.name = kwargs['name']
+        self.value = kwargs['value']
 
 
 class RunCommandListResult(msrest.serialization.Model):
@@ -7736,14 +7125,11 @@ class RunCommandListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["RunCommandDocumentBase"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(RunCommandListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class RunCommandParameterDefinition(msrest.serialization.Model):
@@ -7775,18 +7161,13 @@ class RunCommandParameterDefinition(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: str,
-        type: str,
-        default_value: Optional[str] = None,
-        required: Optional[bool] = False,
         **kwargs
     ):
         super(RunCommandParameterDefinition, self).__init__(**kwargs)
-        self.name = name
-        self.type = type
-        self.default_value = default_value
-        self.required = required
+        self.name = kwargs['name']
+        self.type = kwargs['type']
+        self.default_value = kwargs.get('default_value', None)
+        self.required = kwargs.get('required', False)
 
 
 class RunCommandResult(msrest.serialization.Model):
@@ -7802,12 +7183,10 @@ class RunCommandResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(RunCommandResult, self).__init__(**kwargs)
-        self.value = value
+        self.value = kwargs.get('value', None)
 
 
 class ScaleInPolicy(msrest.serialization.Model):
@@ -7842,14 +7221,11 @@ class ScaleInPolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        rules: Optional[List[Union[str, "VirtualMachineScaleSetScaleInRules"]]] = None,
-        force_deletion: Optional[bool] = None,
         **kwargs
     ):
         super(ScaleInPolicy, self).__init__(**kwargs)
-        self.rules = rules
-        self.force_deletion = force_deletion
+        self.rules = kwargs.get('rules', None)
+        self.force_deletion = kwargs.get('force_deletion', None)
 
 
 class ScheduledEventsProfile(msrest.serialization.Model):
@@ -7867,12 +7243,10 @@ class ScheduledEventsProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        terminate_notification_profile: Optional["TerminateNotificationProfile"] = None,
         **kwargs
     ):
         super(ScheduledEventsProfile, self).__init__(**kwargs)
-        self.terminate_notification_profile = terminate_notification_profile
+        self.terminate_notification_profile = kwargs.get('terminate_notification_profile', None)
 
 
 class SecurityProfile(msrest.serialization.Model):
@@ -7902,16 +7276,12 @@ class SecurityProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        uefi_settings: Optional["UefiSettings"] = None,
-        encryption_at_host: Optional[bool] = None,
-        security_type: Optional[Union[str, "SecurityTypes"]] = None,
         **kwargs
     ):
         super(SecurityProfile, self).__init__(**kwargs)
-        self.uefi_settings = uefi_settings
-        self.encryption_at_host = encryption_at_host
-        self.security_type = security_type
+        self.uefi_settings = kwargs.get('uefi_settings', None)
+        self.encryption_at_host = kwargs.get('encryption_at_host', None)
+        self.security_type = kwargs.get('security_type', None)
 
 
 class SharedGallery(PirSharedGalleryResource):
@@ -7940,11 +7310,9 @@ class SharedGallery(PirSharedGalleryResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
         **kwargs
     ):
-        super(SharedGallery, self).__init__(unique_id=unique_id, **kwargs)
+        super(SharedGallery, self).__init__(**kwargs)
 
 
 class SharedGalleryImage(PirSharedGalleryResource):
@@ -8009,29 +7377,18 @@ class SharedGalleryImage(PirSharedGalleryResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
-        os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
-        os_state: Optional[Union[str, "OperatingSystemStateTypes"]] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
-        identifier: Optional["GalleryImageIdentifier"] = None,
-        recommended: Optional["RecommendedMachineConfiguration"] = None,
-        disallowed: Optional["Disallowed"] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGeneration"]] = None,
-        features: Optional[List["GalleryImageFeature"]] = None,
-        purchase_plan: Optional["ImagePurchasePlan"] = None,
         **kwargs
     ):
-        super(SharedGalleryImage, self).__init__(unique_id=unique_id, **kwargs)
-        self.os_type = os_type
-        self.os_state = os_state
-        self.end_of_life_date = end_of_life_date
-        self.identifier = identifier
-        self.recommended = recommended
-        self.disallowed = disallowed
-        self.hyper_v_generation = hyper_v_generation
-        self.features = features
-        self.purchase_plan = purchase_plan
+        super(SharedGalleryImage, self).__init__(**kwargs)
+        self.os_type = kwargs.get('os_type', None)
+        self.os_state = kwargs.get('os_state', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
+        self.identifier = kwargs.get('identifier', None)
+        self.recommended = kwargs.get('recommended', None)
+        self.disallowed = kwargs.get('disallowed', None)
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
+        self.features = kwargs.get('features', None)
+        self.purchase_plan = kwargs.get('purchase_plan', None)
 
 
 class SharedGalleryImageList(msrest.serialization.Model):
@@ -8057,14 +7414,11 @@ class SharedGalleryImageList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["SharedGalleryImage"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(SharedGalleryImageList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class SharedGalleryImageVersion(PirSharedGalleryResource):
@@ -8101,15 +7455,11 @@ class SharedGalleryImageVersion(PirSharedGalleryResource):
 
     def __init__(
         self,
-        *,
-        unique_id: Optional[str] = None,
-        published_date: Optional[datetime.datetime] = None,
-        end_of_life_date: Optional[datetime.datetime] = None,
         **kwargs
     ):
-        super(SharedGalleryImageVersion, self).__init__(unique_id=unique_id, **kwargs)
-        self.published_date = published_date
-        self.end_of_life_date = end_of_life_date
+        super(SharedGalleryImageVersion, self).__init__(**kwargs)
+        self.published_date = kwargs.get('published_date', None)
+        self.end_of_life_date = kwargs.get('end_of_life_date', None)
 
 
 class SharedGalleryImageVersionList(msrest.serialization.Model):
@@ -8135,14 +7485,11 @@ class SharedGalleryImageVersionList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["SharedGalleryImageVersion"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(SharedGalleryImageVersionList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class SharedGalleryList(msrest.serialization.Model):
@@ -8168,14 +7515,11 @@ class SharedGalleryList(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["SharedGallery"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(SharedGalleryList, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class SharingProfile(msrest.serialization.Model):
@@ -8206,15 +7550,12 @@ class SharingProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        permissions: Optional[Union[str, "GallerySharingPermissionTypes"]] = None,
-        community_gallery_info: Optional[Any] = None,
         **kwargs
     ):
         super(SharingProfile, self).__init__(**kwargs)
-        self.permissions = permissions
+        self.permissions = kwargs.get('permissions', None)
         self.groups = None
-        self.community_gallery_info = community_gallery_info
+        self.community_gallery_info = kwargs.get('community_gallery_info', None)
 
 
 class SharingProfileGroup(msrest.serialization.Model):
@@ -8236,14 +7577,11 @@ class SharingProfileGroup(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        type: Optional[Union[str, "SharingProfileGroupTypes"]] = None,
-        ids: Optional[List[str]] = None,
         **kwargs
     ):
         super(SharingProfileGroup, self).__init__(**kwargs)
-        self.type = type
-        self.ids = ids
+        self.type = kwargs.get('type', None)
+        self.ids = kwargs.get('ids', None)
 
 
 class SharingStatus(msrest.serialization.Model):
@@ -8269,13 +7607,11 @@ class SharingStatus(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        summary: Optional[List["RegionalSharingStatus"]] = None,
         **kwargs
     ):
         super(SharingStatus, self).__init__(**kwargs)
         self.aggregated_state = None
-        self.summary = summary
+        self.summary = kwargs.get('summary', None)
 
 
 class SharingUpdate(msrest.serialization.Model):
@@ -8303,14 +7639,11 @@ class SharingUpdate(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        operation_type: Union[str, "SharingUpdateOperationTypes"],
-        groups: Optional[List["SharingProfileGroup"]] = None,
         **kwargs
     ):
         super(SharingUpdate, self).__init__(**kwargs)
-        self.operation_type = operation_type
-        self.groups = groups
+        self.operation_type = kwargs['operation_type']
+        self.groups = kwargs.get('groups', None)
 
 
 class Sku(msrest.serialization.Model):
@@ -8334,16 +7667,12 @@ class Sku(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        tier: Optional[str] = None,
-        capacity: Optional[int] = None,
         **kwargs
     ):
         super(Sku, self).__init__(**kwargs)
-        self.name = name
-        self.tier = tier
-        self.capacity = capacity
+        self.name = kwargs.get('name', None)
+        self.tier = kwargs.get('tier', None)
+        self.capacity = kwargs.get('capacity', None)
 
 
 class SoftDeletePolicy(msrest.serialization.Model):
@@ -8360,12 +7689,10 @@ class SoftDeletePolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        is_soft_delete_enabled: Optional[bool] = None,
         **kwargs
     ):
         super(SoftDeletePolicy, self).__init__(**kwargs)
-        self.is_soft_delete_enabled = is_soft_delete_enabled
+        self.is_soft_delete_enabled = kwargs.get('is_soft_delete_enabled', None)
 
 
 class SpotRestorePolicy(msrest.serialization.Model):
@@ -8386,14 +7713,11 @@ class SpotRestorePolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        enabled: Optional[bool] = None,
-        restore_timeout: Optional[str] = None,
         **kwargs
     ):
         super(SpotRestorePolicy, self).__init__(**kwargs)
-        self.enabled = enabled
-        self.restore_timeout = restore_timeout
+        self.enabled = kwargs.get('enabled', None)
+        self.restore_timeout = kwargs.get('restore_timeout', None)
 
 
 class SshConfiguration(msrest.serialization.Model):
@@ -8409,12 +7733,10 @@ class SshConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        public_keys: Optional[List["SshPublicKey"]] = None,
         **kwargs
     ):
         super(SshConfiguration, self).__init__(**kwargs)
-        self.public_keys = public_keys
+        self.public_keys = kwargs.get('public_keys', None)
 
 
 class SshPublicKey(msrest.serialization.Model):
@@ -8438,14 +7760,11 @@ class SshPublicKey(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        path: Optional[str] = None,
-        key_data: Optional[str] = None,
         **kwargs
     ):
         super(SshPublicKey, self).__init__(**kwargs)
-        self.path = path
-        self.key_data = key_data
+        self.path = kwargs.get('path', None)
+        self.key_data = kwargs.get('key_data', None)
 
 
 class SshPublicKeyGenerateKeyPairResult(msrest.serialization.Model):
@@ -8479,16 +7798,12 @@ class SshPublicKeyGenerateKeyPairResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        private_key: str,
-        public_key: str,
-        id: str,
         **kwargs
     ):
         super(SshPublicKeyGenerateKeyPairResult, self).__init__(**kwargs)
-        self.private_key = private_key
-        self.public_key = public_key
-        self.id = id
+        self.private_key = kwargs['private_key']
+        self.public_key = kwargs['public_key']
+        self.id = kwargs['id']
 
 
 class SshPublicKeyResource(Resource):
@@ -8533,14 +7848,10 @@ class SshPublicKeyResource(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        public_key: Optional[str] = None,
         **kwargs
     ):
-        super(SshPublicKeyResource, self).__init__(location=location, tags=tags, **kwargs)
-        self.public_key = public_key
+        super(SshPublicKeyResource, self).__init__(**kwargs)
+        self.public_key = kwargs.get('public_key', None)
 
 
 class SshPublicKeysGroupListResult(msrest.serialization.Model):
@@ -8566,14 +7877,11 @@ class SshPublicKeysGroupListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["SshPublicKeyResource"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(SshPublicKeysGroupListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class SshPublicKeyUpdateResource(UpdateResource):
@@ -8595,13 +7903,10 @@ class SshPublicKeyUpdateResource(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        public_key: Optional[str] = None,
         **kwargs
     ):
-        super(SshPublicKeyUpdateResource, self).__init__(tags=tags, **kwargs)
-        self.public_key = public_key
+        super(SshPublicKeyUpdateResource, self).__init__(**kwargs)
+        self.public_key = kwargs.get('public_key', None)
 
 
 class StorageProfile(msrest.serialization.Model):
@@ -8632,16 +7937,12 @@ class StorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        image_reference: Optional["ImageReference"] = None,
-        os_disk: Optional["OSDisk"] = None,
-        data_disks: Optional[List["DataDisk"]] = None,
         **kwargs
     ):
         super(StorageProfile, self).__init__(**kwargs)
-        self.image_reference = image_reference
-        self.os_disk = os_disk
-        self.data_disks = data_disks
+        self.image_reference = kwargs.get('image_reference', None)
+        self.os_disk = kwargs.get('os_disk', None)
+        self.data_disks = kwargs.get('data_disks', None)
 
 
 class SubResourceReadOnly(msrest.serialization.Model):
@@ -8686,13 +7987,10 @@ class SubResourceWithColocationStatus(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        colocation_status: Optional["InstanceViewStatus"] = None,
         **kwargs
     ):
-        super(SubResourceWithColocationStatus, self).__init__(id=id, **kwargs)
-        self.colocation_status = colocation_status
+        super(SubResourceWithColocationStatus, self).__init__(**kwargs)
+        self.colocation_status = kwargs.get('colocation_status', None)
 
 
 class TargetRegion(msrest.serialization.Model):
@@ -8727,18 +8025,13 @@ class TargetRegion(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: str,
-        regional_replica_count: Optional[int] = None,
-        storage_account_type: Optional[Union[str, "StorageAccountType"]] = None,
-        encryption: Optional["EncryptionImages"] = None,
         **kwargs
     ):
         super(TargetRegion, self).__init__(**kwargs)
-        self.name = name
-        self.regional_replica_count = regional_replica_count
-        self.storage_account_type = storage_account_type
-        self.encryption = encryption
+        self.name = kwargs['name']
+        self.regional_replica_count = kwargs.get('regional_replica_count', None)
+        self.storage_account_type = kwargs.get('storage_account_type', None)
+        self.encryption = kwargs.get('encryption', None)
 
 
 class TerminateNotificationProfile(msrest.serialization.Model):
@@ -8760,14 +8053,11 @@ class TerminateNotificationProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        not_before_timeout: Optional[str] = None,
-        enable: Optional[bool] = None,
         **kwargs
     ):
         super(TerminateNotificationProfile, self).__init__(**kwargs)
-        self.not_before_timeout = not_before_timeout
-        self.enable = enable
+        self.not_before_timeout = kwargs.get('not_before_timeout', None)
+        self.enable = kwargs.get('enable', None)
 
 
 class ThrottledRequestsInput(LogAnalyticsInputBase):
@@ -8813,18 +8103,9 @@ class ThrottledRequestsInput(LogAnalyticsInputBase):
 
     def __init__(
         self,
-        *,
-        blob_container_sas_uri: str,
-        from_time: datetime.datetime,
-        to_time: datetime.datetime,
-        group_by_throttle_policy: Optional[bool] = None,
-        group_by_operation_name: Optional[bool] = None,
-        group_by_resource_name: Optional[bool] = None,
-        group_by_client_application_id: Optional[bool] = None,
-        group_by_user_agent: Optional[bool] = None,
         **kwargs
     ):
-        super(ThrottledRequestsInput, self).__init__(blob_container_sas_uri=blob_container_sas_uri, from_time=from_time, to_time=to_time, group_by_throttle_policy=group_by_throttle_policy, group_by_operation_name=group_by_operation_name, group_by_resource_name=group_by_resource_name, group_by_client_application_id=group_by_client_application_id, group_by_user_agent=group_by_user_agent, **kwargs)
+        super(ThrottledRequestsInput, self).__init__(**kwargs)
 
 
 class UefiSettings(msrest.serialization.Model):
@@ -8845,14 +8126,11 @@ class UefiSettings(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        secure_boot_enabled: Optional[bool] = None,
-        v_tpm_enabled: Optional[bool] = None,
         **kwargs
     ):
         super(UefiSettings, self).__init__(**kwargs)
-        self.secure_boot_enabled = secure_boot_enabled
-        self.v_tpm_enabled = v_tpm_enabled
+        self.secure_boot_enabled = kwargs.get('secure_boot_enabled', None)
+        self.v_tpm_enabled = kwargs.get('v_tpm_enabled', None)
 
 
 class UpgradeOperationHistoricalStatusInfo(msrest.serialization.Model):
@@ -9005,16 +8283,12 @@ class UpgradePolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        mode: Optional[Union[str, "UpgradeMode"]] = None,
-        rolling_upgrade_policy: Optional["RollingUpgradePolicy"] = None,
-        automatic_os_upgrade_policy: Optional["AutomaticOSUpgradePolicy"] = None,
         **kwargs
     ):
         super(UpgradePolicy, self).__init__(**kwargs)
-        self.mode = mode
-        self.rolling_upgrade_policy = rolling_upgrade_policy
-        self.automatic_os_upgrade_policy = automatic_os_upgrade_policy
+        self.mode = kwargs.get('mode', None)
+        self.rolling_upgrade_policy = kwargs.get('rolling_upgrade_policy', None)
+        self.automatic_os_upgrade_policy = kwargs.get('automatic_os_upgrade_policy', None)
 
 
 class Usage(msrest.serialization.Model):
@@ -9052,16 +8326,12 @@ class Usage(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        current_value: int,
-        limit: int,
-        name: "UsageName",
         **kwargs
     ):
         super(Usage, self).__init__(**kwargs)
-        self.current_value = current_value
-        self.limit = limit
-        self.name = name
+        self.current_value = kwargs['current_value']
+        self.limit = kwargs['limit']
+        self.name = kwargs['name']
 
 
 class UsageName(msrest.serialization.Model):
@@ -9080,14 +8350,11 @@ class UsageName(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: Optional[str] = None,
-        localized_value: Optional[str] = None,
         **kwargs
     ):
         super(UsageName, self).__init__(**kwargs)
-        self.value = value
-        self.localized_value = localized_value
+        self.value = kwargs.get('value', None)
+        self.localized_value = kwargs.get('localized_value', None)
 
 
 class UserArtifactManage(msrest.serialization.Model):
@@ -9120,16 +8387,12 @@ class UserArtifactManage(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        install: str,
-        remove: str,
-        update: Optional[str] = None,
         **kwargs
     ):
         super(UserArtifactManage, self).__init__(**kwargs)
-        self.install = install
-        self.remove = remove
-        self.update = update
+        self.install = kwargs['install']
+        self.remove = kwargs['remove']
+        self.update = kwargs.get('update', None)
 
 
 class UserArtifactSource(msrest.serialization.Model):
@@ -9156,14 +8419,11 @@ class UserArtifactSource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        media_link: str,
-        default_configuration_link: Optional[str] = None,
         **kwargs
     ):
         super(UserArtifactSource, self).__init__(**kwargs)
-        self.media_link = media_link
-        self.default_configuration_link = default_configuration_link
+        self.media_link = kwargs['media_link']
+        self.default_configuration_link = kwargs.get('default_configuration_link', None)
 
 
 class UserAssignedIdentitiesValue(msrest.serialization.Model):
@@ -9227,14 +8487,11 @@ class VaultCertificate(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        certificate_url: Optional[str] = None,
-        certificate_store: Optional[str] = None,
         **kwargs
     ):
         super(VaultCertificate, self).__init__(**kwargs)
-        self.certificate_url = certificate_url
-        self.certificate_store = certificate_store
+        self.certificate_url = kwargs.get('certificate_url', None)
+        self.certificate_store = kwargs.get('certificate_store', None)
 
 
 class VaultSecretGroup(msrest.serialization.Model):
@@ -9255,14 +8512,11 @@ class VaultSecretGroup(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        source_vault: Optional["SubResource"] = None,
-        vault_certificates: Optional[List["VaultCertificate"]] = None,
         **kwargs
     ):
         super(VaultSecretGroup, self).__init__(**kwargs)
-        self.source_vault = source_vault
-        self.vault_certificates = vault_certificates
+        self.source_vault = kwargs.get('source_vault', None)
+        self.vault_certificates = kwargs.get('vault_certificates', None)
 
 
 class VirtualHardDisk(msrest.serialization.Model):
@@ -9278,12 +8532,10 @@ class VirtualHardDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        uri: Optional[str] = None,
         **kwargs
     ):
         super(VirtualHardDisk, self).__init__(**kwargs)
-        self.uri = uri
+        self.uri = kwargs.get('uri', None)
 
 
 class VirtualMachine(Resource):
@@ -9479,68 +8731,39 @@ class VirtualMachine(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        plan: Optional["Plan"] = None,
-        identity: Optional["VirtualMachineIdentity"] = None,
-        zones: Optional[List[str]] = None,
-        extended_location: Optional["ExtendedLocation"] = None,
-        hardware_profile: Optional["HardwareProfile"] = None,
-        storage_profile: Optional["StorageProfile"] = None,
-        additional_capabilities: Optional["AdditionalCapabilities"] = None,
-        os_profile: Optional["OSProfile"] = None,
-        network_profile: Optional["NetworkProfile"] = None,
-        security_profile: Optional["SecurityProfile"] = None,
-        diagnostics_profile: Optional["DiagnosticsProfile"] = None,
-        availability_set: Optional["SubResource"] = None,
-        virtual_machine_scale_set: Optional["SubResource"] = None,
-        proximity_placement_group: Optional["SubResource"] = None,
-        priority: Optional[Union[str, "VirtualMachinePriorityTypes"]] = None,
-        eviction_policy: Optional[Union[str, "VirtualMachineEvictionPolicyTypes"]] = None,
-        billing_profile: Optional["BillingProfile"] = None,
-        host: Optional["SubResource"] = None,
-        host_group: Optional["SubResource"] = None,
-        license_type: Optional[str] = None,
-        extensions_time_budget: Optional[str] = None,
-        platform_fault_domain: Optional[int] = None,
-        scheduled_events_profile: Optional["ScheduledEventsProfile"] = None,
-        user_data: Optional[str] = None,
-        capacity_reservation: Optional["CapacityReservationProfile"] = None,
-        application_profile: Optional["ApplicationProfile"] = None,
         **kwargs
     ):
-        super(VirtualMachine, self).__init__(location=location, tags=tags, **kwargs)
-        self.plan = plan
+        super(VirtualMachine, self).__init__(**kwargs)
+        self.plan = kwargs.get('plan', None)
         self.resources = None
-        self.identity = identity
-        self.zones = zones
-        self.extended_location = extended_location
-        self.hardware_profile = hardware_profile
-        self.storage_profile = storage_profile
-        self.additional_capabilities = additional_capabilities
-        self.os_profile = os_profile
-        self.network_profile = network_profile
-        self.security_profile = security_profile
-        self.diagnostics_profile = diagnostics_profile
-        self.availability_set = availability_set
-        self.virtual_machine_scale_set = virtual_machine_scale_set
-        self.proximity_placement_group = proximity_placement_group
-        self.priority = priority
-        self.eviction_policy = eviction_policy
-        self.billing_profile = billing_profile
-        self.host = host
-        self.host_group = host_group
+        self.identity = kwargs.get('identity', None)
+        self.zones = kwargs.get('zones', None)
+        self.extended_location = kwargs.get('extended_location', None)
+        self.hardware_profile = kwargs.get('hardware_profile', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
+        self.additional_capabilities = kwargs.get('additional_capabilities', None)
+        self.os_profile = kwargs.get('os_profile', None)
+        self.network_profile = kwargs.get('network_profile', None)
+        self.security_profile = kwargs.get('security_profile', None)
+        self.diagnostics_profile = kwargs.get('diagnostics_profile', None)
+        self.availability_set = kwargs.get('availability_set', None)
+        self.virtual_machine_scale_set = kwargs.get('virtual_machine_scale_set', None)
+        self.proximity_placement_group = kwargs.get('proximity_placement_group', None)
+        self.priority = kwargs.get('priority', None)
+        self.eviction_policy = kwargs.get('eviction_policy', None)
+        self.billing_profile = kwargs.get('billing_profile', None)
+        self.host = kwargs.get('host', None)
+        self.host_group = kwargs.get('host_group', None)
         self.provisioning_state = None
         self.instance_view = None
-        self.license_type = license_type
+        self.license_type = kwargs.get('license_type', None)
         self.vm_id = None
-        self.extensions_time_budget = extensions_time_budget
-        self.platform_fault_domain = platform_fault_domain
-        self.scheduled_events_profile = scheduled_events_profile
-        self.user_data = user_data
-        self.capacity_reservation = capacity_reservation
-        self.application_profile = application_profile
+        self.extensions_time_budget = kwargs.get('extensions_time_budget', None)
+        self.platform_fault_domain = kwargs.get('platform_fault_domain', None)
+        self.scheduled_events_profile = kwargs.get('scheduled_events_profile', None)
+        self.user_data = kwargs.get('user_data', None)
+        self.capacity_reservation = kwargs.get('capacity_reservation', None)
+        self.application_profile = kwargs.get('application_profile', None)
 
 
 class VirtualMachineAgentInstanceView(msrest.serialization.Model):
@@ -9563,16 +8786,12 @@ class VirtualMachineAgentInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        vm_agent_version: Optional[str] = None,
-        extension_handlers: Optional[List["VirtualMachineExtensionHandlerInstanceView"]] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(VirtualMachineAgentInstanceView, self).__init__(**kwargs)
-        self.vm_agent_version = vm_agent_version
-        self.extension_handlers = extension_handlers
-        self.statuses = statuses
+        self.vm_agent_version = kwargs.get('vm_agent_version', None)
+        self.extension_handlers = kwargs.get('extension_handlers', None)
+        self.statuses = kwargs.get('statuses', None)
 
 
 class VirtualMachineAssessPatchesResult(msrest.serialization.Model):
@@ -9673,16 +8892,12 @@ class VirtualMachineCaptureParameters(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        vhd_prefix: str,
-        destination_container_name: str,
-        overwrite_vhds: bool,
         **kwargs
     ):
         super(VirtualMachineCaptureParameters, self).__init__(**kwargs)
-        self.vhd_prefix = vhd_prefix
-        self.destination_container_name = destination_container_name
-        self.overwrite_vhds = overwrite_vhds
+        self.vhd_prefix = kwargs['vhd_prefix']
+        self.destination_container_name = kwargs['destination_container_name']
+        self.overwrite_vhds = kwargs['overwrite_vhds']
 
 
 class VirtualMachineCaptureResult(SubResource):
@@ -9719,11 +8934,9 @@ class VirtualMachineCaptureResult(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
         **kwargs
     ):
-        super(VirtualMachineCaptureResult, self).__init__(id=id, **kwargs)
+        super(VirtualMachineCaptureResult, self).__init__(**kwargs)
         self.schema = None
         self.content_version = None
         self.parameters = None
@@ -9808,33 +9021,20 @@ class VirtualMachineExtension(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        force_update_tag: Optional[str] = None,
-        publisher: Optional[str] = None,
-        type_properties_type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        auto_upgrade_minor_version: Optional[bool] = None,
-        enable_automatic_upgrade: Optional[bool] = None,
-        settings: Optional[Any] = None,
-        protected_settings: Optional[Any] = None,
-        instance_view: Optional["VirtualMachineExtensionInstanceView"] = None,
-        suppress_failures: Optional[bool] = None,
         **kwargs
     ):
-        super(VirtualMachineExtension, self).__init__(location=location, tags=tags, **kwargs)
-        self.force_update_tag = force_update_tag
-        self.publisher = publisher
-        self.type_properties_type = type_properties_type
-        self.type_handler_version = type_handler_version
-        self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        self.enable_automatic_upgrade = enable_automatic_upgrade
-        self.settings = settings
-        self.protected_settings = protected_settings
+        super(VirtualMachineExtension, self).__init__(**kwargs)
+        self.force_update_tag = kwargs.get('force_update_tag', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.type_properties_type = kwargs.get('type_properties_type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.auto_upgrade_minor_version = kwargs.get('auto_upgrade_minor_version', None)
+        self.enable_automatic_upgrade = kwargs.get('enable_automatic_upgrade', None)
+        self.settings = kwargs.get('settings', None)
+        self.protected_settings = kwargs.get('protected_settings', None)
         self.provisioning_state = None
-        self.instance_view = instance_view
-        self.suppress_failures = suppress_failures
+        self.instance_view = kwargs.get('instance_view', None)
+        self.suppress_failures = kwargs.get('suppress_failures', None)
 
 
 class VirtualMachineExtensionHandlerInstanceView(msrest.serialization.Model):
@@ -9856,16 +9056,12 @@ class VirtualMachineExtensionHandlerInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        status: Optional["InstanceViewStatus"] = None,
         **kwargs
     ):
         super(VirtualMachineExtensionHandlerInstanceView, self).__init__(**kwargs)
-        self.type = type
-        self.type_handler_version = type_handler_version
-        self.status = status
+        self.type = kwargs.get('type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.status = kwargs.get('status', None)
 
 
 class VirtualMachineExtensionImage(Resource):
@@ -9922,22 +9118,14 @@ class VirtualMachineExtensionImage(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        operating_system: Optional[str] = None,
-        compute_role: Optional[str] = None,
-        handler_schema: Optional[str] = None,
-        vm_scale_set_enabled: Optional[bool] = None,
-        supports_multiple_extensions: Optional[bool] = None,
         **kwargs
     ):
-        super(VirtualMachineExtensionImage, self).__init__(location=location, tags=tags, **kwargs)
-        self.operating_system = operating_system
-        self.compute_role = compute_role
-        self.handler_schema = handler_schema
-        self.vm_scale_set_enabled = vm_scale_set_enabled
-        self.supports_multiple_extensions = supports_multiple_extensions
+        super(VirtualMachineExtensionImage, self).__init__(**kwargs)
+        self.operating_system = kwargs.get('operating_system', None)
+        self.compute_role = kwargs.get('compute_role', None)
+        self.handler_schema = kwargs.get('handler_schema', None)
+        self.vm_scale_set_enabled = kwargs.get('vm_scale_set_enabled', None)
+        self.supports_multiple_extensions = kwargs.get('supports_multiple_extensions', None)
 
 
 class VirtualMachineExtensionInstanceView(msrest.serialization.Model):
@@ -9965,20 +9153,14 @@ class VirtualMachineExtensionInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        substatuses: Optional[List["InstanceViewStatus"]] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(VirtualMachineExtensionInstanceView, self).__init__(**kwargs)
-        self.name = name
-        self.type = type
-        self.type_handler_version = type_handler_version
-        self.substatuses = substatuses
-        self.statuses = statuses
+        self.name = kwargs.get('name', None)
+        self.type = kwargs.get('type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.substatuses = kwargs.get('substatuses', None)
+        self.statuses = kwargs.get('statuses', None)
 
 
 class VirtualMachineExtensionsListResult(msrest.serialization.Model):
@@ -9994,12 +9176,10 @@ class VirtualMachineExtensionsListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: Optional[List["VirtualMachineExtension"]] = None,
         **kwargs
     ):
         super(VirtualMachineExtensionsListResult, self).__init__(**kwargs)
-        self.value = value
+        self.value = kwargs.get('value', None)
 
 
 class VirtualMachineExtensionUpdate(UpdateResource):
@@ -10049,29 +9229,18 @@ class VirtualMachineExtensionUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        force_update_tag: Optional[str] = None,
-        publisher: Optional[str] = None,
-        type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        auto_upgrade_minor_version: Optional[bool] = None,
-        enable_automatic_upgrade: Optional[bool] = None,
-        settings: Optional[Any] = None,
-        protected_settings: Optional[Any] = None,
-        suppress_failures: Optional[bool] = None,
         **kwargs
     ):
-        super(VirtualMachineExtensionUpdate, self).__init__(tags=tags, **kwargs)
-        self.force_update_tag = force_update_tag
-        self.publisher = publisher
-        self.type = type
-        self.type_handler_version = type_handler_version
-        self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        self.enable_automatic_upgrade = enable_automatic_upgrade
-        self.settings = settings
-        self.protected_settings = protected_settings
-        self.suppress_failures = suppress_failures
+        super(VirtualMachineExtensionUpdate, self).__init__(**kwargs)
+        self.force_update_tag = kwargs.get('force_update_tag', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.type = kwargs.get('type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.auto_upgrade_minor_version = kwargs.get('auto_upgrade_minor_version', None)
+        self.enable_automatic_upgrade = kwargs.get('enable_automatic_upgrade', None)
+        self.settings = kwargs.get('settings', None)
+        self.protected_settings = kwargs.get('protected_settings', None)
+        self.suppress_failures = kwargs.get('suppress_failures', None)
 
 
 class VirtualMachineHealthStatus(msrest.serialization.Model):
@@ -10136,16 +9305,13 @@ class VirtualMachineIdentity(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        type: Optional[Union[str, "ResourceIdentityType"]] = None,
-        user_assigned_identities: Optional[Dict[str, "UserAssignedIdentitiesValue"]] = None,
         **kwargs
     ):
         super(VirtualMachineIdentity, self).__init__(**kwargs)
         self.principal_id = None
         self.tenant_id = None
-        self.type = type
-        self.user_assigned_identities = user_assigned_identities
+        self.type = kwargs.get('type', None)
+        self.user_assigned_identities = kwargs.get('user_assigned_identities', None)
 
 
 class VirtualMachineImageResource(SubResource):
@@ -10182,19 +9348,13 @@ class VirtualMachineImageResource(SubResource):
 
     def __init__(
         self,
-        *,
-        name: str,
-        location: str,
-        id: Optional[str] = None,
-        tags: Optional[Dict[str, str]] = None,
-        extended_location: Optional["ExtendedLocation"] = None,
         **kwargs
     ):
-        super(VirtualMachineImageResource, self).__init__(id=id, **kwargs)
-        self.name = name
-        self.location = location
-        self.tags = tags
-        self.extended_location = extended_location
+        super(VirtualMachineImageResource, self).__init__(**kwargs)
+        self.name = kwargs['name']
+        self.location = kwargs['location']
+        self.tags = kwargs.get('tags', None)
+        self.extended_location = kwargs.get('extended_location', None)
 
 
 class VirtualMachineImage(VirtualMachineImageResource):
@@ -10256,29 +9416,16 @@ class VirtualMachineImage(VirtualMachineImageResource):
 
     def __init__(
         self,
-        *,
-        name: str,
-        location: str,
-        id: Optional[str] = None,
-        tags: Optional[Dict[str, str]] = None,
-        extended_location: Optional["ExtendedLocation"] = None,
-        plan: Optional["PurchasePlan"] = None,
-        os_disk_image: Optional["OSDiskImage"] = None,
-        data_disk_images: Optional[List["DataDiskImage"]] = None,
-        automatic_os_upgrade_properties: Optional["AutomaticOSUpgradeProperties"] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGenerationTypes"]] = None,
-        disallowed: Optional["DisallowedConfiguration"] = None,
-        features: Optional[List["VirtualMachineImageFeature"]] = None,
         **kwargs
     ):
-        super(VirtualMachineImage, self).__init__(id=id, name=name, location=location, tags=tags, extended_location=extended_location, **kwargs)
-        self.plan = plan
-        self.os_disk_image = os_disk_image
-        self.data_disk_images = data_disk_images
-        self.automatic_os_upgrade_properties = automatic_os_upgrade_properties
-        self.hyper_v_generation = hyper_v_generation
-        self.disallowed = disallowed
-        self.features = features
+        super(VirtualMachineImage, self).__init__(**kwargs)
+        self.plan = kwargs.get('plan', None)
+        self.os_disk_image = kwargs.get('os_disk_image', None)
+        self.data_disk_images = kwargs.get('data_disk_images', None)
+        self.automatic_os_upgrade_properties = kwargs.get('automatic_os_upgrade_properties', None)
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
+        self.disallowed = kwargs.get('disallowed', None)
+        self.features = kwargs.get('features', None)
 
 
 class VirtualMachineImageFeature(msrest.serialization.Model):
@@ -10297,14 +9444,11 @@ class VirtualMachineImageFeature(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        value: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineImageFeature, self).__init__(**kwargs)
-        self.name = name
-        self.value = value
+        self.name = kwargs.get('name', None)
+        self.value = kwargs.get('value', None)
 
 
 class VirtualMachineInstallPatchesParameters(msrest.serialization.Model):
@@ -10339,18 +9483,13 @@ class VirtualMachineInstallPatchesParameters(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        reboot_setting: Union[str, "VMGuestPatchRebootSetting"],
-        maximum_duration: Optional[str] = None,
-        windows_parameters: Optional["WindowsParameters"] = None,
-        linux_parameters: Optional["LinuxParameters"] = None,
         **kwargs
     ):
         super(VirtualMachineInstallPatchesParameters, self).__init__(**kwargs)
-        self.maximum_duration = maximum_duration
-        self.reboot_setting = reboot_setting
-        self.windows_parameters = windows_parameters
-        self.linux_parameters = linux_parameters
+        self.maximum_duration = kwargs.get('maximum_duration', None)
+        self.reboot_setting = kwargs['reboot_setting']
+        self.windows_parameters = kwargs.get('windows_parameters', None)
+        self.linux_parameters = kwargs.get('linux_parameters', None)
 
 
 class VirtualMachineInstallPatchesResult(msrest.serialization.Model):
@@ -10519,40 +9658,25 @@ class VirtualMachineInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        platform_update_domain: Optional[int] = None,
-        platform_fault_domain: Optional[int] = None,
-        computer_name: Optional[str] = None,
-        os_name: Optional[str] = None,
-        os_version: Optional[str] = None,
-        hyper_v_generation: Optional[Union[str, "HyperVGenerationType"]] = None,
-        rdp_thumb_print: Optional[str] = None,
-        vm_agent: Optional["VirtualMachineAgentInstanceView"] = None,
-        maintenance_redeploy_status: Optional["MaintenanceRedeployStatus"] = None,
-        disks: Optional[List["DiskInstanceView"]] = None,
-        extensions: Optional[List["VirtualMachineExtensionInstanceView"]] = None,
-        boot_diagnostics: Optional["BootDiagnosticsInstanceView"] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
-        patch_status: Optional["VirtualMachinePatchStatus"] = None,
         **kwargs
     ):
         super(VirtualMachineInstanceView, self).__init__(**kwargs)
-        self.platform_update_domain = platform_update_domain
-        self.platform_fault_domain = platform_fault_domain
-        self.computer_name = computer_name
-        self.os_name = os_name
-        self.os_version = os_version
-        self.hyper_v_generation = hyper_v_generation
-        self.rdp_thumb_print = rdp_thumb_print
-        self.vm_agent = vm_agent
-        self.maintenance_redeploy_status = maintenance_redeploy_status
-        self.disks = disks
-        self.extensions = extensions
+        self.platform_update_domain = kwargs.get('platform_update_domain', None)
+        self.platform_fault_domain = kwargs.get('platform_fault_domain', None)
+        self.computer_name = kwargs.get('computer_name', None)
+        self.os_name = kwargs.get('os_name', None)
+        self.os_version = kwargs.get('os_version', None)
+        self.hyper_v_generation = kwargs.get('hyper_v_generation', None)
+        self.rdp_thumb_print = kwargs.get('rdp_thumb_print', None)
+        self.vm_agent = kwargs.get('vm_agent', None)
+        self.maintenance_redeploy_status = kwargs.get('maintenance_redeploy_status', None)
+        self.disks = kwargs.get('disks', None)
+        self.extensions = kwargs.get('extensions', None)
         self.vm_health = None
-        self.boot_diagnostics = boot_diagnostics
+        self.boot_diagnostics = kwargs.get('boot_diagnostics', None)
         self.assigned_host = None
-        self.statuses = statuses
-        self.patch_status = patch_status
+        self.statuses = kwargs.get('statuses', None)
+        self.patch_status = kwargs.get('patch_status', None)
 
 
 class VirtualMachineIpTag(msrest.serialization.Model):
@@ -10571,14 +9695,11 @@ class VirtualMachineIpTag(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        ip_tag_type: Optional[str] = None,
-        tag: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineIpTag, self).__init__(**kwargs)
-        self.ip_tag_type = ip_tag_type
-        self.tag = tag
+        self.ip_tag_type = kwargs.get('ip_tag_type', None)
+        self.tag = kwargs.get('tag', None)
 
 
 class VirtualMachineListResult(msrest.serialization.Model):
@@ -10604,14 +9725,11 @@ class VirtualMachineListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachine"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineNetworkInterfaceConfiguration(msrest.serialization.Model):
@@ -10665,30 +9783,19 @@ class VirtualMachineNetworkInterfaceConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: str,
-        primary: Optional[bool] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
-        enable_accelerated_networking: Optional[bool] = None,
-        enable_fpga: Optional[bool] = None,
-        enable_ip_forwarding: Optional[bool] = None,
-        network_security_group: Optional["SubResource"] = None,
-        dns_settings: Optional["VirtualMachineNetworkInterfaceDnsSettingsConfiguration"] = None,
-        ip_configurations: Optional[List["VirtualMachineNetworkInterfaceIPConfiguration"]] = None,
-        dscp_configuration: Optional["SubResource"] = None,
         **kwargs
     ):
         super(VirtualMachineNetworkInterfaceConfiguration, self).__init__(**kwargs)
-        self.name = name
-        self.primary = primary
-        self.delete_option = delete_option
-        self.enable_accelerated_networking = enable_accelerated_networking
-        self.enable_fpga = enable_fpga
-        self.enable_ip_forwarding = enable_ip_forwarding
-        self.network_security_group = network_security_group
-        self.dns_settings = dns_settings
-        self.ip_configurations = ip_configurations
-        self.dscp_configuration = dscp_configuration
+        self.name = kwargs['name']
+        self.primary = kwargs.get('primary', None)
+        self.delete_option = kwargs.get('delete_option', None)
+        self.enable_accelerated_networking = kwargs.get('enable_accelerated_networking', None)
+        self.enable_fpga = kwargs.get('enable_fpga', None)
+        self.enable_ip_forwarding = kwargs.get('enable_ip_forwarding', None)
+        self.network_security_group = kwargs.get('network_security_group', None)
+        self.dns_settings = kwargs.get('dns_settings', None)
+        self.ip_configurations = kwargs.get('ip_configurations', None)
+        self.dscp_configuration = kwargs.get('dscp_configuration', None)
 
 
 class VirtualMachineNetworkInterfaceDnsSettingsConfiguration(msrest.serialization.Model):
@@ -10704,12 +9811,10 @@ class VirtualMachineNetworkInterfaceDnsSettingsConfiguration(msrest.serializatio
 
     def __init__(
         self,
-        *,
-        dns_servers: Optional[List[str]] = None,
         **kwargs
     ):
         super(VirtualMachineNetworkInterfaceDnsSettingsConfiguration, self).__init__(**kwargs)
-        self.dns_servers = dns_servers
+        self.dns_servers = kwargs.get('dns_servers', None)
 
 
 class VirtualMachineNetworkInterfaceIPConfiguration(msrest.serialization.Model):
@@ -10765,26 +9870,17 @@ class VirtualMachineNetworkInterfaceIPConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: str,
-        subnet: Optional["SubResource"] = None,
-        primary: Optional[bool] = None,
-        public_ip_address_configuration: Optional["VirtualMachinePublicIPAddressConfiguration"] = None,
-        private_ip_address_version: Optional[Union[str, "IPVersions"]] = None,
-        application_security_groups: Optional[List["SubResource"]] = None,
-        application_gateway_backend_address_pools: Optional[List["SubResource"]] = None,
-        load_balancer_backend_address_pools: Optional[List["SubResource"]] = None,
         **kwargs
     ):
         super(VirtualMachineNetworkInterfaceIPConfiguration, self).__init__(**kwargs)
-        self.name = name
-        self.subnet = subnet
-        self.primary = primary
-        self.public_ip_address_configuration = public_ip_address_configuration
-        self.private_ip_address_version = private_ip_address_version
-        self.application_security_groups = application_security_groups
-        self.application_gateway_backend_address_pools = application_gateway_backend_address_pools
-        self.load_balancer_backend_address_pools = load_balancer_backend_address_pools
+        self.name = kwargs['name']
+        self.subnet = kwargs.get('subnet', None)
+        self.primary = kwargs.get('primary', None)
+        self.public_ip_address_configuration = kwargs.get('public_ip_address_configuration', None)
+        self.private_ip_address_version = kwargs.get('private_ip_address_version', None)
+        self.application_security_groups = kwargs.get('application_security_groups', None)
+        self.application_gateway_backend_address_pools = kwargs.get('application_gateway_backend_address_pools', None)
+        self.load_balancer_backend_address_pools = kwargs.get('load_balancer_backend_address_pools', None)
 
 
 class VirtualMachinePatchStatus(msrest.serialization.Model):
@@ -10816,14 +9912,11 @@ class VirtualMachinePatchStatus(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        available_patch_summary: Optional["AvailablePatchSummary"] = None,
-        last_patch_installation_summary: Optional["LastPatchInstallationSummary"] = None,
         **kwargs
     ):
         super(VirtualMachinePatchStatus, self).__init__(**kwargs)
-        self.available_patch_summary = available_patch_summary
-        self.last_patch_installation_summary = last_patch_installation_summary
+        self.available_patch_summary = kwargs.get('available_patch_summary', None)
+        self.last_patch_installation_summary = kwargs.get('last_patch_installation_summary', None)
         self.configuration_statuses = None
 
 
@@ -10876,28 +9969,18 @@ class VirtualMachinePublicIPAddressConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: str,
-        sku: Optional["PublicIPAddressSku"] = None,
-        idle_timeout_in_minutes: Optional[int] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
-        dns_settings: Optional["VirtualMachinePublicIPAddressDnsSettingsConfiguration"] = None,
-        ip_tags: Optional[List["VirtualMachineIpTag"]] = None,
-        public_ip_prefix: Optional["SubResource"] = None,
-        public_ip_address_version: Optional[Union[str, "IPVersions"]] = None,
-        public_ip_allocation_method: Optional[Union[str, "PublicIPAllocationMethod"]] = None,
         **kwargs
     ):
         super(VirtualMachinePublicIPAddressConfiguration, self).__init__(**kwargs)
-        self.name = name
-        self.sku = sku
-        self.idle_timeout_in_minutes = idle_timeout_in_minutes
-        self.delete_option = delete_option
-        self.dns_settings = dns_settings
-        self.ip_tags = ip_tags
-        self.public_ip_prefix = public_ip_prefix
-        self.public_ip_address_version = public_ip_address_version
-        self.public_ip_allocation_method = public_ip_allocation_method
+        self.name = kwargs['name']
+        self.sku = kwargs.get('sku', None)
+        self.idle_timeout_in_minutes = kwargs.get('idle_timeout_in_minutes', None)
+        self.delete_option = kwargs.get('delete_option', None)
+        self.dns_settings = kwargs.get('dns_settings', None)
+        self.ip_tags = kwargs.get('ip_tags', None)
+        self.public_ip_prefix = kwargs.get('public_ip_prefix', None)
+        self.public_ip_address_version = kwargs.get('public_ip_address_version', None)
+        self.public_ip_allocation_method = kwargs.get('public_ip_allocation_method', None)
 
 
 class VirtualMachinePublicIPAddressDnsSettingsConfiguration(msrest.serialization.Model):
@@ -10921,12 +10004,10 @@ class VirtualMachinePublicIPAddressDnsSettingsConfiguration(msrest.serialization
 
     def __init__(
         self,
-        *,
-        domain_name_label: str,
         **kwargs
     ):
         super(VirtualMachinePublicIPAddressDnsSettingsConfiguration, self).__init__(**kwargs)
-        self.domain_name_label = domain_name_label
+        self.domain_name_label = kwargs['domain_name_label']
 
 
 class VirtualMachineReimageParameters(msrest.serialization.Model):
@@ -10943,12 +10024,10 @@ class VirtualMachineReimageParameters(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        temp_disk: Optional[bool] = None,
         **kwargs
     ):
         super(VirtualMachineReimageParameters, self).__init__(**kwargs)
-        self.temp_disk = temp_disk
+        self.temp_disk = kwargs.get('temp_disk', None)
 
 
 class VirtualMachineRunCommand(Resource):
@@ -11028,30 +10107,18 @@ class VirtualMachineRunCommand(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        source: Optional["VirtualMachineRunCommandScriptSource"] = None,
-        parameters: Optional[List["RunCommandInputParameter"]] = None,
-        protected_parameters: Optional[List["RunCommandInputParameter"]] = None,
-        async_execution: Optional[bool] = False,
-        run_as_user: Optional[str] = None,
-        run_as_password: Optional[str] = None,
-        timeout_in_seconds: Optional[int] = None,
-        output_blob_uri: Optional[str] = None,
-        error_blob_uri: Optional[str] = None,
         **kwargs
     ):
-        super(VirtualMachineRunCommand, self).__init__(location=location, tags=tags, **kwargs)
-        self.source = source
-        self.parameters = parameters
-        self.protected_parameters = protected_parameters
-        self.async_execution = async_execution
-        self.run_as_user = run_as_user
-        self.run_as_password = run_as_password
-        self.timeout_in_seconds = timeout_in_seconds
-        self.output_blob_uri = output_blob_uri
-        self.error_blob_uri = error_blob_uri
+        super(VirtualMachineRunCommand, self).__init__(**kwargs)
+        self.source = kwargs.get('source', None)
+        self.parameters = kwargs.get('parameters', None)
+        self.protected_parameters = kwargs.get('protected_parameters', None)
+        self.async_execution = kwargs.get('async_execution', False)
+        self.run_as_user = kwargs.get('run_as_user', None)
+        self.run_as_password = kwargs.get('run_as_password', None)
+        self.timeout_in_seconds = kwargs.get('timeout_in_seconds', None)
+        self.output_blob_uri = kwargs.get('output_blob_uri', None)
+        self.error_blob_uri = kwargs.get('error_blob_uri', None)
         self.provisioning_state = None
         self.instance_view = None
 
@@ -11091,26 +10158,17 @@ class VirtualMachineRunCommandInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        execution_state: Optional[Union[str, "ExecutionState"]] = None,
-        execution_message: Optional[str] = None,
-        exit_code: Optional[int] = None,
-        output: Optional[str] = None,
-        error: Optional[str] = None,
-        start_time: Optional[datetime.datetime] = None,
-        end_time: Optional[datetime.datetime] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(VirtualMachineRunCommandInstanceView, self).__init__(**kwargs)
-        self.execution_state = execution_state
-        self.execution_message = execution_message
-        self.exit_code = exit_code
-        self.output = output
-        self.error = error
-        self.start_time = start_time
-        self.end_time = end_time
-        self.statuses = statuses
+        self.execution_state = kwargs.get('execution_state', None)
+        self.execution_message = kwargs.get('execution_message', None)
+        self.exit_code = kwargs.get('exit_code', None)
+        self.output = kwargs.get('output', None)
+        self.error = kwargs.get('error', None)
+        self.start_time = kwargs.get('start_time', None)
+        self.end_time = kwargs.get('end_time', None)
+        self.statuses = kwargs.get('statuses', None)
 
 
 class VirtualMachineRunCommandScriptSource(msrest.serialization.Model):
@@ -11132,16 +10190,12 @@ class VirtualMachineRunCommandScriptSource(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        script: Optional[str] = None,
-        script_uri: Optional[str] = None,
-        command_id: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineRunCommandScriptSource, self).__init__(**kwargs)
-        self.script = script
-        self.script_uri = script_uri
-        self.command_id = command_id
+        self.script = kwargs.get('script', None)
+        self.script_uri = kwargs.get('script_uri', None)
+        self.command_id = kwargs.get('command_id', None)
 
 
 class VirtualMachineRunCommandsListResult(msrest.serialization.Model):
@@ -11166,14 +10220,11 @@ class VirtualMachineRunCommandsListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachineRunCommand"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineRunCommandsListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineRunCommandUpdate(UpdateResource):
@@ -11235,29 +10286,18 @@ class VirtualMachineRunCommandUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        source: Optional["VirtualMachineRunCommandScriptSource"] = None,
-        parameters: Optional[List["RunCommandInputParameter"]] = None,
-        protected_parameters: Optional[List["RunCommandInputParameter"]] = None,
-        async_execution: Optional[bool] = False,
-        run_as_user: Optional[str] = None,
-        run_as_password: Optional[str] = None,
-        timeout_in_seconds: Optional[int] = None,
-        output_blob_uri: Optional[str] = None,
-        error_blob_uri: Optional[str] = None,
         **kwargs
     ):
-        super(VirtualMachineRunCommandUpdate, self).__init__(tags=tags, **kwargs)
-        self.source = source
-        self.parameters = parameters
-        self.protected_parameters = protected_parameters
-        self.async_execution = async_execution
-        self.run_as_user = run_as_user
-        self.run_as_password = run_as_password
-        self.timeout_in_seconds = timeout_in_seconds
-        self.output_blob_uri = output_blob_uri
-        self.error_blob_uri = error_blob_uri
+        super(VirtualMachineRunCommandUpdate, self).__init__(**kwargs)
+        self.source = kwargs.get('source', None)
+        self.parameters = kwargs.get('parameters', None)
+        self.protected_parameters = kwargs.get('protected_parameters', None)
+        self.async_execution = kwargs.get('async_execution', False)
+        self.run_as_user = kwargs.get('run_as_user', None)
+        self.run_as_password = kwargs.get('run_as_password', None)
+        self.timeout_in_seconds = kwargs.get('timeout_in_seconds', None)
+        self.output_blob_uri = kwargs.get('output_blob_uri', None)
+        self.error_blob_uri = kwargs.get('error_blob_uri', None)
         self.provisioning_state = None
         self.instance_view = None
 
@@ -11386,52 +10426,30 @@ class VirtualMachineScaleSet(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        sku: Optional["Sku"] = None,
-        plan: Optional["Plan"] = None,
-        identity: Optional["VirtualMachineScaleSetIdentity"] = None,
-        zones: Optional[List[str]] = None,
-        extended_location: Optional["ExtendedLocation"] = None,
-        upgrade_policy: Optional["UpgradePolicy"] = None,
-        automatic_repairs_policy: Optional["AutomaticRepairsPolicy"] = None,
-        virtual_machine_profile: Optional["VirtualMachineScaleSetVMProfile"] = None,
-        overprovision: Optional[bool] = None,
-        do_not_run_extensions_on_overprovisioned_v_ms: Optional[bool] = None,
-        single_placement_group: Optional[bool] = None,
-        zone_balance: Optional[bool] = None,
-        platform_fault_domain_count: Optional[int] = None,
-        proximity_placement_group: Optional["SubResource"] = None,
-        host_group: Optional["SubResource"] = None,
-        additional_capabilities: Optional["AdditionalCapabilities"] = None,
-        scale_in_policy: Optional["ScaleInPolicy"] = None,
-        orchestration_mode: Optional[Union[str, "OrchestrationMode"]] = None,
-        spot_restore_policy: Optional["SpotRestorePolicy"] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSet, self).__init__(location=location, tags=tags, **kwargs)
-        self.sku = sku
-        self.plan = plan
-        self.identity = identity
-        self.zones = zones
-        self.extended_location = extended_location
-        self.upgrade_policy = upgrade_policy
-        self.automatic_repairs_policy = automatic_repairs_policy
-        self.virtual_machine_profile = virtual_machine_profile
+        super(VirtualMachineScaleSet, self).__init__(**kwargs)
+        self.sku = kwargs.get('sku', None)
+        self.plan = kwargs.get('plan', None)
+        self.identity = kwargs.get('identity', None)
+        self.zones = kwargs.get('zones', None)
+        self.extended_location = kwargs.get('extended_location', None)
+        self.upgrade_policy = kwargs.get('upgrade_policy', None)
+        self.automatic_repairs_policy = kwargs.get('automatic_repairs_policy', None)
+        self.virtual_machine_profile = kwargs.get('virtual_machine_profile', None)
         self.provisioning_state = None
-        self.overprovision = overprovision
-        self.do_not_run_extensions_on_overprovisioned_v_ms = do_not_run_extensions_on_overprovisioned_v_ms
+        self.overprovision = kwargs.get('overprovision', None)
+        self.do_not_run_extensions_on_overprovisioned_v_ms = kwargs.get('do_not_run_extensions_on_overprovisioned_v_ms', None)
         self.unique_id = None
-        self.single_placement_group = single_placement_group
-        self.zone_balance = zone_balance
-        self.platform_fault_domain_count = platform_fault_domain_count
-        self.proximity_placement_group = proximity_placement_group
-        self.host_group = host_group
-        self.additional_capabilities = additional_capabilities
-        self.scale_in_policy = scale_in_policy
-        self.orchestration_mode = orchestration_mode
-        self.spot_restore_policy = spot_restore_policy
+        self.single_placement_group = kwargs.get('single_placement_group', None)
+        self.zone_balance = kwargs.get('zone_balance', None)
+        self.platform_fault_domain_count = kwargs.get('platform_fault_domain_count', None)
+        self.proximity_placement_group = kwargs.get('proximity_placement_group', None)
+        self.host_group = kwargs.get('host_group', None)
+        self.additional_capabilities = kwargs.get('additional_capabilities', None)
+        self.scale_in_policy = kwargs.get('scale_in_policy', None)
+        self.orchestration_mode = kwargs.get('orchestration_mode', None)
+        self.spot_restore_policy = kwargs.get('spot_restore_policy', None)
 
 
 class VirtualMachineScaleSetDataDisk(msrest.serialization.Model):
@@ -11493,28 +10511,18 @@ class VirtualMachineScaleSetDataDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        lun: int,
-        create_option: Union[str, "DiskCreateOptionTypes"],
-        name: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        write_accelerator_enabled: Optional[bool] = None,
-        disk_size_gb: Optional[int] = None,
-        managed_disk: Optional["VirtualMachineScaleSetManagedDiskParameters"] = None,
-        disk_iops_read_write: Optional[int] = None,
-        disk_m_bps_read_write: Optional[int] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetDataDisk, self).__init__(**kwargs)
-        self.name = name
-        self.lun = lun
-        self.caching = caching
-        self.write_accelerator_enabled = write_accelerator_enabled
-        self.create_option = create_option
-        self.disk_size_gb = disk_size_gb
-        self.managed_disk = managed_disk
-        self.disk_iops_read_write = disk_iops_read_write
-        self.disk_m_bps_read_write = disk_m_bps_read_write
+        self.name = kwargs.get('name', None)
+        self.lun = kwargs['lun']
+        self.caching = kwargs.get('caching', None)
+        self.write_accelerator_enabled = kwargs.get('write_accelerator_enabled', None)
+        self.create_option = kwargs['create_option']
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
+        self.disk_iops_read_write = kwargs.get('disk_iops_read_write', None)
+        self.disk_m_bps_read_write = kwargs.get('disk_m_bps_read_write', None)
 
 
 class VirtualMachineScaleSetExtension(SubResourceReadOnly):
@@ -11586,34 +10594,22 @@ class VirtualMachineScaleSetExtension(SubResourceReadOnly):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        force_update_tag: Optional[str] = None,
-        publisher: Optional[str] = None,
-        type_properties_type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        auto_upgrade_minor_version: Optional[bool] = None,
-        enable_automatic_upgrade: Optional[bool] = None,
-        settings: Optional[Any] = None,
-        protected_settings: Optional[Any] = None,
-        provision_after_extensions: Optional[List[str]] = None,
-        suppress_failures: Optional[bool] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetExtension, self).__init__(**kwargs)
-        self.name = name
+        self.name = kwargs.get('name', None)
         self.type = None
-        self.force_update_tag = force_update_tag
-        self.publisher = publisher
-        self.type_properties_type = type_properties_type
-        self.type_handler_version = type_handler_version
-        self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        self.enable_automatic_upgrade = enable_automatic_upgrade
-        self.settings = settings
-        self.protected_settings = protected_settings
+        self.force_update_tag = kwargs.get('force_update_tag', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.type_properties_type = kwargs.get('type_properties_type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.auto_upgrade_minor_version = kwargs.get('auto_upgrade_minor_version', None)
+        self.enable_automatic_upgrade = kwargs.get('enable_automatic_upgrade', None)
+        self.settings = kwargs.get('settings', None)
+        self.protected_settings = kwargs.get('protected_settings', None)
         self.provisioning_state = None
-        self.provision_after_extensions = provision_after_extensions
-        self.suppress_failures = suppress_failures
+        self.provision_after_extensions = kwargs.get('provision_after_extensions', None)
+        self.suppress_failures = kwargs.get('suppress_failures', None)
 
 
 class VirtualMachineScaleSetExtensionListResult(msrest.serialization.Model):
@@ -11639,14 +10635,11 @@ class VirtualMachineScaleSetExtensionListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachineScaleSetExtension"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetExtensionListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineScaleSetExtensionProfile(msrest.serialization.Model):
@@ -11668,14 +10661,11 @@ class VirtualMachineScaleSetExtensionProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        extensions: Optional[List["VirtualMachineScaleSetExtension"]] = None,
-        extensions_time_budget: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetExtensionProfile, self).__init__(**kwargs)
-        self.extensions = extensions
-        self.extensions_time_budget = extensions_time_budget
+        self.extensions = kwargs.get('extensions', None)
+        self.extensions_time_budget = kwargs.get('extensions_time_budget', None)
 
 
 class VirtualMachineScaleSetExtensionUpdate(SubResourceReadOnly):
@@ -11748,33 +10738,22 @@ class VirtualMachineScaleSetExtensionUpdate(SubResourceReadOnly):
 
     def __init__(
         self,
-        *,
-        force_update_tag: Optional[str] = None,
-        publisher: Optional[str] = None,
-        type_properties_type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        auto_upgrade_minor_version: Optional[bool] = None,
-        enable_automatic_upgrade: Optional[bool] = None,
-        settings: Optional[Any] = None,
-        protected_settings: Optional[Any] = None,
-        provision_after_extensions: Optional[List[str]] = None,
-        suppress_failures: Optional[bool] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetExtensionUpdate, self).__init__(**kwargs)
         self.name = None
         self.type = None
-        self.force_update_tag = force_update_tag
-        self.publisher = publisher
-        self.type_properties_type = type_properties_type
-        self.type_handler_version = type_handler_version
-        self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        self.enable_automatic_upgrade = enable_automatic_upgrade
-        self.settings = settings
-        self.protected_settings = protected_settings
+        self.force_update_tag = kwargs.get('force_update_tag', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.type_properties_type = kwargs.get('type_properties_type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.auto_upgrade_minor_version = kwargs.get('auto_upgrade_minor_version', None)
+        self.enable_automatic_upgrade = kwargs.get('enable_automatic_upgrade', None)
+        self.settings = kwargs.get('settings', None)
+        self.protected_settings = kwargs.get('protected_settings', None)
         self.provisioning_state = None
-        self.provision_after_extensions = provision_after_extensions
-        self.suppress_failures = suppress_failures
+        self.provision_after_extensions = kwargs.get('provision_after_extensions', None)
+        self.suppress_failures = kwargs.get('suppress_failures', None)
 
 
 class VirtualMachineScaleSetIdentity(msrest.serialization.Model):
@@ -11816,16 +10795,13 @@ class VirtualMachineScaleSetIdentity(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        type: Optional[Union[str, "ResourceIdentityType"]] = None,
-        user_assigned_identities: Optional[Dict[str, "VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetIdentity, self).__init__(**kwargs)
         self.principal_id = None
         self.tenant_id = None
-        self.type = type
-        self.user_assigned_identities = user_assigned_identities
+        self.type = kwargs.get('type', None)
+        self.user_assigned_identities = kwargs.get('user_assigned_identities', None)
 
 
 class VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue(msrest.serialization.Model):
@@ -11891,14 +10867,12 @@ class VirtualMachineScaleSetInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetInstanceView, self).__init__(**kwargs)
         self.virtual_machine = None
         self.extensions = None
-        self.statuses = statuses
+        self.statuses = kwargs.get('statuses', None)
         self.orchestration_services = None
 
 
@@ -11987,29 +10961,18 @@ class VirtualMachineScaleSetIPConfiguration(SubResource):
 
     def __init__(
         self,
-        *,
-        name: str,
-        id: Optional[str] = None,
-        subnet: Optional["ApiEntityReference"] = None,
-        primary: Optional[bool] = None,
-        public_ip_address_configuration: Optional["VirtualMachineScaleSetPublicIPAddressConfiguration"] = None,
-        private_ip_address_version: Optional[Union[str, "IPVersion"]] = None,
-        application_gateway_backend_address_pools: Optional[List["SubResource"]] = None,
-        application_security_groups: Optional[List["SubResource"]] = None,
-        load_balancer_backend_address_pools: Optional[List["SubResource"]] = None,
-        load_balancer_inbound_nat_pools: Optional[List["SubResource"]] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetIPConfiguration, self).__init__(id=id, **kwargs)
-        self.name = name
-        self.subnet = subnet
-        self.primary = primary
-        self.public_ip_address_configuration = public_ip_address_configuration
-        self.private_ip_address_version = private_ip_address_version
-        self.application_gateway_backend_address_pools = application_gateway_backend_address_pools
-        self.application_security_groups = application_security_groups
-        self.load_balancer_backend_address_pools = load_balancer_backend_address_pools
-        self.load_balancer_inbound_nat_pools = load_balancer_inbound_nat_pools
+        super(VirtualMachineScaleSetIPConfiguration, self).__init__(**kwargs)
+        self.name = kwargs['name']
+        self.subnet = kwargs.get('subnet', None)
+        self.primary = kwargs.get('primary', None)
+        self.public_ip_address_configuration = kwargs.get('public_ip_address_configuration', None)
+        self.private_ip_address_version = kwargs.get('private_ip_address_version', None)
+        self.application_gateway_backend_address_pools = kwargs.get('application_gateway_backend_address_pools', None)
+        self.application_security_groups = kwargs.get('application_security_groups', None)
+        self.load_balancer_backend_address_pools = kwargs.get('load_balancer_backend_address_pools', None)
+        self.load_balancer_inbound_nat_pools = kwargs.get('load_balancer_inbound_nat_pools', None)
 
 
 class VirtualMachineScaleSetIpTag(msrest.serialization.Model):
@@ -12028,14 +10991,11 @@ class VirtualMachineScaleSetIpTag(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        ip_tag_type: Optional[str] = None,
-        tag: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetIpTag, self).__init__(**kwargs)
-        self.ip_tag_type = ip_tag_type
-        self.tag = tag
+        self.ip_tag_type = kwargs.get('ip_tag_type', None)
+        self.tag = kwargs.get('tag', None)
 
 
 class VirtualMachineScaleSetListOSUpgradeHistory(msrest.serialization.Model):
@@ -12061,14 +11021,11 @@ class VirtualMachineScaleSetListOSUpgradeHistory(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["UpgradeOperationHistoricalStatusInfo"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetListOSUpgradeHistory, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineScaleSetListResult(msrest.serialization.Model):
@@ -12094,14 +11051,11 @@ class VirtualMachineScaleSetListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachineScaleSet"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineScaleSetListSkusResult(msrest.serialization.Model):
@@ -12127,14 +11081,11 @@ class VirtualMachineScaleSetListSkusResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachineScaleSetSku"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetListSkusResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineScaleSetListWithLinkResult(msrest.serialization.Model):
@@ -12160,14 +11111,11 @@ class VirtualMachineScaleSetListWithLinkResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachineScaleSet"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetListWithLinkResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineScaleSetManagedDiskParameters(msrest.serialization.Model):
@@ -12190,14 +11138,11 @@ class VirtualMachineScaleSetManagedDiskParameters(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        storage_account_type: Optional[Union[str, "StorageAccountTypes"]] = None,
-        disk_encryption_set: Optional["DiskEncryptionSetParameters"] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetManagedDiskParameters, self).__init__(**kwargs)
-        self.storage_account_type = storage_account_type
-        self.disk_encryption_set = disk_encryption_set
+        self.storage_account_type = kwargs.get('storage_account_type', None)
+        self.disk_encryption_set = kwargs.get('disk_encryption_set', None)
 
 
 class VirtualMachineScaleSetNetworkConfiguration(SubResource):
@@ -12251,29 +11196,18 @@ class VirtualMachineScaleSetNetworkConfiguration(SubResource):
 
     def __init__(
         self,
-        *,
-        name: str,
-        id: Optional[str] = None,
-        primary: Optional[bool] = None,
-        enable_accelerated_networking: Optional[bool] = None,
-        enable_fpga: Optional[bool] = None,
-        network_security_group: Optional["SubResource"] = None,
-        dns_settings: Optional["VirtualMachineScaleSetNetworkConfigurationDnsSettings"] = None,
-        ip_configurations: Optional[List["VirtualMachineScaleSetIPConfiguration"]] = None,
-        enable_ip_forwarding: Optional[bool] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetNetworkConfiguration, self).__init__(id=id, **kwargs)
-        self.name = name
-        self.primary = primary
-        self.enable_accelerated_networking = enable_accelerated_networking
-        self.enable_fpga = enable_fpga
-        self.network_security_group = network_security_group
-        self.dns_settings = dns_settings
-        self.ip_configurations = ip_configurations
-        self.enable_ip_forwarding = enable_ip_forwarding
-        self.delete_option = delete_option
+        super(VirtualMachineScaleSetNetworkConfiguration, self).__init__(**kwargs)
+        self.name = kwargs['name']
+        self.primary = kwargs.get('primary', None)
+        self.enable_accelerated_networking = kwargs.get('enable_accelerated_networking', None)
+        self.enable_fpga = kwargs.get('enable_fpga', None)
+        self.network_security_group = kwargs.get('network_security_group', None)
+        self.dns_settings = kwargs.get('dns_settings', None)
+        self.ip_configurations = kwargs.get('ip_configurations', None)
+        self.enable_ip_forwarding = kwargs.get('enable_ip_forwarding', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class VirtualMachineScaleSetNetworkConfigurationDnsSettings(msrest.serialization.Model):
@@ -12289,12 +11223,10 @@ class VirtualMachineScaleSetNetworkConfigurationDnsSettings(msrest.serialization
 
     def __init__(
         self,
-        *,
-        dns_servers: Optional[List[str]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetNetworkConfigurationDnsSettings, self).__init__(**kwargs)
-        self.dns_servers = dns_servers
+        self.dns_servers = kwargs.get('dns_servers', None)
 
 
 class VirtualMachineScaleSetNetworkProfile(msrest.serialization.Model):
@@ -12321,16 +11253,12 @@ class VirtualMachineScaleSetNetworkProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        health_probe: Optional["ApiEntityReference"] = None,
-        network_interface_configurations: Optional[List["VirtualMachineScaleSetNetworkConfiguration"]] = None,
-        network_api_version: Optional[Union[str, "NetworkApiVersion"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetNetworkProfile, self).__init__(**kwargs)
-        self.health_probe = health_probe
-        self.network_interface_configurations = network_interface_configurations
-        self.network_api_version = network_api_version
+        self.health_probe = kwargs.get('health_probe', None)
+        self.network_interface_configurations = kwargs.get('network_interface_configurations', None)
+        self.network_api_version = kwargs.get('network_api_version', None)
 
 
 class VirtualMachineScaleSetOSDisk(msrest.serialization.Model):
@@ -12397,30 +11325,19 @@ class VirtualMachineScaleSetOSDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        create_option: Union[str, "DiskCreateOptionTypes"],
-        name: Optional[str] = None,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        write_accelerator_enabled: Optional[bool] = None,
-        diff_disk_settings: Optional["DiffDiskSettings"] = None,
-        disk_size_gb: Optional[int] = None,
-        os_type: Optional[Union[str, "OperatingSystemTypes"]] = None,
-        image: Optional["VirtualHardDisk"] = None,
-        vhd_containers: Optional[List[str]] = None,
-        managed_disk: Optional["VirtualMachineScaleSetManagedDiskParameters"] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetOSDisk, self).__init__(**kwargs)
-        self.name = name
-        self.caching = caching
-        self.write_accelerator_enabled = write_accelerator_enabled
-        self.create_option = create_option
-        self.diff_disk_settings = diff_disk_settings
-        self.disk_size_gb = disk_size_gb
-        self.os_type = os_type
-        self.image = image
-        self.vhd_containers = vhd_containers
-        self.managed_disk = managed_disk
+        self.name = kwargs.get('name', None)
+        self.caching = kwargs.get('caching', None)
+        self.write_accelerator_enabled = kwargs.get('write_accelerator_enabled', None)
+        self.create_option = kwargs['create_option']
+        self.diff_disk_settings = kwargs.get('diff_disk_settings', None)
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.os_type = kwargs.get('os_type', None)
+        self.image = kwargs.get('image', None)
+        self.vhd_containers = kwargs.get('vhd_containers', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
 
 
 class VirtualMachineScaleSetOSProfile(msrest.serialization.Model):
@@ -12489,24 +11406,16 @@ class VirtualMachineScaleSetOSProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        computer_name_prefix: Optional[str] = None,
-        admin_username: Optional[str] = None,
-        admin_password: Optional[str] = None,
-        custom_data: Optional[str] = None,
-        windows_configuration: Optional["WindowsConfiguration"] = None,
-        linux_configuration: Optional["LinuxConfiguration"] = None,
-        secrets: Optional[List["VaultSecretGroup"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetOSProfile, self).__init__(**kwargs)
-        self.computer_name_prefix = computer_name_prefix
-        self.admin_username = admin_username
-        self.admin_password = admin_password
-        self.custom_data = custom_data
-        self.windows_configuration = windows_configuration
-        self.linux_configuration = linux_configuration
-        self.secrets = secrets
+        self.computer_name_prefix = kwargs.get('computer_name_prefix', None)
+        self.admin_username = kwargs.get('admin_username', None)
+        self.admin_password = kwargs.get('admin_password', None)
+        self.custom_data = kwargs.get('custom_data', None)
+        self.windows_configuration = kwargs.get('windows_configuration', None)
+        self.linux_configuration = kwargs.get('linux_configuration', None)
+        self.secrets = kwargs.get('secrets', None)
 
 
 class VirtualMachineScaleSetPublicIPAddressConfiguration(msrest.serialization.Model):
@@ -12553,26 +11462,17 @@ class VirtualMachineScaleSetPublicIPAddressConfiguration(msrest.serialization.Mo
 
     def __init__(
         self,
-        *,
-        name: str,
-        sku: Optional["PublicIPAddressSku"] = None,
-        idle_timeout_in_minutes: Optional[int] = None,
-        dns_settings: Optional["VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings"] = None,
-        ip_tags: Optional[List["VirtualMachineScaleSetIpTag"]] = None,
-        public_ip_prefix: Optional["SubResource"] = None,
-        public_ip_address_version: Optional[Union[str, "IPVersion"]] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetPublicIPAddressConfiguration, self).__init__(**kwargs)
-        self.name = name
-        self.sku = sku
-        self.idle_timeout_in_minutes = idle_timeout_in_minutes
-        self.dns_settings = dns_settings
-        self.ip_tags = ip_tags
-        self.public_ip_prefix = public_ip_prefix
-        self.public_ip_address_version = public_ip_address_version
-        self.delete_option = delete_option
+        self.name = kwargs['name']
+        self.sku = kwargs.get('sku', None)
+        self.idle_timeout_in_minutes = kwargs.get('idle_timeout_in_minutes', None)
+        self.dns_settings = kwargs.get('dns_settings', None)
+        self.ip_tags = kwargs.get('ip_tags', None)
+        self.public_ip_prefix = kwargs.get('public_ip_prefix', None)
+        self.public_ip_address_version = kwargs.get('public_ip_address_version', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings(msrest.serialization.Model):
@@ -12596,12 +11496,10 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings(msrest.seria
 
     def __init__(
         self,
-        *,
-        domain_name_label: str,
         **kwargs
     ):
         super(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings, self).__init__(**kwargs)
-        self.domain_name_label = domain_name_label
+        self.domain_name_label = kwargs['domain_name_label']
 
 
 class VirtualMachineScaleSetVMReimageParameters(VirtualMachineReimageParameters):
@@ -12618,11 +11516,9 @@ class VirtualMachineScaleSetVMReimageParameters(VirtualMachineReimageParameters)
 
     def __init__(
         self,
-        *,
-        temp_disk: Optional[bool] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetVMReimageParameters, self).__init__(temp_disk=temp_disk, **kwargs)
+        super(VirtualMachineScaleSetVMReimageParameters, self).__init__(**kwargs)
 
 
 class VirtualMachineScaleSetReimageParameters(VirtualMachineScaleSetVMReimageParameters):
@@ -12644,13 +11540,10 @@ class VirtualMachineScaleSetReimageParameters(VirtualMachineScaleSetVMReimagePar
 
     def __init__(
         self,
-        *,
-        temp_disk: Optional[bool] = None,
-        instance_ids: Optional[List[str]] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetReimageParameters, self).__init__(temp_disk=temp_disk, **kwargs)
-        self.instance_ids = instance_ids
+        super(VirtualMachineScaleSetReimageParameters, self).__init__(**kwargs)
+        self.instance_ids = kwargs.get('instance_ids', None)
 
 
 class VirtualMachineScaleSetSku(msrest.serialization.Model):
@@ -12758,16 +11651,12 @@ class VirtualMachineScaleSetStorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        image_reference: Optional["ImageReference"] = None,
-        os_disk: Optional["VirtualMachineScaleSetOSDisk"] = None,
-        data_disks: Optional[List["VirtualMachineScaleSetDataDisk"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetStorageProfile, self).__init__(**kwargs)
-        self.image_reference = image_reference
-        self.os_disk = os_disk
-        self.data_disks = data_disks
+        self.image_reference = kwargs.get('image_reference', None)
+        self.os_disk = kwargs.get('os_disk', None)
+        self.data_disks = kwargs.get('data_disks', None)
 
 
 class VirtualMachineScaleSetUpdate(UpdateResource):
@@ -12832,35 +11721,21 @@ class VirtualMachineScaleSetUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        sku: Optional["Sku"] = None,
-        plan: Optional["Plan"] = None,
-        identity: Optional["VirtualMachineScaleSetIdentity"] = None,
-        upgrade_policy: Optional["UpgradePolicy"] = None,
-        automatic_repairs_policy: Optional["AutomaticRepairsPolicy"] = None,
-        virtual_machine_profile: Optional["VirtualMachineScaleSetUpdateVMProfile"] = None,
-        overprovision: Optional[bool] = None,
-        do_not_run_extensions_on_overprovisioned_v_ms: Optional[bool] = None,
-        single_placement_group: Optional[bool] = None,
-        additional_capabilities: Optional["AdditionalCapabilities"] = None,
-        scale_in_policy: Optional["ScaleInPolicy"] = None,
-        proximity_placement_group: Optional["SubResource"] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetUpdate, self).__init__(tags=tags, **kwargs)
-        self.sku = sku
-        self.plan = plan
-        self.identity = identity
-        self.upgrade_policy = upgrade_policy
-        self.automatic_repairs_policy = automatic_repairs_policy
-        self.virtual_machine_profile = virtual_machine_profile
-        self.overprovision = overprovision
-        self.do_not_run_extensions_on_overprovisioned_v_ms = do_not_run_extensions_on_overprovisioned_v_ms
-        self.single_placement_group = single_placement_group
-        self.additional_capabilities = additional_capabilities
-        self.scale_in_policy = scale_in_policy
-        self.proximity_placement_group = proximity_placement_group
+        super(VirtualMachineScaleSetUpdate, self).__init__(**kwargs)
+        self.sku = kwargs.get('sku', None)
+        self.plan = kwargs.get('plan', None)
+        self.identity = kwargs.get('identity', None)
+        self.upgrade_policy = kwargs.get('upgrade_policy', None)
+        self.automatic_repairs_policy = kwargs.get('automatic_repairs_policy', None)
+        self.virtual_machine_profile = kwargs.get('virtual_machine_profile', None)
+        self.overprovision = kwargs.get('overprovision', None)
+        self.do_not_run_extensions_on_overprovisioned_v_ms = kwargs.get('do_not_run_extensions_on_overprovisioned_v_ms', None)
+        self.single_placement_group = kwargs.get('single_placement_group', None)
+        self.additional_capabilities = kwargs.get('additional_capabilities', None)
+        self.scale_in_policy = kwargs.get('scale_in_policy', None)
+        self.proximity_placement_group = kwargs.get('proximity_placement_group', None)
 
 
 class VirtualMachineScaleSetUpdateIPConfiguration(SubResource):
@@ -12911,29 +11786,18 @@ class VirtualMachineScaleSetUpdateIPConfiguration(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        name: Optional[str] = None,
-        subnet: Optional["ApiEntityReference"] = None,
-        primary: Optional[bool] = None,
-        public_ip_address_configuration: Optional["VirtualMachineScaleSetUpdatePublicIPAddressConfiguration"] = None,
-        private_ip_address_version: Optional[Union[str, "IPVersion"]] = None,
-        application_gateway_backend_address_pools: Optional[List["SubResource"]] = None,
-        application_security_groups: Optional[List["SubResource"]] = None,
-        load_balancer_backend_address_pools: Optional[List["SubResource"]] = None,
-        load_balancer_inbound_nat_pools: Optional[List["SubResource"]] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetUpdateIPConfiguration, self).__init__(id=id, **kwargs)
-        self.name = name
-        self.subnet = subnet
-        self.primary = primary
-        self.public_ip_address_configuration = public_ip_address_configuration
-        self.private_ip_address_version = private_ip_address_version
-        self.application_gateway_backend_address_pools = application_gateway_backend_address_pools
-        self.application_security_groups = application_security_groups
-        self.load_balancer_backend_address_pools = load_balancer_backend_address_pools
-        self.load_balancer_inbound_nat_pools = load_balancer_inbound_nat_pools
+        super(VirtualMachineScaleSetUpdateIPConfiguration, self).__init__(**kwargs)
+        self.name = kwargs.get('name', None)
+        self.subnet = kwargs.get('subnet', None)
+        self.primary = kwargs.get('primary', None)
+        self.public_ip_address_configuration = kwargs.get('public_ip_address_configuration', None)
+        self.private_ip_address_version = kwargs.get('private_ip_address_version', None)
+        self.application_gateway_backend_address_pools = kwargs.get('application_gateway_backend_address_pools', None)
+        self.application_security_groups = kwargs.get('application_security_groups', None)
+        self.load_balancer_backend_address_pools = kwargs.get('load_balancer_backend_address_pools', None)
+        self.load_balancer_inbound_nat_pools = kwargs.get('load_balancer_inbound_nat_pools', None)
 
 
 class VirtualMachineScaleSetUpdateNetworkConfiguration(SubResource):
@@ -12980,29 +11844,18 @@ class VirtualMachineScaleSetUpdateNetworkConfiguration(SubResource):
 
     def __init__(
         self,
-        *,
-        id: Optional[str] = None,
-        name: Optional[str] = None,
-        primary: Optional[bool] = None,
-        enable_accelerated_networking: Optional[bool] = None,
-        enable_fpga: Optional[bool] = None,
-        network_security_group: Optional["SubResource"] = None,
-        dns_settings: Optional["VirtualMachineScaleSetNetworkConfigurationDnsSettings"] = None,
-        ip_configurations: Optional[List["VirtualMachineScaleSetUpdateIPConfiguration"]] = None,
-        enable_ip_forwarding: Optional[bool] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetUpdateNetworkConfiguration, self).__init__(id=id, **kwargs)
-        self.name = name
-        self.primary = primary
-        self.enable_accelerated_networking = enable_accelerated_networking
-        self.enable_fpga = enable_fpga
-        self.network_security_group = network_security_group
-        self.dns_settings = dns_settings
-        self.ip_configurations = ip_configurations
-        self.enable_ip_forwarding = enable_ip_forwarding
-        self.delete_option = delete_option
+        super(VirtualMachineScaleSetUpdateNetworkConfiguration, self).__init__(**kwargs)
+        self.name = kwargs.get('name', None)
+        self.primary = kwargs.get('primary', None)
+        self.enable_accelerated_networking = kwargs.get('enable_accelerated_networking', None)
+        self.enable_fpga = kwargs.get('enable_fpga', None)
+        self.network_security_group = kwargs.get('network_security_group', None)
+        self.dns_settings = kwargs.get('dns_settings', None)
+        self.ip_configurations = kwargs.get('ip_configurations', None)
+        self.enable_ip_forwarding = kwargs.get('enable_ip_forwarding', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class VirtualMachineScaleSetUpdateNetworkProfile(msrest.serialization.Model):
@@ -13029,16 +11882,12 @@ class VirtualMachineScaleSetUpdateNetworkProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        health_probe: Optional["ApiEntityReference"] = None,
-        network_interface_configurations: Optional[List["VirtualMachineScaleSetUpdateNetworkConfiguration"]] = None,
-        network_api_version: Optional[Union[str, "NetworkApiVersion"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetUpdateNetworkProfile, self).__init__(**kwargs)
-        self.health_probe = health_probe
-        self.network_interface_configurations = network_interface_configurations
-        self.network_api_version = network_api_version
+        self.health_probe = kwargs.get('health_probe', None)
+        self.network_interface_configurations = kwargs.get('network_interface_configurations', None)
+        self.network_api_version = kwargs.get('network_api_version', None)
 
 
 class VirtualMachineScaleSetUpdateOSDisk(msrest.serialization.Model):
@@ -13075,22 +11924,15 @@ class VirtualMachineScaleSetUpdateOSDisk(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        caching: Optional[Union[str, "CachingTypes"]] = None,
-        write_accelerator_enabled: Optional[bool] = None,
-        disk_size_gb: Optional[int] = None,
-        image: Optional["VirtualHardDisk"] = None,
-        vhd_containers: Optional[List[str]] = None,
-        managed_disk: Optional["VirtualMachineScaleSetManagedDiskParameters"] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetUpdateOSDisk, self).__init__(**kwargs)
-        self.caching = caching
-        self.write_accelerator_enabled = write_accelerator_enabled
-        self.disk_size_gb = disk_size_gb
-        self.image = image
-        self.vhd_containers = vhd_containers
-        self.managed_disk = managed_disk
+        self.caching = kwargs.get('caching', None)
+        self.write_accelerator_enabled = kwargs.get('write_accelerator_enabled', None)
+        self.disk_size_gb = kwargs.get('disk_size_gb', None)
+        self.image = kwargs.get('image', None)
+        self.vhd_containers = kwargs.get('vhd_containers', None)
+        self.managed_disk = kwargs.get('managed_disk', None)
 
 
 class VirtualMachineScaleSetUpdateOSProfile(msrest.serialization.Model):
@@ -13115,18 +11957,13 @@ class VirtualMachineScaleSetUpdateOSProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        custom_data: Optional[str] = None,
-        windows_configuration: Optional["WindowsConfiguration"] = None,
-        linux_configuration: Optional["LinuxConfiguration"] = None,
-        secrets: Optional[List["VaultSecretGroup"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetUpdateOSProfile, self).__init__(**kwargs)
-        self.custom_data = custom_data
-        self.windows_configuration = windows_configuration
-        self.linux_configuration = linux_configuration
-        self.secrets = secrets
+        self.custom_data = kwargs.get('custom_data', None)
+        self.windows_configuration = kwargs.get('windows_configuration', None)
+        self.linux_configuration = kwargs.get('linux_configuration', None)
+        self.secrets = kwargs.get('secrets', None)
 
 
 class VirtualMachineScaleSetUpdatePublicIPAddressConfiguration(msrest.serialization.Model):
@@ -13153,18 +11990,13 @@ class VirtualMachineScaleSetUpdatePublicIPAddressConfiguration(msrest.serializat
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        idle_timeout_in_minutes: Optional[int] = None,
-        dns_settings: Optional["VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings"] = None,
-        delete_option: Optional[Union[str, "DeleteOptions"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetUpdatePublicIPAddressConfiguration, self).__init__(**kwargs)
-        self.name = name
-        self.idle_timeout_in_minutes = idle_timeout_in_minutes
-        self.dns_settings = dns_settings
-        self.delete_option = delete_option
+        self.name = kwargs.get('name', None)
+        self.idle_timeout_in_minutes = kwargs.get('idle_timeout_in_minutes', None)
+        self.dns_settings = kwargs.get('dns_settings', None)
+        self.delete_option = kwargs.get('delete_option', None)
 
 
 class VirtualMachineScaleSetUpdateStorageProfile(msrest.serialization.Model):
@@ -13186,16 +12018,12 @@ class VirtualMachineScaleSetUpdateStorageProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        image_reference: Optional["ImageReference"] = None,
-        os_disk: Optional["VirtualMachineScaleSetUpdateOSDisk"] = None,
-        data_disks: Optional[List["VirtualMachineScaleSetDataDisk"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetUpdateStorageProfile, self).__init__(**kwargs)
-        self.image_reference = image_reference
-        self.os_disk = os_disk
-        self.data_disks = data_disks
+        self.image_reference = kwargs.get('image_reference', None)
+        self.os_disk = kwargs.get('os_disk', None)
+        self.data_disks = kwargs.get('data_disks', None)
 
 
 class VirtualMachineScaleSetUpdateVMProfile(msrest.serialization.Model):
@@ -13243,30 +12071,19 @@ class VirtualMachineScaleSetUpdateVMProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_profile: Optional["VirtualMachineScaleSetUpdateOSProfile"] = None,
-        storage_profile: Optional["VirtualMachineScaleSetUpdateStorageProfile"] = None,
-        network_profile: Optional["VirtualMachineScaleSetUpdateNetworkProfile"] = None,
-        security_profile: Optional["SecurityProfile"] = None,
-        diagnostics_profile: Optional["DiagnosticsProfile"] = None,
-        extension_profile: Optional["VirtualMachineScaleSetExtensionProfile"] = None,
-        license_type: Optional[str] = None,
-        billing_profile: Optional["BillingProfile"] = None,
-        scheduled_events_profile: Optional["ScheduledEventsProfile"] = None,
-        user_data: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetUpdateVMProfile, self).__init__(**kwargs)
-        self.os_profile = os_profile
-        self.storage_profile = storage_profile
-        self.network_profile = network_profile
-        self.security_profile = security_profile
-        self.diagnostics_profile = diagnostics_profile
-        self.extension_profile = extension_profile
-        self.license_type = license_type
-        self.billing_profile = billing_profile
-        self.scheduled_events_profile = scheduled_events_profile
-        self.user_data = user_data
+        self.os_profile = kwargs.get('os_profile', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
+        self.network_profile = kwargs.get('network_profile', None)
+        self.security_profile = kwargs.get('security_profile', None)
+        self.diagnostics_profile = kwargs.get('diagnostics_profile', None)
+        self.extension_profile = kwargs.get('extension_profile', None)
+        self.license_type = kwargs.get('license_type', None)
+        self.billing_profile = kwargs.get('billing_profile', None)
+        self.scheduled_events_profile = kwargs.get('scheduled_events_profile', None)
+        self.user_data = kwargs.get('user_data', None)
 
 
 class VirtualMachineScaleSetVM(Resource):
@@ -13413,47 +12230,31 @@ class VirtualMachineScaleSetVM(Resource):
 
     def __init__(
         self,
-        *,
-        location: str,
-        tags: Optional[Dict[str, str]] = None,
-        plan: Optional["Plan"] = None,
-        hardware_profile: Optional["HardwareProfile"] = None,
-        storage_profile: Optional["StorageProfile"] = None,
-        additional_capabilities: Optional["AdditionalCapabilities"] = None,
-        os_profile: Optional["OSProfile"] = None,
-        security_profile: Optional["SecurityProfile"] = None,
-        network_profile: Optional["NetworkProfile"] = None,
-        network_profile_configuration: Optional["VirtualMachineScaleSetVMNetworkProfileConfiguration"] = None,
-        diagnostics_profile: Optional["DiagnosticsProfile"] = None,
-        availability_set: Optional["SubResource"] = None,
-        license_type: Optional[str] = None,
-        protection_policy: Optional["VirtualMachineScaleSetVMProtectionPolicy"] = None,
-        user_data: Optional[str] = None,
         **kwargs
     ):
-        super(VirtualMachineScaleSetVM, self).__init__(location=location, tags=tags, **kwargs)
+        super(VirtualMachineScaleSetVM, self).__init__(**kwargs)
         self.instance_id = None
         self.sku = None
-        self.plan = plan
+        self.plan = kwargs.get('plan', None)
         self.resources = None
         self.zones = None
         self.latest_model_applied = None
         self.vm_id = None
         self.instance_view = None
-        self.hardware_profile = hardware_profile
-        self.storage_profile = storage_profile
-        self.additional_capabilities = additional_capabilities
-        self.os_profile = os_profile
-        self.security_profile = security_profile
-        self.network_profile = network_profile
-        self.network_profile_configuration = network_profile_configuration
-        self.diagnostics_profile = diagnostics_profile
-        self.availability_set = availability_set
+        self.hardware_profile = kwargs.get('hardware_profile', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
+        self.additional_capabilities = kwargs.get('additional_capabilities', None)
+        self.os_profile = kwargs.get('os_profile', None)
+        self.security_profile = kwargs.get('security_profile', None)
+        self.network_profile = kwargs.get('network_profile', None)
+        self.network_profile_configuration = kwargs.get('network_profile_configuration', None)
+        self.diagnostics_profile = kwargs.get('diagnostics_profile', None)
+        self.availability_set = kwargs.get('availability_set', None)
         self.provisioning_state = None
-        self.license_type = license_type
+        self.license_type = kwargs.get('license_type', None)
         self.model_definition_applied = None
-        self.protection_policy = protection_policy
-        self.user_data = user_data
+        self.protection_policy = kwargs.get('protection_policy', None)
+        self.user_data = kwargs.get('user_data', None)
 
 
 class VirtualMachineScaleSetVMExtension(SubResourceReadOnly):
@@ -13525,33 +12326,22 @@ class VirtualMachineScaleSetVMExtension(SubResourceReadOnly):
 
     def __init__(
         self,
-        *,
-        force_update_tag: Optional[str] = None,
-        publisher: Optional[str] = None,
-        type_properties_type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        auto_upgrade_minor_version: Optional[bool] = None,
-        enable_automatic_upgrade: Optional[bool] = None,
-        settings: Optional[Any] = None,
-        protected_settings: Optional[Any] = None,
-        instance_view: Optional["VirtualMachineExtensionInstanceView"] = None,
-        suppress_failures: Optional[bool] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMExtension, self).__init__(**kwargs)
         self.name = None
         self.type = None
-        self.force_update_tag = force_update_tag
-        self.publisher = publisher
-        self.type_properties_type = type_properties_type
-        self.type_handler_version = type_handler_version
-        self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        self.enable_automatic_upgrade = enable_automatic_upgrade
-        self.settings = settings
-        self.protected_settings = protected_settings
+        self.force_update_tag = kwargs.get('force_update_tag', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.type_properties_type = kwargs.get('type_properties_type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.auto_upgrade_minor_version = kwargs.get('auto_upgrade_minor_version', None)
+        self.enable_automatic_upgrade = kwargs.get('enable_automatic_upgrade', None)
+        self.settings = kwargs.get('settings', None)
+        self.protected_settings = kwargs.get('protected_settings', None)
         self.provisioning_state = None
-        self.instance_view = instance_view
-        self.suppress_failures = suppress_failures
+        self.instance_view = kwargs.get('instance_view', None)
+        self.suppress_failures = kwargs.get('suppress_failures', None)
 
 
 class VirtualMachineScaleSetVMExtensionsListResult(msrest.serialization.Model):
@@ -13567,12 +12357,10 @@ class VirtualMachineScaleSetVMExtensionsListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: Optional[List["VirtualMachineScaleSetVMExtension"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMExtensionsListResult, self).__init__(**kwargs)
-        self.value = value
+        self.value = kwargs.get('value', None)
 
 
 class VirtualMachineScaleSetVMExtensionsSummary(msrest.serialization.Model):
@@ -13668,30 +12456,20 @@ class VirtualMachineScaleSetVMExtensionUpdate(SubResourceReadOnly):
 
     def __init__(
         self,
-        *,
-        force_update_tag: Optional[str] = None,
-        publisher: Optional[str] = None,
-        type_properties_type: Optional[str] = None,
-        type_handler_version: Optional[str] = None,
-        auto_upgrade_minor_version: Optional[bool] = None,
-        enable_automatic_upgrade: Optional[bool] = None,
-        settings: Optional[Any] = None,
-        protected_settings: Optional[Any] = None,
-        suppress_failures: Optional[bool] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMExtensionUpdate, self).__init__(**kwargs)
         self.name = None
         self.type = None
-        self.force_update_tag = force_update_tag
-        self.publisher = publisher
-        self.type_properties_type = type_properties_type
-        self.type_handler_version = type_handler_version
-        self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        self.enable_automatic_upgrade = enable_automatic_upgrade
-        self.settings = settings
-        self.protected_settings = protected_settings
-        self.suppress_failures = suppress_failures
+        self.force_update_tag = kwargs.get('force_update_tag', None)
+        self.publisher = kwargs.get('publisher', None)
+        self.type_properties_type = kwargs.get('type_properties_type', None)
+        self.type_handler_version = kwargs.get('type_handler_version', None)
+        self.auto_upgrade_minor_version = kwargs.get('auto_upgrade_minor_version', None)
+        self.enable_automatic_upgrade = kwargs.get('enable_automatic_upgrade', None)
+        self.settings = kwargs.get('settings', None)
+        self.protected_settings = kwargs.get('protected_settings', None)
+        self.suppress_failures = kwargs.get('suppress_failures', None)
 
 
 class VirtualMachineScaleSetVMInstanceIDs(msrest.serialization.Model):
@@ -13709,12 +12487,10 @@ class VirtualMachineScaleSetVMInstanceIDs(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        instance_ids: Optional[List[str]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMInstanceIDs, self).__init__(**kwargs)
-        self.instance_ids = instance_ids
+        self.instance_ids = kwargs.get('instance_ids', None)
 
 
 class VirtualMachineScaleSetVMInstanceRequiredIDs(msrest.serialization.Model):
@@ -13736,12 +12512,10 @@ class VirtualMachineScaleSetVMInstanceRequiredIDs(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        instance_ids: List[str],
         **kwargs
     ):
         super(VirtualMachineScaleSetVMInstanceRequiredIDs, self).__init__(**kwargs)
-        self.instance_ids = instance_ids
+        self.instance_ids = kwargs['instance_ids']
 
 
 class VirtualMachineScaleSetVMInstanceView(msrest.serialization.Model):
@@ -13806,32 +12580,21 @@ class VirtualMachineScaleSetVMInstanceView(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        platform_update_domain: Optional[int] = None,
-        platform_fault_domain: Optional[int] = None,
-        rdp_thumb_print: Optional[str] = None,
-        vm_agent: Optional["VirtualMachineAgentInstanceView"] = None,
-        maintenance_redeploy_status: Optional["MaintenanceRedeployStatus"] = None,
-        disks: Optional[List["DiskInstanceView"]] = None,
-        extensions: Optional[List["VirtualMachineExtensionInstanceView"]] = None,
-        boot_diagnostics: Optional["BootDiagnosticsInstanceView"] = None,
-        statuses: Optional[List["InstanceViewStatus"]] = None,
-        placement_group_id: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMInstanceView, self).__init__(**kwargs)
-        self.platform_update_domain = platform_update_domain
-        self.platform_fault_domain = platform_fault_domain
-        self.rdp_thumb_print = rdp_thumb_print
-        self.vm_agent = vm_agent
-        self.maintenance_redeploy_status = maintenance_redeploy_status
-        self.disks = disks
-        self.extensions = extensions
+        self.platform_update_domain = kwargs.get('platform_update_domain', None)
+        self.platform_fault_domain = kwargs.get('platform_fault_domain', None)
+        self.rdp_thumb_print = kwargs.get('rdp_thumb_print', None)
+        self.vm_agent = kwargs.get('vm_agent', None)
+        self.maintenance_redeploy_status = kwargs.get('maintenance_redeploy_status', None)
+        self.disks = kwargs.get('disks', None)
+        self.extensions = kwargs.get('extensions', None)
         self.vm_health = None
-        self.boot_diagnostics = boot_diagnostics
-        self.statuses = statuses
+        self.boot_diagnostics = kwargs.get('boot_diagnostics', None)
+        self.statuses = kwargs.get('statuses', None)
         self.assigned_host = None
-        self.placement_group_id = placement_group_id
+        self.placement_group_id = kwargs.get('placement_group_id', None)
 
 
 class VirtualMachineScaleSetVMListResult(msrest.serialization.Model):
@@ -13857,14 +12620,11 @@ class VirtualMachineScaleSetVMListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: List["VirtualMachineScaleSetVM"],
-        next_link: Optional[str] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMListResult, self).__init__(**kwargs)
-        self.value = value
-        self.next_link = next_link
+        self.value = kwargs['value']
+        self.next_link = kwargs.get('next_link', None)
 
 
 class VirtualMachineScaleSetVMNetworkProfileConfiguration(msrest.serialization.Model):
@@ -13881,12 +12641,10 @@ class VirtualMachineScaleSetVMNetworkProfileConfiguration(msrest.serialization.M
 
     def __init__(
         self,
-        *,
-        network_interface_configurations: Optional[List["VirtualMachineScaleSetNetworkConfiguration"]] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMNetworkProfileConfiguration, self).__init__(**kwargs)
-        self.network_interface_configurations = network_interface_configurations
+        self.network_interface_configurations = kwargs.get('network_interface_configurations', None)
 
 
 class VirtualMachineScaleSetVMProfile(msrest.serialization.Model):
@@ -13971,38 +12729,23 @@ class VirtualMachineScaleSetVMProfile(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        os_profile: Optional["VirtualMachineScaleSetOSProfile"] = None,
-        storage_profile: Optional["VirtualMachineScaleSetStorageProfile"] = None,
-        network_profile: Optional["VirtualMachineScaleSetNetworkProfile"] = None,
-        security_profile: Optional["SecurityProfile"] = None,
-        diagnostics_profile: Optional["DiagnosticsProfile"] = None,
-        extension_profile: Optional["VirtualMachineScaleSetExtensionProfile"] = None,
-        license_type: Optional[str] = None,
-        priority: Optional[Union[str, "VirtualMachinePriorityTypes"]] = None,
-        eviction_policy: Optional[Union[str, "VirtualMachineEvictionPolicyTypes"]] = None,
-        billing_profile: Optional["BillingProfile"] = None,
-        scheduled_events_profile: Optional["ScheduledEventsProfile"] = None,
-        user_data: Optional[str] = None,
-        capacity_reservation: Optional["CapacityReservationProfile"] = None,
-        application_profile: Optional["ApplicationProfile"] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMProfile, self).__init__(**kwargs)
-        self.os_profile = os_profile
-        self.storage_profile = storage_profile
-        self.network_profile = network_profile
-        self.security_profile = security_profile
-        self.diagnostics_profile = diagnostics_profile
-        self.extension_profile = extension_profile
-        self.license_type = license_type
-        self.priority = priority
-        self.eviction_policy = eviction_policy
-        self.billing_profile = billing_profile
-        self.scheduled_events_profile = scheduled_events_profile
-        self.user_data = user_data
-        self.capacity_reservation = capacity_reservation
-        self.application_profile = application_profile
+        self.os_profile = kwargs.get('os_profile', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
+        self.network_profile = kwargs.get('network_profile', None)
+        self.security_profile = kwargs.get('security_profile', None)
+        self.diagnostics_profile = kwargs.get('diagnostics_profile', None)
+        self.extension_profile = kwargs.get('extension_profile', None)
+        self.license_type = kwargs.get('license_type', None)
+        self.priority = kwargs.get('priority', None)
+        self.eviction_policy = kwargs.get('eviction_policy', None)
+        self.billing_profile = kwargs.get('billing_profile', None)
+        self.scheduled_events_profile = kwargs.get('scheduled_events_profile', None)
+        self.user_data = kwargs.get('user_data', None)
+        self.capacity_reservation = kwargs.get('capacity_reservation', None)
+        self.application_profile = kwargs.get('application_profile', None)
 
 
 class VirtualMachineScaleSetVMProtectionPolicy(msrest.serialization.Model):
@@ -14024,14 +12767,11 @@ class VirtualMachineScaleSetVMProtectionPolicy(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        protect_from_scale_in: Optional[bool] = None,
-        protect_from_scale_set_actions: Optional[bool] = None,
         **kwargs
     ):
         super(VirtualMachineScaleSetVMProtectionPolicy, self).__init__(**kwargs)
-        self.protect_from_scale_in = protect_from_scale_in
-        self.protect_from_scale_set_actions = protect_from_scale_set_actions
+        self.protect_from_scale_in = kwargs.get('protect_from_scale_in', None)
+        self.protect_from_scale_set_actions = kwargs.get('protect_from_scale_set_actions', None)
 
 
 class VirtualMachineSize(msrest.serialization.Model):
@@ -14068,22 +12808,15 @@ class VirtualMachineSize(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        name: Optional[str] = None,
-        number_of_cores: Optional[int] = None,
-        os_disk_size_in_mb: Optional[int] = None,
-        resource_disk_size_in_mb: Optional[int] = None,
-        memory_in_mb: Optional[int] = None,
-        max_data_disk_count: Optional[int] = None,
         **kwargs
     ):
         super(VirtualMachineSize, self).__init__(**kwargs)
-        self.name = name
-        self.number_of_cores = number_of_cores
-        self.os_disk_size_in_mb = os_disk_size_in_mb
-        self.resource_disk_size_in_mb = resource_disk_size_in_mb
-        self.memory_in_mb = memory_in_mb
-        self.max_data_disk_count = max_data_disk_count
+        self.name = kwargs.get('name', None)
+        self.number_of_cores = kwargs.get('number_of_cores', None)
+        self.os_disk_size_in_mb = kwargs.get('os_disk_size_in_mb', None)
+        self.resource_disk_size_in_mb = kwargs.get('resource_disk_size_in_mb', None)
+        self.memory_in_mb = kwargs.get('memory_in_mb', None)
+        self.max_data_disk_count = kwargs.get('max_data_disk_count', None)
 
 
 class VirtualMachineSizeListResult(msrest.serialization.Model):
@@ -14099,12 +12832,10 @@ class VirtualMachineSizeListResult(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        value: Optional[List["VirtualMachineSize"]] = None,
         **kwargs
     ):
         super(VirtualMachineSizeListResult, self).__init__(**kwargs)
-        self.value = value
+        self.value = kwargs.get('value', None)
 
 
 class VirtualMachineSoftwarePatchProperties(msrest.serialization.Model):
@@ -14379,64 +13110,37 @@ class VirtualMachineUpdate(UpdateResource):
 
     def __init__(
         self,
-        *,
-        tags: Optional[Dict[str, str]] = None,
-        plan: Optional["Plan"] = None,
-        identity: Optional["VirtualMachineIdentity"] = None,
-        zones: Optional[List[str]] = None,
-        hardware_profile: Optional["HardwareProfile"] = None,
-        storage_profile: Optional["StorageProfile"] = None,
-        additional_capabilities: Optional["AdditionalCapabilities"] = None,
-        os_profile: Optional["OSProfile"] = None,
-        network_profile: Optional["NetworkProfile"] = None,
-        security_profile: Optional["SecurityProfile"] = None,
-        diagnostics_profile: Optional["DiagnosticsProfile"] = None,
-        availability_set: Optional["SubResource"] = None,
-        virtual_machine_scale_set: Optional["SubResource"] = None,
-        proximity_placement_group: Optional["SubResource"] = None,
-        priority: Optional[Union[str, "VirtualMachinePriorityTypes"]] = None,
-        eviction_policy: Optional[Union[str, "VirtualMachineEvictionPolicyTypes"]] = None,
-        billing_profile: Optional["BillingProfile"] = None,
-        host: Optional["SubResource"] = None,
-        host_group: Optional["SubResource"] = None,
-        license_type: Optional[str] = None,
-        extensions_time_budget: Optional[str] = None,
-        platform_fault_domain: Optional[int] = None,
-        scheduled_events_profile: Optional["ScheduledEventsProfile"] = None,
-        user_data: Optional[str] = None,
-        capacity_reservation: Optional["CapacityReservationProfile"] = None,
-        application_profile: Optional["ApplicationProfile"] = None,
         **kwargs
     ):
-        super(VirtualMachineUpdate, self).__init__(tags=tags, **kwargs)
-        self.plan = plan
-        self.identity = identity
-        self.zones = zones
-        self.hardware_profile = hardware_profile
-        self.storage_profile = storage_profile
-        self.additional_capabilities = additional_capabilities
-        self.os_profile = os_profile
-        self.network_profile = network_profile
-        self.security_profile = security_profile
-        self.diagnostics_profile = diagnostics_profile
-        self.availability_set = availability_set
-        self.virtual_machine_scale_set = virtual_machine_scale_set
-        self.proximity_placement_group = proximity_placement_group
-        self.priority = priority
-        self.eviction_policy = eviction_policy
-        self.billing_profile = billing_profile
-        self.host = host
-        self.host_group = host_group
+        super(VirtualMachineUpdate, self).__init__(**kwargs)
+        self.plan = kwargs.get('plan', None)
+        self.identity = kwargs.get('identity', None)
+        self.zones = kwargs.get('zones', None)
+        self.hardware_profile = kwargs.get('hardware_profile', None)
+        self.storage_profile = kwargs.get('storage_profile', None)
+        self.additional_capabilities = kwargs.get('additional_capabilities', None)
+        self.os_profile = kwargs.get('os_profile', None)
+        self.network_profile = kwargs.get('network_profile', None)
+        self.security_profile = kwargs.get('security_profile', None)
+        self.diagnostics_profile = kwargs.get('diagnostics_profile', None)
+        self.availability_set = kwargs.get('availability_set', None)
+        self.virtual_machine_scale_set = kwargs.get('virtual_machine_scale_set', None)
+        self.proximity_placement_group = kwargs.get('proximity_placement_group', None)
+        self.priority = kwargs.get('priority', None)
+        self.eviction_policy = kwargs.get('eviction_policy', None)
+        self.billing_profile = kwargs.get('billing_profile', None)
+        self.host = kwargs.get('host', None)
+        self.host_group = kwargs.get('host_group', None)
         self.provisioning_state = None
         self.instance_view = None
-        self.license_type = license_type
+        self.license_type = kwargs.get('license_type', None)
         self.vm_id = None
-        self.extensions_time_budget = extensions_time_budget
-        self.platform_fault_domain = platform_fault_domain
-        self.scheduled_events_profile = scheduled_events_profile
-        self.user_data = user_data
-        self.capacity_reservation = capacity_reservation
-        self.application_profile = application_profile
+        self.extensions_time_budget = kwargs.get('extensions_time_budget', None)
+        self.platform_fault_domain = kwargs.get('platform_fault_domain', None)
+        self.scheduled_events_profile = kwargs.get('scheduled_events_profile', None)
+        self.user_data = kwargs.get('user_data', None)
+        self.capacity_reservation = kwargs.get('capacity_reservation', None)
+        self.application_profile = kwargs.get('application_profile', None)
 
 
 class VMGalleryApplication(msrest.serialization.Model):
@@ -14470,18 +13174,13 @@ class VMGalleryApplication(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        package_reference_id: str,
-        tags: Optional[str] = None,
-        order: Optional[int] = None,
-        configuration_reference: Optional[str] = None,
         **kwargs
     ):
         super(VMGalleryApplication, self).__init__(**kwargs)
-        self.tags = tags
-        self.order = order
-        self.package_reference_id = package_reference_id
-        self.configuration_reference = configuration_reference
+        self.tags = kwargs.get('tags', None)
+        self.order = kwargs.get('order', None)
+        self.package_reference_id = kwargs['package_reference_id']
+        self.configuration_reference = kwargs.get('configuration_reference', None)
 
 
 class VMScaleSetConvertToSinglePlacementGroupInput(msrest.serialization.Model):
@@ -14500,12 +13199,10 @@ class VMScaleSetConvertToSinglePlacementGroupInput(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        active_placement_group_id: Optional[str] = None,
         **kwargs
     ):
         super(VMScaleSetConvertToSinglePlacementGroupInput, self).__init__(**kwargs)
-        self.active_placement_group_id = active_placement_group_id
+        self.active_placement_group_id = kwargs.get('active_placement_group_id', None)
 
 
 class VMSizeProperties(msrest.serialization.Model):
@@ -14534,14 +13231,11 @@ class VMSizeProperties(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        v_cpus_available: Optional[int] = None,
-        v_cpus_per_core: Optional[int] = None,
         **kwargs
     ):
         super(VMSizeProperties, self).__init__(**kwargs)
-        self.v_cpus_available = v_cpus_available
-        self.v_cpus_per_core = v_cpus_per_core
+        self.v_cpus_available = kwargs.get('v_cpus_available', None)
+        self.v_cpus_per_core = kwargs.get('v_cpus_per_core', None)
 
 
 class WindowsConfiguration(msrest.serialization.Model):
@@ -14585,22 +13279,15 @@ class WindowsConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        provision_vm_agent: Optional[bool] = None,
-        enable_automatic_updates: Optional[bool] = None,
-        time_zone: Optional[str] = None,
-        additional_unattend_content: Optional[List["AdditionalUnattendContent"]] = None,
-        patch_settings: Optional["PatchSettings"] = None,
-        win_rm: Optional["WinRMConfiguration"] = None,
         **kwargs
     ):
         super(WindowsConfiguration, self).__init__(**kwargs)
-        self.provision_vm_agent = provision_vm_agent
-        self.enable_automatic_updates = enable_automatic_updates
-        self.time_zone = time_zone
-        self.additional_unattend_content = additional_unattend_content
-        self.patch_settings = patch_settings
-        self.win_rm = win_rm
+        self.provision_vm_agent = kwargs.get('provision_vm_agent', None)
+        self.enable_automatic_updates = kwargs.get('enable_automatic_updates', None)
+        self.time_zone = kwargs.get('time_zone', None)
+        self.additional_unattend_content = kwargs.get('additional_unattend_content', None)
+        self.patch_settings = kwargs.get('patch_settings', None)
+        self.win_rm = kwargs.get('win_rm', None)
 
 
 class WindowsParameters(msrest.serialization.Model):
@@ -14632,20 +13319,14 @@ class WindowsParameters(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        classifications_to_include: Optional[List[Union[str, "VMGuestPatchClassificationWindows"]]] = None,
-        kb_numbers_to_include: Optional[List[str]] = None,
-        kb_numbers_to_exclude: Optional[List[str]] = None,
-        exclude_kbs_requiring_reboot: Optional[bool] = None,
-        max_patch_publish_date: Optional[datetime.datetime] = None,
         **kwargs
     ):
         super(WindowsParameters, self).__init__(**kwargs)
-        self.classifications_to_include = classifications_to_include
-        self.kb_numbers_to_include = kb_numbers_to_include
-        self.kb_numbers_to_exclude = kb_numbers_to_exclude
-        self.exclude_kbs_requiring_reboot = exclude_kbs_requiring_reboot
-        self.max_patch_publish_date = max_patch_publish_date
+        self.classifications_to_include = kwargs.get('classifications_to_include', None)
+        self.kb_numbers_to_include = kwargs.get('kb_numbers_to_include', None)
+        self.kb_numbers_to_exclude = kwargs.get('kb_numbers_to_exclude', None)
+        self.exclude_kbs_requiring_reboot = kwargs.get('exclude_kbs_requiring_reboot', None)
+        self.max_patch_publish_date = kwargs.get('max_patch_publish_date', None)
 
 
 class WinRMConfiguration(msrest.serialization.Model):
@@ -14661,12 +13342,10 @@ class WinRMConfiguration(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        listeners: Optional[List["WinRMListener"]] = None,
         **kwargs
     ):
         super(WinRMConfiguration, self).__init__(**kwargs)
-        self.listeners = listeners
+        self.listeners = kwargs.get('listeners', None)
 
 
 class WinRMListener(msrest.serialization.Model):
@@ -14697,11 +13376,8 @@ class WinRMListener(msrest.serialization.Model):
 
     def __init__(
         self,
-        *,
-        protocol: Optional[Union[str, "ProtocolTypes"]] = None,
-        certificate_url: Optional[str] = None,
         **kwargs
     ):
         super(WinRMListener, self).__init__(**kwargs)
-        self.protocol = protocol
-        self.certificate_url = certificate_url
+        self.protocol = kwargs.get('protocol', None)
+        self.certificate_url = kwargs.get('certificate_url', None)

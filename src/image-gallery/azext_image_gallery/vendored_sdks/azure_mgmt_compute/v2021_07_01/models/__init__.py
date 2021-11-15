@@ -127,6 +127,7 @@ try:
     from ._models_py3 import OSDisk
     from ._models_py3 import OSDiskImage
     from ._models_py3 import OSDiskImageEncryption
+    from ._models_py3 import OSDiskImageSecurityProfile
     from ._models_py3 import OSProfile
     from ._models_py3 import OrchestrationServiceStateInput
     from ._models_py3 import OrchestrationServiceSummary
@@ -441,6 +442,7 @@ except (SyntaxError, ImportError):
     from ._models import OSDisk  # type: ignore
     from ._models import OSDiskImage  # type: ignore
     from ._models import OSDiskImageEncryption  # type: ignore
+    from ._models import OSDiskImageSecurityProfile  # type: ignore
     from ._models import OSProfile  # type: ignore
     from ._models import OrchestrationServiceStateInput  # type: ignore
     from ._models import OrchestrationServiceSummary  # type: ignore
@@ -696,6 +698,7 @@ from ._compute_management_client_enums import (
     RestorePointCollectionExpandOptions,
     RollingUpgradeActionType,
     RollingUpgradeStatusCode,
+    SecurityProfileType,
     SecurityTypes,
     SelectPermissions,
     SettingNames,
@@ -845,6 +848,7 @@ __all__ = [
     'OSDisk',
     'OSDiskImage',
     'OSDiskImageEncryption',
+    'OSDiskImageSecurityProfile',
     'OSProfile',
     'OrchestrationServiceStateInput',
     'OrchestrationServiceSummary',
@@ -1098,6 +1102,7 @@ __all__ = [
     'RestorePointCollectionExpandOptions',
     'RollingUpgradeActionType',
     'RollingUpgradeStatusCode',
+    'SecurityProfileType',
     'SecurityTypes',
     'SelectPermissions',
     'SettingNames',

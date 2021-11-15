@@ -6,6 +6,7 @@
 from azure.cli.core import AzCommandsLoader
 
 from ._help import helps  # pylint: disable=unused-import
+from azure.cli.core.profiles import register_resource_type
 
 
 class ImageGalleryCommandsLoader(AzCommandsLoader):
@@ -13,9 +14,14 @@ class ImageGalleryCommandsLoader(AzCommandsLoader):
     def __init__(self, cli_ctx=None):
         from azure.cli.core.commands import CliCommandType
         from ._client_factory import cf_galleries
+
         image_gallery_custom = CliCommandType(
             operations_tmpl='azext_image_gallery.custom#{}',
             client_factory=cf_galleries)
+
+        from .profiles import CUSTOM_MGMT_COMPUTE
+        register_resource_type('latest', CUSTOM_MGMT_COMPUTE, '2021-07-01')
+
         super().__init__(cli_ctx=cli_ctx, custom_command_type=image_gallery_custom)
 
     def load_command_table(self, args):

@@ -525,6 +525,14 @@ class RollingUpgradeStatusCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enu
     COMPLETED = "Completed"
     FAULTED = "Faulted"
 
+class SecurityProfileType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
+    """all types of security profile
+    """
+
+    ENCRYPTED_VM_GUEST_STATE_ONLY_WITH_PMK = "EncryptedVMGuestStateOnlyWithPmk"
+    ENCRYPTED_WITH_PMK = "EncryptedWithPmk"
+    ENCRYPTED_WITH_CMK = "EncryptedWithCmk"
+
 class SecurityTypes(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     """Specifies the SecurityType of the virtual machine. It is set as TrustedLaunch to enable
     UefiSettings. :code:`<br>`:code:`<br>` Default: UefiSettings will not be enabled unless this

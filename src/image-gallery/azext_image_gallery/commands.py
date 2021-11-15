@@ -8,7 +8,8 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-locals
 from azure.cli.core.commands import CliCommandType
-from ._client_factory import cf_community_gallery, cf_community_gallery_image, cf_community_gallery_image_version, cf_galleries, cf_community_gallery_sharing_profile
+from ._client_factory import (cf_community_gallery, cf_community_gallery_image, cf_community_gallery_image_version,
+                              cf_galleries, cf_community_gallery_sharing_profile, cf_gallery_image_version)
 
 
 def load_command_table(self, _):
@@ -29,12 +30,16 @@ def load_command_table(self, _):
         operations_tmpl='azext_image_gallery.vendored_sdks.azure_mgmt_compute.operations._gallery_sharing_profile_operations#GallerySharingProfileOperations.{}',
         client_factory=cf_community_gallery_sharing_profile)
 
-    compute_galleries_sdk = CliCommandType(
+    galleries_sdk = CliCommandType(
         operations_tmpl='azext_image_gallery.vendored_sdks.azure_mgmt_compute.operations._galleries_operations#GalleriesOperations.{}',
         client_factory=cf_galleries,
     )
 
-    with self.command_group('sig', compute_galleries_sdk, client_factory=cf_galleries) as g:
+    gallery_image_version_sdk = CliCommandType(
+        operations_tmpl='azext_image_gallery.vendored_sdks.azure_mgmt_compute.operations._gallery_image_versions_operations#GalleryImageVersionsOperations.{}',
+        client_factory=cf_gallery_image_version)
+
+    with self.command_group('sig', galleries_sdk, client_factory=cf_galleries) as g:
         g.custom_command('create', 'create_image_gallery')
 
     with self.command_group('sig', community_gallery_sdk, client_factory=cf_community_gallery) as g:
@@ -49,6 +54,10 @@ def load_command_table(self, _):
                             client_factory=cf_community_gallery_image_version) as g:
         g.command('show-community', 'get', is_experimental=True)
         g.custom_command('list-community', 'sig_community_image_version_list', is_experimental=True)
+
+    with self.command_group('sig image-version', gallery_image_version_sdk,
+                            client_factory=cf_gallery_image_version) as g:
+        g.custom_command('create', 'create_image_version', supports_no_wait=True)
 
     with self.command_group('sig share', community_gallery_sharing_profile_sdk,
                             client_factory=cf_community_gallery_sharing_profile) as g:
